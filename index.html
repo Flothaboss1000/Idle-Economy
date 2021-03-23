@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Idle Economy</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <div class="titlebar">
+      <h1>Idle Economy</h1>
+    </div>
+    <div class="info">
+      <ul>
+        <li>Author: Flothaboss1000</li>
+        <br />
+        <li>Version: <span id="version"></span></li>
+      </ul>
+    </div>
+
+    <h2 id="balcounter">
+      <a><span id="balhtml"></span>💵</a><a><span id="gemhtml"></span>💎</a>
+    </h2>
+    <div class="goto">
+      <p>🧭</p>
+      <a href="#work" style="background-color: rgb(255, 107, 107)">Work</a>
+      <a href="#hire" style="background-color: rgb(230, 231, 135)">Hire</a>
+      <a href="#store" style="background-color: rgb(203, 124, 255)">Store</a>
+      <a href="#inv" style="background-color: rgb(255, 142, 37)">Inventory</a>
+      <a href="#stats" style="background-color: rgb(121, 235, 255)"
+        >Statistics</a
+      >
+      <br />
+    </div>
+    <div class="section" id="work">
+      <h1 style="background-color: rgb(255, 107, 107); font-weight: bolder">
+        Work
+      </h1>
+      <ul>
+        <li>
+          <h3>Beg <span id="pro">(+1💵)</span></h3>
+          <p>Beg from the streets<br /></p>
+          <button id="begB" onclick="workbal(1,'beg',1000)">Work (1s)</button>
+          <div
+            id="begE"
+            style="
+              width: 100%;
+              background-color: rgb(206, 206, 206);
+              border-radius: 10px;
+            "
+          >
+            <div
+              id="begF"
+              style="
+                width: 0%;
+                height: 20px;
+                background-color: rgb(255, 107, 107);
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </li>
+        <li>
+          <h3>Shoe Polish <span id="pro">(+10💵)</span></h3>
+          <p>Polish people's shoes for pennies<br /></p>
+          <button id="shoepolB" onclick="workbal(10,'shoepol',9000)" disabled>
+            Work (9s)
+          </button>
+          <button id="shoepolP" onclick="workbuy(20,'shoepol')">
+            Buy (20💵)
+          </button>
+          <div
+            id="shoepolE"
+            style="
+              width: 100%;
+              background-color: rgb(206, 206, 206);
+              border-radius: 10px;
+            "
+          >
+            <div
+              id="shoepolF"
+              style="
+                width: 0%;
+                height: 20px;
+                background-color: rgb(255, 107, 107);
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </li>
+        <li>
+          <h3>Cook <span id="pro">(+30💵)</span></h3>
+          <p>Bake a cake for Jake and Drake<br /></p>
+          <button id="cookB" onclick="workbal(30,'cook',25000)" disabled>
+            Work (25s)
+          </button>
+          <button id="cookP" onclick="workbuy(100,'cook')">Buy (100💵)</button>
+
+          <div
+            id="cookE"
+            style="
+              width: 100%;
+              background-color: rgb(206, 206, 206);
+              border-radius: 10px;
+            "
+          >
+            <div
+              id="cookF"
+              style="
+                width: 0%;
+                height: 20px;
+                background-color: rgb(255, 107, 107);
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </li>
+        <li>
+          <h3>Editor <span id="pro">(+60💵)</span></h3>
+          <p>Write and edit Wikipedia articles<br /></p>
+          <button id="editorB" onclick="workbal(60,'editor',45000)" disabled>
+            Work (45s)
+          </button>
+          <button id="editorP" onclick="workbuy(200,'editor')">
+            Buy (200💵)
+          </button>
+          <div
+            id="editorE"
+            style="
+              width: 100%;
+              background-color: rgb(206, 206, 206);
+              border-radius: 10px;
+            "
+          >
+            <div
+              id="editorF"
+              style="
+                width: 0%;
+                height: 20px;
+                background-color: rgb(255, 107, 107);
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="section" id="hire">
+      <h1 style="background-color: rgb(230, 231, 135); font-weight: bolder">
+        Hire
+      </h1>
+      <ul>
+        <li>
+          <h3>Dog <span id="pro">(+1💵/s)</span></h3>
+          <p>Hire a dog to find coins from ground<br /></p>
+          <button onclick="hirebal(dog) ">
+            Hire (<span id="dogC"></span>💵)
+          </button>
+          <p>
+            <i>Owned: <span id="dogQ"></span></i>
+          </p>
+        </li>
+        <li>
+          <h3>Lemonade Stand <span id="pro">(+5💵/s)</span></h3>
+          <p>Create a self-serving lemonade stand<br /></p>
+          <button onclick="hirebal(lemonstand) ">
+            Hire (<span id="lemonstandC"></span>💵)
+          </button>
+          <p>
+            <i>Owned: <span id="lemonstandQ"></span></i>
+          </p>
+        </li>
+        <li>
+          <h3>Hawker <span id="pro">(+20💵/s)</span></h3>
+          <p>Make a hawker sell your old items in your local market</p>
+          <button onclick="hirebal(hawker)">
+            Hire (<span id="hawkerC"></span>💵)
+          </button>
+          <p>
+            <i>Owned: <span id="hawkerQ"></span></i>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="section" id="store">
+      <h1 style="background-color: rgb(203, 124, 255); font-weight: bolder">
+        Store
+      </h1>
+      <ul>
+        <li>
+          <h3>Energy Flavoured Bar <span id="pro">(2×hire)</span></h3>
+          <p>Give a boost to everyone you have hired<br /></p>
+          <button
+            id="boost2xhireB"
+            onclick="boostbal(1,'boost2xhire',60000,10)"
+          >
+            Buy (10💎)
+          </button>
+          <div
+            id="boost2xhireE"
+            style="
+              width: 100%;
+              background-color: rgb(206, 206, 206);
+              border-radius: 10px;
+            "
+          >
+            <div
+              id="boost2xhireF"
+              style="
+                width: 0%;
+                height: 20px;
+                background-color: rgb(203, 124, 255);
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="section" id="inv">
+      <h1 style="background-color: rgb(255, 142, 37); font-weight: bolder">
+        Inventory
+      </h1>
+      <div class="invA">
+        <a>
+          <img
+            src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/peanuts_1f95c.png"
+            alt=""
+          />
+          <h2>Peanut</h2>
+          <p>An overrated nut</p>
+          <p>Multiplier: 0.05</p>
+          <button onclick="invbuy(peanut)">Buy (50💎)</button>
+          <p>
+            <i>Owned: <span id="peanutQ">0</span></i>
+          </p>
+        </a>
+        <a>
+          <img
+            src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/candy_1f36c.png"
+            alt=""
+          />
+          <h2>Candy</h2>
+          <p>An Alpenliebe candy</p>
+          <p>Multiplier: 0.2</p>
+          <button onclick="invbuy(candy)">Buy (175💎)</button>
+          <p>
+            <i>Owned: <span id="candyQ">0</span></i>
+          </p>
+        </a>
+        <a>
+          <img
+            src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/egg_1f95a.png"
+            alt=""
+          />
+          <h2>Egg</h2>
+          <p>The Supreme Egg</p>
+          <p>Multiplier: 100</p>
+          <button onclick="invbuy(egg)">Buy (1,000,000💎)</button>
+          <p>
+            <i>Owned: <span id="eggQ">0</span></i>
+          </p></a
+        >
+      </div>
+    </div>
+    <div class="section" id="stats">
+      <h1 style="background-color: rgb(121, 235, 255); font-weight: bolder">
+        Statistics
+      </h1>
+      <div class="statA">
+        <a>
+          <h3>Cash auto-generated</h3>
+          <p><span id="autocashhtml">0</span>💵/s</p></a
+        >
+        <a
+          ><h3>Multiplier</h3>
+          <p><span id="multihtml"></span>×</p></a
+        >
+        <a
+          ><h3>Time Elapsed</h3>
+          <p><span id="timeelapsehtml"></span>stat value 3</p></a
+        >
+        <a
+          ><h3>stat 4</h3>
+          <p><span id="multihtml"></span>stat value 4</p></a
+        >
+        <a
+          ><h3>stat 5</h3>
+          <p><span id="stat3html"></span>stat value 5</p></a
+        >
+        <a
+          ><h3>stat 6</h3>
+          <p><span id="multihtml"></span>stat value 6</p></a
+        >
+        <a
+          ><h3>stat 7</h3>
+          <p><span id="stat3html"></span>stat value 7</p></a
+        >
+        <a
+          ><h3>stat 8</h3>
+          <p><span id="stat3html"></span>stat value 8</p></a
+        >
+      </div>
+
+      <!-- <a
+        ><h3>stat 8</h3>
+        <p><span id="multihtml"></span>stat value 8</p></a
+      > -->
+    </div>
+    <div class="windowtint"></div>
+    <h1 id="notif">Test</h1>
+    <script src="main.js"></script>
+  </body>
+</html>
