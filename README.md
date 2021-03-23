@@ -1,1 +1,1 @@
-##Welcome to Idle Economy!
+#Welcome to Idle Economy!
