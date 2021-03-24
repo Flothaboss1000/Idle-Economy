@@ -2,8 +2,11 @@ body {
   margin-top: 100px;
   margin-left: 0px;
   margin-right: 0px;
-  font-family: 'product_sansregular';
   z-index: 0;
+}
+@font-face {
+  font-family: 'Product Sans';
+ src: local('Product Sans Regular.ttf');
 }
 .titlebar {
   text-align: center;
