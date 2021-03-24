@@ -3,10 +3,7 @@ body {
   margin-left: 0px;
   margin-right: 0px;
   z-index: 0;
-}
-@font-face {
-  font-family: 'product_sans_regular';
- src: url("product_sans_regular-webfont.woff");
+  font-family: 'Comfortaa';
 }
 .titlebar {
   text-align: center;
