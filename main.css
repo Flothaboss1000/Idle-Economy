@@ -5,7 +5,7 @@ body {
   z-index: 0;
 }
 @font-face {
-  font-family: 'Product Sans';
+  font-family: 'product_sans_regular';
  src: url("product_sans_regular-webfont.woff");
 }
 .titlebar {
