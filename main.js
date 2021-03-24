@@ -1,4 +1,4 @@
-let v = "0.1";
+let v = "0.2";
 let bal = 0;
 let balmulti = 1;
 let gem = 0;
@@ -17,6 +17,19 @@ var lemonstand = { name: "lemonstand", quan: 0, multi: 5, cost: 200 };
 var hawker = { name: "hawker", quan: 0, multi: 20, cost: 1000 };
 
 var hireitems = [dog, lemonstand, hawker];
+
+//Lootbox
+var common = {
+  name: 'common',
+  type: "cash",
+  cost: 10000,
+  reward: [
+    { type: "gems", quan: 1 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+  ],
+};
 
 //Inv
 var peanut = { name: "peanut", quan: 0, multi: 0.05, cost: 50 };
@@ -38,6 +51,11 @@ function addbal(num) {
   document.getElementById("balhtml").innerHTML = balformat(bal);
 }
 
+function subbal(num) {
+  bal = bal - num;
+  document.getElementById("balhtml").innerHTML = balformat(bal);
+}
+
 function setgem(num) {
   gem = num;
   document.getElementById("gemhtml").innerHTML = balformat(num);
@@ -45,6 +63,11 @@ function setgem(num) {
 
 function addgem(num) {
   gem = gem + num;
+  document.getElementById("gemhtml").innerHTML = balformat(gem);
+}
+
+function subgem(num) {
+  gem = gem - num;
   document.getElementById("gemhtml").innerHTML = balformat(gem);
 }
 
@@ -128,6 +151,51 @@ function hirebal(item) {
   }
 }
 
+function lootboxbuy(chest) {
+  var costmode, costemoji, costloc;
+  if (chest.type == "cash") {
+    costmode = bal;
+    costemoji = "💵";
+  } else if (chest.type == "gems") {
+    costmode = gem;
+    costemoji = "💎";
+  }
+  if (chest.cost < costmode) {
+    if (chest.type == "cash"){
+      subbal(chest.cost)
+    } else if (chest.type == 'gems'){
+      subgem(chest.cost)
+    };
+    notify('blue',`Opening ${chest.name} lootbox! Wait for it...`);
+    document.getElementById(chest.name + 'B').disabled = true;
+    setTimeout(() => {
+      var chosen = chest.reward[Math.floor(Math.random() * chest.reward.length)];
+      if (chosen.type == "none") {
+        notify("red", `Aw, you earned nothing...`);
+        document.getElementById(chest.name + 'B').disabled = false;
+      } else if (chosen.type == "cash") {
+        notify("green", `Congrats, you earned ${balformat(chosen.quan)}💵!`);
+        bal = bal + chosen.quan;
+        document.getElementById("balhtml").innerHTML = balformat(bal);
+        document.getElementById(chest.name + 'B').disabled = false;
+      } else if (chosen.type == "gems") {
+        notify("green", `Congrats, you earned ${balformat(chosen.quan)}💎!`);
+        gem = gem + chosen.quan;
+        document.getElementById("gemhtml").innerHTML = balformat(gem);
+        document.getElementById(chest.name + 'B').disabled = false;
+      }
+    }, 3000);
+  } else {
+    notify(
+      "red",
+      `You don't have enough ${chest.type}! You need ${balformat(
+        chest.cost - costmode
+      )}${costemoji} more.`
+    );
+    costmode, costemoji, (costloc = undefined);
+  }
+}
+
 function invbuy(item) {
   if (gem >= item.cost) {
     item.quan = item.quan + 1;
@@ -175,7 +243,6 @@ function hireaddbal() {
   bal = bal + sum;
   document.getElementById("balhtml").innerHTML = balformat(bal);
 }
-
 
 function notify(type, text) {
   var notif = document.getElementById("notif");

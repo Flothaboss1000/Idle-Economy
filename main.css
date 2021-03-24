@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
   margin-top: 100px;
   margin-left: 0px;
   margin-right: 0px;
   z-index: 0;
-  font-family: 'Poiret One', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 .titlebar {
   text-align: center;
@@ -100,11 +100,12 @@ body {
 }
 .goto:hover {
   width: 220px;
-  height: 260px;
+  height: 250px;
   border-radius: 15px;
   transition: 0.2s;
   padding: 0px 5px;
   line-height: 10px;
+  overflow: auto;
 }
 .goto a {
   float: left;
@@ -169,6 +170,10 @@ body {
   z-index: 0;
   border: solid 2px lightgrey;
 }
+.section #perk a {
+  width: fit-content;
+  font-size: 15px;
+}
 .section .invA a {
   height: 220px;
   width: 30%;
@@ -215,6 +220,7 @@ body {
 button {
   padding: 10px;
   border-radius: 20px;
+  font-family: "Montserrat";
 }
 
 @media screen and (max-width: 1134px) {
@@ -225,7 +231,7 @@ button {
 
 @media screen and (max-width: 1079px) {
   .section a {
-    width: 28.5%
+    width: 28.5%;
   }
 }
 
@@ -268,15 +274,16 @@ button {
   .section .invA a {
     width: 95%;
   }
-  .section .statA a  {
+  .section .statA a {
     width: 95%;
   }
   .info {
     width: 90%;
     left: -200%;
+    top: 175px;
   }
   .titlebar:hover + .info {
-    left: 10px;
+    left: 10px
   }
   #notif {
     width: auto;

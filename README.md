@@ -8,7 +8,7 @@
 This is a simple incremental game which was made using with HTML, CSS and JavaScript.
 You can visit the website [here](https://flothaboss1000.github.io/Idle-Economy/).
 
-Also visit CHANGELOG.md for update logs for this site.
+Also visit [CHANGELOG.md](https://github.com/Flothaboss1000/Idle-Economy/blob/master/CHANGELOG.md) for update logs for this site.
 
 ## How it Works
 The game includes two types of currency:

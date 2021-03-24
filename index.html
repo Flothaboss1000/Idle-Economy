@@ -28,6 +28,7 @@
       <a href="#work" style="background-color: rgb(255, 107, 107)">Work</a>
       <a href="#hire" style="background-color: rgb(230, 231, 135)">Hire</a>
       <a href="#store" style="background-color: rgb(203, 124, 255)">Store</a>
+      <a href="#lootbox" style="background-color: rgb(73, 29, 29)">Lootboxes</a>
       <a href="#inv" style="background-color: rgb(255, 142, 37)">Inventory</a>
       <a href="#stats" style="background-color: rgb(121, 235, 255)"
         >Statistics</a
@@ -125,8 +126,8 @@
           <button id="editorB" onclick="workbal(editor)" disabled>
             Work (45s)
           </button>
-          <button id="editorP" onclick="workbuy(200,'editor')">
-            Unlock (200💵)
+          <button id="editorP" onclick="workbuy(350,'editor')">
+            Unlock (350💵)
           </button>
           <div
             id="editorE"
@@ -218,6 +219,23 @@
               "
             ></div>
           </div>
+        </li>
+      </ul>
+    </div>
+    <div class="section" id="lootbox">
+      <h1 style="background-color: rgb(73, 29, 29); font-weight: bolder">
+        Lootboxes
+      </h1>
+      <ul>
+        <li>
+          <h3>Common Chest</h3>
+          <p>A cheap chest to waste your money on</p>
+          <button id="commonB" onclick="lootboxbuy(common)">Buy (10,000💵)</button>
+          <div id="perk">
+            <a>❌:75%</a>
+            <a>1💎:25%</a>
+          </div>
+          <br>
         </li>
       </ul>
     </div>
