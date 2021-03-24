@@ -237,7 +237,7 @@ function invbuy(item) {
   } else {
     notify(
       "red",
-      `You don't have enough cash! You need ${balformat(
+      `You don't have enough gems! You need ${balformat(
         item.cost - gem
       )}💎 more.`
     );
