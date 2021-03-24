@@ -10,7 +10,7 @@ body {
   background-color: rgb(179, 179, 179);
   color: white;
   margin-top: 0px;
-  padding:  5px 15px;
+  padding: 5px 15px;
   width: fit-content;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
   transition: 0.5s;
@@ -101,7 +101,7 @@ body {
   height: 260px;
   border-radius: 15px;
   transition: 0.2s;
-  padding:  0px 5px;
+  padding: 0px 5px;
   line-height: 10px;
 }
 .goto a {
@@ -161,7 +161,7 @@ body {
   float: left;
   margin: 6px 5px;
   padding: 10px;
-  width: 22%;
+  width: 21.5%;
   border-radius: 20px;
   transition: 0.8s;
   z-index: 0;
@@ -210,13 +210,76 @@ body {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
   transition: 0.5s;
 }
-#notif:hover {
-  font-size: 35px;
-  transition: 0.2s;
-}
 button {
   padding: 10px;
   border-radius: 20px;
+}
+
+@media screen and (max-width: 1134px) {
+  .section .invA a {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  .section a {
+    width: 28.5%
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 100pxs;
+  }
+  .titlebar {
+    width: auto;
+    left: 2.5%;
+    right: 2.5%;
+    height: fit-content;
+  }
+  .titlebar h1 {
+    margin: 10px 0px;
+    font-size: 30px;
+  }
+  #balcounter {
+    top: 80px;
+    right: 10px;
+    left: 10px;
+    overflow: visible;
+    width: auto;
+    font-size: 10px;
+  }
+  #balcounter a {
+    font-size: 20px;
+    width: 45%;
+  }
+  .goto {
+    bottom: 100px;
+  }
+  .section {
+    width: 90.5%;
+    margin-right: 1%;
+    margin-left: 1%;
+  }
+  .section .invA a {
+    width: 95%;
+  }
+  .section .statA a  {
+    width: 95%;
+  }
+  .info {
+    width: 90%;
+    left: -200%;
+  }
+  .titlebar:hover + .info {
+    left: 10px;
+  }
+  #notif {
+    width: auto;
+    right: 5px;
+  }
 }
 
 ::selection {

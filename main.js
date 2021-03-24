@@ -1,27 +1,35 @@
-let v = '0.1'
+let v = "0.1";
 let bal = 0;
 let balmulti = 1;
 let gem = 0;
 
+//Work
+var beg = { name: "beg", multi: 1, dur: 1000 };
+var shoepol = { name: "shoepol", multi: 10, dur: 9000 };
+var cook = { name: "cook", multi: 30, dur: 25000 };
+var editor = { name: "editor", multi: 60, dur: 45000 };
+
+var workitems = [beg, shoepol, cook, editor];
+
 //Hire
 var dog = { name: "dog", quan: 0, multi: 1, cost: 50 };
 var lemonstand = { name: "lemonstand", quan: 0, multi: 5, cost: 200 };
-var hawker = {name:"hawker", quan: 0, multi: 20, cost: 1000}
+var hawker = { name: "hawker", quan: 0, multi: 20, cost: 1000 };
 
-var hireitems = [dog, lemonstand,hawker];
+var hireitems = [dog, lemonstand, hawker];
 
 //Inv
-var peanut = {name: 'peanut', quan: 0, multi: 0.05, cost: 50}
-var candy = {name: 'candy', quan: 0, multi: 0.2, cost: 175}
-var egg = {name: 'egg', quan: 0, multi: 100, cost: 1000000}
+var peanut = { name: "peanut", quan: 0, multi: 0.05, cost: 50 };
+var candy = { name: "candy", quan: 0, multi: 0.2, cost: 175 };
+var egg = { name: "egg", quan: 0, multi: 100, cost: 1000000 };
 
-var invitems = [peanut,candy,egg]
+var invitems = [peanut, candy, egg];
 
 const balformat = (number) =>
   number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 function setbal(num) {
-  bal = num
+  bal = num;
   document.getElementById("balhtml").innerHTML = balformat(num);
 }
 
@@ -31,7 +39,7 @@ function addbal(num) {
 }
 
 function setgem(num) {
-  gem = num
+  gem = num;
   document.getElementById("gemhtml").innerHTML = balformat(num);
 }
 
@@ -40,35 +48,36 @@ function addgem(num) {
   document.getElementById("gemhtml").innerHTML = balformat(gem);
 }
 
-function workbuy (cost,item){
-  if (cost <= bal){
+function workbuy(cost, item) {
+  if (cost <= bal) {
     bal = bal - cost;
-    document.getElementById('balhtml').innerHTML = balformat(bal);
-    document.getElementById(item + 'B').disabled = false
-    document.getElementById(item + 'P').style.visibility = 'hidden';
+    document.getElementById("balhtml").innerHTML = balformat(bal);
+    document.getElementById(item + "B").disabled = false;
+    document.getElementById(item + "P").style.visibility = "hidden";
   } else {
-    notify('red', `You don't have enough cash! You need ${balformat(
-      cost - bal
-    )}💵 more.`)
+    notify(
+      "red",
+      `You don't have enough cash! You need ${balformat(cost - bal)}💵 more.`
+    );
   }
 }
 
-function workbal(num, item, dur) {
+function workbal(item) {
   {
-    var elem = document.getElementById(item + "F");
+    var elem = document.getElementById(item.name + "F");
     var width = 1;
-    dur = dur / 100;
-    var id = setInterval(frame, dur);
+    workdur = item.dur / 100;
+    var id = setInterval(frame, workdur);
     function frame() {
       if (width >= 100) {
         clearInterval(id);
-        addbal(num);
+        addbal(item.multi);
         elem.style.width = "0%";
-        document.getElementById(item + "B").disabled = false;
+        document.getElementById(item.name + "B").disabled = false;
       } else {
         width++;
         elem.style.width = width + "%";
-        document.getElementById(item + "B").disabled = true;
+        document.getElementById(item.name + "B").disabled = true;
       }
     }
   }
@@ -96,7 +105,7 @@ function boostbal(num, item, dur, cost) {
       }
     }
   } else {
-    notify('red',`You don't have enough gems! You need ${cost - gem}💎 more.`);
+    notify("red", `You don't have enough gems! You need ${cost - gem}💎 more.`);
   }
 }
 
@@ -110,7 +119,8 @@ function hirebal(item) {
     item.cost = Math.floor(item.cost * 1.1 + item.quan * 1.1);
     document.getElementById(item.name + "C").innerHTML = balformat(item.cost);
   } else {
-    notify('red',
+    notify(
+      "red",
       `You don't have enough cash! You need ${balformat(
         item.cost - bal
       )}💵 more.`
@@ -119,18 +129,20 @@ function hirebal(item) {
 }
 
 function invbuy(item) {
-  if (gem >= item.cost){
+  if (gem >= item.cost) {
     item.quan = item.quan + 1;
     gem = gem - item.cost;
     document.getElementById("gemhtml").innerHTML = balformat(gem);
-    document.getElementById(item.name + 'Q').innerHTML = item.quan
+    document.getElementById(item.name + "Q").innerHTML = item.quan;
     balmulti = balmulti + item.multi;
-    document.getElementById('multihtml').innerHTML = balmulti;
+    document.getElementById("multihtml").innerHTML = balmulti;
   } else {
-    notify('red',
+    notify(
+      "red",
       `You don't have enough cash! You need ${balformat(
         item.cost - gem
-      )}💎 more.`)
+      )}💎 more.`
+    );
   }
 }
 
@@ -156,11 +168,11 @@ function calcbalgensec(item) {
 }
 
 function hireaddbal() {
-  sum = 0
-  hireitems.forEach(function(item){
+  sum = 0;
+  hireitems.forEach(function (item) {
     sum = sum + Math.floor(item.multi * item.quan * balmulti);
-  })
-  bal = bal + sum
+  });
+  bal = bal + sum;
   document.getElementById("balhtml").innerHTML = balformat(bal);
 }
 
@@ -199,18 +211,14 @@ function notify(type, text) {
   }
   notif.innerHTML = text;
   notif.style.bottom = "0px";
-  var id = setTimeout(() => {
-    notif.style.bottom = "-100px";
-  }, 3000);
   notif.addEventListener("click", function () {
     notif.style.bottom = "-100px";
-    clearTimeout(id);
   });
   return;
 }
 
 window.onload = function () {
-  document.getElementById('version').innerHTML = v;
+  document.getElementById("version").innerHTML = v;
   document.getElementById("balhtml").innerHTML = balformat(bal);
   document.getElementById("gemhtml").innerHTML = balformat(gem);
   loadnum(hireitems);
@@ -222,7 +230,6 @@ window.setInterval(async function () {
   hireaddbal();
   document.getElementById("multihtml").innerHTML = balmulti;
   document.getElementById("autocashhtml").innerHTML = calcbalgensec(hireitems);
-
 }, 1000);
 
 //Admin Console

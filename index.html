@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Idle Economy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   </head>
   <body>
@@ -30,8 +31,9 @@
         >Statistics</a
       >
       <br />
+    <span id="work"></span>
     </div>
-    <div class="section" id="work">
+    <div class="section">
       <h1 style="background-color: rgb(255, 107, 107); font-weight: bolder">
         Work
       </h1>
@@ -39,7 +41,7 @@
         <li>
           <h3>Beg <span id="pro">(+1💵)</span></h3>
           <p>Beg from the streets<br /></p>
-          <button id="begB" onclick="workbal(1,'beg',1000)">Work (1s)</button>
+          <button id="begB" onclick="workbal(beg)">Work (1s)</button>
           <div
             id="begE"
             style="
@@ -62,11 +64,11 @@
         <li>
           <h3>Shoe Polish <span id="pro">(+10💵)</span></h3>
           <p>Polish people's shoes for pennies<br /></p>
-          <button id="shoepolB" onclick="workbal(10,'shoepol',9000)" disabled>
+          <button id="shoepolB" onclick="workbal(shoepol)" disabled>
             Work (9s)
           </button>
           <button id="shoepolP" onclick="workbuy(20,'shoepol')">
-            Buy (20💵)
+            Unlock (20💵)
           </button>
           <div
             id="shoepolE"
@@ -90,10 +92,10 @@
         <li>
           <h3>Cook <span id="pro">(+30💵)</span></h3>
           <p>Bake a cake for Jake and Drake<br /></p>
-          <button id="cookB" onclick="workbal(30,'cook',25000)" disabled>
+          <button id="cookB" onclick="workbal(cook)" disabled>
             Work (25s)
           </button>
-          <button id="cookP" onclick="workbuy(100,'cook')">Buy (100💵)</button>
+          <button id="cookP" onclick="workbuy(100,'cook')">Unlock (100💵)</button>
 
           <div
             id="cookE"
@@ -117,11 +119,11 @@
         <li>
           <h3>Editor <span id="pro">(+60💵)</span></h3>
           <p>Write and edit Wikipedia articles<br /></p>
-          <button id="editorB" onclick="workbal(60,'editor',45000)" disabled>
+          <button id="editorB" onclick="workbal(editor)" disabled>
             Work (45s)
           </button>
           <button id="editorP" onclick="workbuy(200,'editor')">
-            Buy (200💵)
+            Unlock (200💵)
           </button>
           <div
             id="editorE"
@@ -144,6 +146,7 @@
         </li>
       </ul>
     </div>
+    <span id="hire"></span>
     <div class="section" id="hire">
       <h1 style="background-color: rgb(230, 231, 135); font-weight: bolder">
         Hire
@@ -181,6 +184,7 @@
         </li>
       </ul>
     </div>
+    <span id="store"></span>
     <div class="section" id="store">
       <h1 style="background-color: rgb(203, 124, 255); font-weight: bolder">
         Store
@@ -216,6 +220,7 @@
         </li>
       </ul>
     </div>
+    <span id="inv"></span>
     <div class="section" id="inv">
       <h1 style="background-color: rgb(255, 142, 37); font-weight: bolder">
         Inventory
@@ -262,6 +267,7 @@
         >
       </div>
     </div>
+    <span id="stats"></span>
     <div class="section" id="stats">
       <h1 style="background-color: rgb(121, 235, 255); font-weight: bolder">
         Statistics
