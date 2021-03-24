@@ -6,7 +6,12 @@
 
  - Completion of README.md
  - Complete mobile support
- - Support to earn gems naturally
+
+ ## 0.2
+
+ - Added lootboxes
+ - Changed site font to Montserrat
+ - Fixed the info bar intersecting with the titlebar and balance counter
 
 ## 0.1
 
@@ -21,11 +26,6 @@
 ### 0.1.2
  - Added support for the custom font
 
- ## 0.2
-
- - Added lootboxes
- - Changed site font to Montserrat
- - Fixed the info bar intersecting with the titlebar and balance counter
 
 ## 0.0
 
