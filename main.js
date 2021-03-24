@@ -317,6 +317,10 @@ function notify(type, text) {
 }
 
 window.onload = function () {
+  document.getElementById("se-pre-con").style.animation = 'loadingfade 0.5s';
+  setTimeout(() => {
+    document.getElementById("se-pre-con").style.visibility = 'hidden'
+  }, 500);
   document.getElementById("version").innerHTML = v;
   document.getElementById("balhtml").innerHTML = balformat(bal);
   document.getElementById("gemhtml").innerHTML = balformat(gem);

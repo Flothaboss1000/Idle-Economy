@@ -28,6 +28,10 @@
 
 - Added confirmation page before reloading site
 
+### 0.2.4
+
+ - Added a loading screen if code is yet to be loaded
+
 ## 0.1
 
 - Updated README.md

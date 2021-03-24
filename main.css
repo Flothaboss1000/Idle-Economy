@@ -1,5 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+#se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b24edbc6-54ff-4983-a4d6-22a81a6ce05a/de9aold-5683e869-c6ae-4d6f-816a-d38878a0a71e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYjI0ZWRiYzYtNTRmZi00OTgzLWE0ZDYtMjJhODFhNmNlMDVhXC9kZTlhb2xkLTU2ODNlODY5LWM2YWUtNGQ2Zi04MTZhLWQzODg3OGEwYTcxZS5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.l86av24hqvln7fZUOGDgNJ_ZWz00W98957bXneo-pRU)
+    center no-repeat rgb(38,38,38);
+}
+@keyframes loadingfade {
+  0% {opacity: 100%;}
+  100% {opacity: 0%;}
+}
+
 body {
   margin-top: 100px;
   margin-left: 0px;
@@ -302,7 +317,7 @@ button {
     top: 175px;
   }
   .titlebar:hover + .info {
-    left: 10px
+    left: 10px;
   }
   #notif {
     width: auto;
