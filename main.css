@@ -36,6 +36,10 @@ body {
 .info ul {
   padding-left: 15px;
 }
+.info ul a {
+  text-decoration: none;
+  color: black;
+}
 .windowtint {
   position: fixed;
   top: -20px;
@@ -49,6 +53,17 @@ body {
   z-index: 3;
 }
 .titlebar:hover {
+  transition: 3s;
+  background-color: rgb(0, 0, 0);
+}
+.info:hover {
+  left: 10px;
+}
+.info:hover ~ .windowtint {
+  opacity: 0.8;
+  transition: 3s;
+}
+.info:hover ~ .titlebar {
   transition: 3s;
   background-color: rgb(0, 0, 0);
 }

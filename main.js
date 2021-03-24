@@ -20,7 +20,7 @@ var hireitems = [dog, lemonstand, hawker];
 
 //Lootbox
 var common = {
-  name: 'common',
+  name: "common",
   type: "cash",
   cost: 10000,
   reward: [
@@ -161,28 +161,29 @@ function lootboxbuy(chest) {
     costemoji = "💎";
   }
   if (chest.cost < costmode) {
-    if (chest.type == "cash"){
-      subbal(chest.cost)
-    } else if (chest.type == 'gems'){
-      subgem(chest.cost)
-    };
-    notify('blue',`Opening ${chest.name} lootbox! Wait for it...`);
-    document.getElementById(chest.name + 'B').disabled = true;
+    if (chest.type == "cash") {
+      subbal(chest.cost);
+    } else if (chest.type == "gems") {
+      subgem(chest.cost);
+    }
+    notify("blue", `Opening ${chest.name} lootbox! Wait for it...`);
+    document.getElementById(chest.name + "B").disabled = true;
     setTimeout(() => {
-      var chosen = chest.reward[Math.floor(Math.random() * chest.reward.length)];
+      var chosen =
+        chest.reward[Math.floor(Math.random() * chest.reward.length)];
       if (chosen.type == "none") {
         notify("red", `Aw, you earned nothing...`);
-        document.getElementById(chest.name + 'B').disabled = false;
+        document.getElementById(chest.name + "B").disabled = false;
       } else if (chosen.type == "cash") {
         notify("green", `Congrats, you earned ${balformat(chosen.quan)}💵!`);
         bal = bal + chosen.quan;
         document.getElementById("balhtml").innerHTML = balformat(bal);
-        document.getElementById(chest.name + 'B').disabled = false;
+        document.getElementById(chest.name + "B").disabled = false;
       } else if (chosen.type == "gems") {
         notify("green", `Congrats, you earned ${balformat(chosen.quan)}💎!`);
         gem = gem + chosen.quan;
         document.getElementById("gemhtml").innerHTML = balformat(gem);
-        document.getElementById(chest.name + 'B').disabled = false;
+        document.getElementById(chest.name + "B").disabled = false;
       }
     }, 3000);
   } else {
@@ -302,80 +303,81 @@ window.setInterval(async function () {
 //Admin Console
 document.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.altKey && e.key === "q") {
-    let adminvalue = prompt(
-      "Welcome to the Admin Panel!\n\nEnter your command below.",
+    adminconsole();
+  }
+});
+
+function adminconsole() {
+  let adminvalue = prompt(
+    "Welcome to the Admin Panel!\n\nEnter your command below.",
+    ""
+  );
+  if (adminvalue == "setbal") {
+    adminvalue = prompt(
+      "Please provide the value to be set for the cash balance.",
       ""
     );
-    if (adminvalue == "setbal") {
-      adminvalue = prompt(
-        "Please provide the value to be set for the cash balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        bal = parseInt(adminvalue);
+    if (!isNaN(parseInt(adminvalue))) {
+      bal = parseInt(adminvalue);
+      document.getElementById("balhtml").innerHTML = balformat(bal);
+    }
+  }
+  if (adminvalue == "addbal") {
+    adminvalue = prompt(
+      "Please provide the value to be added to the cash balance.",
+      ""
+    );
+    if (!isNaN(parseInt(adminvalue))) {
+      bal = bal + parseInt(adminvalue);
+      document.getElementById("balhtml").innerHTML = balformat(bal);
+    }
+  }
+  if (adminvalue == "subbal") {
+    adminvalue = prompt(
+      "Please provide the value to be subtracted from the cash balance.",
+      ""
+    );
+    if (!isNaN(parseInt(adminvalue))) {
+      if (parseInt(adminvalue) > bal) {
+        window.alert("You cannot subtract more than the cash balance itself!");
+      } else {
+        bal = bal - parseInt(adminvalue);
         document.getElementById("balhtml").innerHTML = balformat(bal);
-      }
-    }
-    if (adminvalue == "addbal") {
-      adminvalue = prompt(
-        "Please provide the value to be added to the cash balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        bal = bal + parseInt(adminvalue);
-        document.getElementById("balhtml").innerHTML = balformat(bal);
-      }
-    }
-    if (adminvalue == "subbal") {
-      adminvalue = prompt(
-        "Please provide the value to be subtracted from the cash balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        if (parseInt(adminvalue) > bal) {
-          window.alert(
-            "You cannot subtract more than the cash balance itself!"
-          );
-        } else {
-          bal = bal - parseInt(adminvalue);
-          document.getElementById("balhtml").innerHTML = balformat(bal);
-        }
-      }
-    }
-    if (adminvalue == "setgem") {
-      adminvalue = prompt(
-        "Please provide the value to be set for the gem balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        gem = parseInt(adminvalue);
-        document.getElementById("gemhtml").innerHTML = balformat(gem);
-      }
-    }
-    if (adminvalue == "addgem") {
-      adminvalue = prompt(
-        "Please provide the value to be added to the gem balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        gem = gem + parseInt(adminvalue);
-        document.getElementById("gemhtml").innerHTML = balformat(gem);
-      }
-    }
-    if (adminvalue == "subgem") {
-      adminvalue = prompt(
-        "Please provide the value to be subtracted from the gem balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        if (parseInt(adminvalue) > bal) {
-          window.alert("You cannot subtract more than the gem balance itself!");
-        } else {
-          gem = gem - parseInt(adminvalue);
-          document.getElementById("gemhtml").innerHTML = balformat(gem);
-        }
       }
     }
   }
-});
-//Experiment
+  if (adminvalue == "setgem") {
+    adminvalue = prompt(
+      "Please provide the value to be set for the gem balance.",
+      ""
+    );
+    if (!isNaN(parseInt(adminvalue))) {
+      gem = parseInt(adminvalue);
+      document.getElementById("gemhtml").innerHTML = balformat(gem);
+    }
+  }
+  if (adminvalue == "addgem") {
+    adminvalue = prompt(
+      "Please provide the value to be added to the gem balance.",
+      ""
+    );
+    if (!isNaN(parseInt(adminvalue))) {
+      gem = gem + parseInt(adminvalue);
+      document.getElementById("gemhtml").innerHTML = balformat(gem);
+    }
+  }
+  if (adminvalue == "subgem") {
+    adminvalue = prompt(
+      "Please provide the value to be subtracted from the gem balance.",
+      ""
+    );
+    if (!isNaN(parseInt(adminvalue))) {
+      if (parseInt(adminvalue) > bal) {
+        window.alert("You cannot subtract more than the gem balance itself!");
+      } else {
+        gem = gem - parseInt(adminvalue);
+        document.getElementById("gemhtml").innerHTML = balformat(gem);
+      }
+    }
+  }
+}

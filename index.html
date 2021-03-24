@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Idle Economy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -16,7 +19,9 @@
       <ul>
         <li>Author: Flothaboss1000</li>
         <br />
-        <li>Version: <span id="version"></span></li>
+        <li>
+          <a ondblclick="adminconsole()">Version: <span id="version"></span></a>
+        </li>
       </ul>
     </div>
 
@@ -230,12 +235,14 @@
         <li>
           <h3>Common Chest</h3>
           <p>A cheap chest to waste your money on</p>
-          <button id="commonB" onclick="lootboxbuy(common)">Buy (10,000💵)</button>
+          <button id="commonB" onclick="lootboxbuy(common)">
+            Buy (10,000💵)
+          </button>
           <div id="perk">
             <a>❌:75%</a>
             <a>1💎:25%</a>
           </div>
-          <br>
+          <br />
         </li>
       </ul>
     </div>

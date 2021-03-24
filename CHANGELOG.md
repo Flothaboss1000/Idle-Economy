@@ -13,6 +13,9 @@
  - Changed site font to Montserrat
  - Fixed the info bar intersecting with the titlebar and balance counter
 
+### 0.2.1
+ - Added support for admin console in mobile devices 
+
 ## 0.1
 
  - Updated README.md
