@@ -66,7 +66,7 @@ const balformat = (num) => {
     return (num / 1000000000000).toFixed(1) + "T";
   } else if (num > 999999999999999) {
     return (num / 1000000000000000).toFixed(1) + "Qa";
-  } else if (num < 999) {
+  } else if (num < 1000) {
     return num;
   }
   // num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
