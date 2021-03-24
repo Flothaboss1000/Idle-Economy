@@ -6,7 +6,7 @@ body {
 }
 @font-face {
   font-family: 'Product Sans';
- src: local('Product Sans Regular.ttf');
+ src: url("product_sans_regular-webfont.woff");
 }
 .titlebar {
   text-align: center;
