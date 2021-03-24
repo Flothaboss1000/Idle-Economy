@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
 body {
   margin-top: 100px;
   margin-left: 0px;
   margin-right: 0px;
   z-index: 0;
-  font-family: 'Comfortaa';
+  font-family: 'Poiret One', sans-serif;
 }
 .titlebar {
   text-align: center;
