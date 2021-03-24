@@ -1,4 +1,4 @@
-let v = "0.2";
+let v = "0.2.2";
 let bal = 0;
 let balmulti = 1;
 let gem = 0;
@@ -8,18 +8,33 @@ var beg = { name: "beg", multi: 1, dur: 1000 };
 var shoepol = { name: "shoepol", multi: 10, dur: 9000 };
 var cook = { name: "cook", multi: 30, dur: 25000 };
 var editor = { name: "editor", multi: 60, dur: 45000 };
+var teacher = { name: "teacher", multi: 180, dur: 120000 };
 
-var workitems = [beg, shoepol, cook, editor];
+var workitems = [beg, shoepol, cook, editor, teacher];
 
 //Hire
 var dog = { name: "dog", quan: 0, multi: 1, cost: 50 };
 var lemonstand = { name: "lemonstand", quan: 0, multi: 5, cost: 200 };
 var hawker = { name: "hawker", quan: 0, multi: 20, cost: 1000 };
+var guide = { name: "guide", quan: 0, multi: 100, cost: 7500 };
 
-var hireitems = [dog, lemonstand, hawker];
+var hireitems = [dog, lemonstand, hawker, guide];
 
 //Lootbox
-var common = {
+
+var amateurchest = {
+  name: "commonchest",
+  type: "cash",
+  cost: 1000,
+  reward: [
+    { type: "cash", quan: 2000 },
+    { type: "cash", quan: 1000 },
+    { type: "cash", quan: 500 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+  ],
+};
+var commonchest = {
   name: "common",
   type: "cash",
   cost: 10000,
@@ -38,8 +53,22 @@ var egg = { name: "egg", quan: 0, multi: 100, cost: 1000000 };
 
 var invitems = [peanut, candy, egg];
 
-const balformat = (number) =>
-  number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const balformat = (num) => {
+  if (num > 999 && num < 1000000) {
+    return (num / 1000).toFixed(1) + "K";
+  } else if (num > 999999 && num < 1000000000) {
+    return (num / 1000000).toFixed(1) + "M";
+  } else if (num > 999999999 && num < 1000000000000) {
+    return (num / 1000000000).toFixed(1) + "B";
+  } else if (num > 999999999 && num < 1000000000000000) {
+    return (num / 1000000000000).toFixed(1) + "T";
+  } else if (num > 999999999999999) {
+    return (num / 1000000000000000).toFixed(1) + "Qa";
+  } else if (num < 900) {
+    return num;
+  }
+  // num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
 function setbal(num) {
   bal = num;
@@ -296,7 +325,7 @@ window.onload = function () {
 
 window.setInterval(async function () {
   hireaddbal();
-  document.getElementById("multihtml").innerHTML = balmulti;
+  document.getElementById("multihtml").innerHTML = balformat(balmulti);
   document.getElementById("autocashhtml").innerHTML = calcbalgensec(hireitems);
 }, 1000);
 

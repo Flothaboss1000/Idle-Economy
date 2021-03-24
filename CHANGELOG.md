@@ -16,6 +16,12 @@
 ### 0.2.1
  - Added support for admin console in mobile devices 
 
+### 0.2.2
+ - Updated the balance counter to shorten number when necessary
+ - Added 'teacher' in Work
+ - Added 'tourist guide' in Hire
+ - Added 'Amateur Chest' in Lootboxes
+
 ## 0.1
 
  - Updated README.md

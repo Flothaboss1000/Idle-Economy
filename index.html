@@ -153,6 +153,35 @@
             ></div>
           </div>
         </li>
+        <li>
+          <h3>Teacher <span id="pro">(+180💵)</span></h3>
+          <p>Teach students to differentiate between Java and JavaScript<br /></p>
+          <button id="teacherB" onclick="workbal(teacher)" disabled>
+            Work (2m)
+          </button>
+          <button id="teacherP" onclick="workbuy(1000,'teacher')">
+            Unlock (1.0K💵)
+          </button>
+
+          <div
+            id="teacherE"
+            style="
+              width: 100%;
+              background-color: rgb(206, 206, 206);
+              border-radius: 10px;
+            "
+          >
+            <div
+              id="teacherF"
+              style="
+                width: 0%;
+                height: 20px;
+                background-color: rgb(255, 107, 107);
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="section" id="hire">
@@ -188,6 +217,16 @@
           </button>
           <p>
             <i>Owned: <span id="hawkerQ"></span></i>
+          </p>
+        </li>
+        <li>
+          <h3>Tourist Guide <span id="pro">(+100💵/s)</span></h3>
+          <p>Hire a guide to show people the Seven Wonders of the World</p>
+          <button onclick="hirebal(guide)">
+            Hire (<span id="guideC"></span>💵)
+          </button>
+          <p>
+            <i>Owned: <span id="guideQ"></span></i>
           </p>
         </li>
       </ul>
@@ -232,15 +271,28 @@
         Lootboxes
       </h1>
       <ul>
-        <li>
-          <h3>Common Chest</h3>
-          <p>A cheap chest to waste your money on</p>
-          <button id="commonB" onclick="lootboxbuy(common)">
-            Buy (10,000💵)
+        <li class="lbli">
+          <h3>Amateur Chest</h3>
+          <p>A buffed chest for <span style="text-decoration: line-through;">noobs</span> amateurs like you</p>
+          <button id="amateurchestB" onclick="lootboxbuy(amateurchest)">
+            Buy (1.0K💵)
           </button>
           <div id="perk">
-            <a>❌:75%</a>
-            <a>1💎:25%</a>
+            <a>❌=40%</a>
+            <a>500💵=20%</a>
+            <a>1.0K💵=20%</a>
+            <a>2.0K💵=20%</a>
+          </div>
+        </li>
+        <li class="lbli">
+          <h3>Common Chest</h3>
+          <p>A cheap chest to waste your money on, but maybe you can get a gem</p>
+          <button id="commonchestB" onclick="lootboxbuy(commonchest)">
+            Buy (10K💵)
+          </button>
+          <div id="perk">
+            <a>❌=75%</a>
+            <a>1💎=25%</a>
           </div>
           <br />
         </li>
@@ -285,7 +337,7 @@
           <h2>Egg</h2>
           <p>The Supreme Egg</p>
           <p>Multiplier: 100</p>
-          <button onclick="invbuy(egg)">Buy (1,000,000💎)</button>
+          <button onclick="invbuy(egg)">Buy (1.0M💎)</button>
           <p>
             <i>Owned: <span id="eggQ">0</span></i>
           </p></a
