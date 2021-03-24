@@ -23,7 +23,8 @@ var hireitems = [dog, lemonstand, hawker, guide];
 //Lootbox
 
 var amateurchest = {
-  name: "commonchest",
+  id: 'amateur',
+  name: "Amateur Chest",
   type: "cash",
   cost: 1000,
   reward: [
@@ -35,7 +36,8 @@ var amateurchest = {
   ],
 };
 var commonchest = {
-  name: "common",
+  id: "common",
+  name: 'Common Chest',
   type: "cash",
   cost: 10000,
   reward: [
@@ -181,7 +183,7 @@ function hirebal(item) {
 }
 
 function lootboxbuy(chest) {
-  var costmode, costemoji, costloc;
+  var costmode, costemoji;
   if (chest.type == "cash") {
     costmode = bal;
     costemoji = "💵";
@@ -195,24 +197,24 @@ function lootboxbuy(chest) {
     } else if (chest.type == "gems") {
       subgem(chest.cost);
     }
-    notify("blue", `Opening ${chest.name} lootbox! Wait for it...`);
-    document.getElementById(chest.name + "B").disabled = true;
+    notify("blue", `Opening ${chest.name}! Wait for it...`);
+    document.getElementById(chest.id + "B").disabled = true;
     setTimeout(() => {
       var chosen =
         chest.reward[Math.floor(Math.random() * chest.reward.length)];
       if (chosen.type == "none") {
         notify("red", `Aw, you earned nothing...`);
-        document.getElementById(chest.name + "B").disabled = false;
+        document.getElementById(chest.id + "B").disabled = false;
       } else if (chosen.type == "cash") {
         notify("green", `Congrats, you earned ${balformat(chosen.quan)}💵!`);
         bal = bal + chosen.quan;
         document.getElementById("balhtml").innerHTML = balformat(bal);
-        document.getElementById(chest.name + "B").disabled = false;
+        document.getElementById(chest.id + "B").disabled = false;
       } else if (chosen.type == "gems") {
         notify("green", `Congrats, you earned ${balformat(chosen.quan)}💎!`);
         gem = gem + chosen.quan;
         document.getElementById("gemhtml").innerHTML = balformat(gem);
-        document.getElementById(chest.name + "B").disabled = false;
+        document.getElementById(chest.id + "B").disabled = false;
       }
     }, 3000);
   } else {
@@ -222,8 +224,8 @@ function lootboxbuy(chest) {
         chest.cost - costmode
       )}${costemoji} more.`
     );
-    costmode, costemoji, (costloc = undefined);
   }
+  costmode, costemoji, (costloc = undefined);
 }
 
 function invbuy(item) {

@@ -4,38 +4,45 @@
 
 ## Unreleased
 
- - Completion of README.md
- - Complete mobile support
+- Completion of README.md
+- Complete mobile support
 
- ## 0.2
+## 0.2
 
- - Added lootboxes
- - Changed site font to Montserrat
- - Fixed the info bar intersecting with the titlebar and balance counter
+- Added lootboxes
+- Changed site font to Montserrat
+- Fixed the info bar intersecting with the titlebar and balance counter
 
 ### 0.2.1
- - Added support for admin console in mobile devices 
+
+- Added support for admin console in mobile devices
 
 ### 0.2.2
- - Updated the balance counter to shorten number when necessary
- - Added 'teacher' in Work
- - Added 'tourist guide' in Hire
- - Added 'Amateur Chest' in Lootboxes
+
+- Updated the balance counter to shorten number when necessary
+- Added 'teacher' in Work
+- Added 'tourist guide' in Hire
+- Added 'Amateur Chest' in Lootboxes
+
+### 0.2.3
+
+- Added confirmation page before reloading site
 
 ## 0.1
 
- - Updated README.md
- - Added CHANGELOG.md
- - Added 'Product Sans' font file
- - Added partial mobile support
+- Updated README.md
+- Added CHANGELOG.md
+- Added 'Product Sans' font file
+- Added partial mobile support
 
 ### 0.1.1
- - Fixed GoTo not working
+
+- Fixed GoTo not working
 
 ### 0.1.2
- - Added support for the custom font
 
+- Added support for the custom font
 
 ## 0.0
 
- - Added index.html, main.css, main.js and README.md
+- Added index.html, main.css, main.js and README.md
