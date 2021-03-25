@@ -13,6 +13,7 @@
  - Fixed the GoTo icon
  - Added 'cupcake' in Inventory
  - Added 'Uncommon Chest' in Lootboxes
+ - Increased the cost and reward for many items in Work
 
 ## 0.2
 
