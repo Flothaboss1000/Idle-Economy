@@ -30,7 +30,10 @@
       <a><span id="balhtml"></span>💵</a><a><span id="gemhtml"></span>💎</a>
     </h2>
     <div class="goto">
-      <p>🧭</p>
+      <img
+        src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/compass_1f9ed.png"
+        alt=""
+      />
       <a href="#work" style="background-color: rgb(255, 107, 107)">Work</a>
       <a href="#hire" style="background-color: rgb(230, 231, 135)">Hire</a>
       <a href="#store" style="background-color: rgb(203, 124, 255)">Store</a>
@@ -73,7 +76,7 @@
           <h3>Shoe Polish <span id="pro">(+10💵)</span></h3>
           <p>Polish people's shoes for pennies<br /></p>
           <button id="shoepolB" onclick="workbal(shoepol)" disabled>
-            Work (9s)
+            Work (7.5s)
           </button>
           <button id="shoepolP" onclick="workbuy(20,'shoepol')">
             Unlock (20💵)
@@ -98,13 +101,13 @@
           </div>
         </li>
         <li>
-          <h3>Cook <span id="pro">(+30💵)</span></h3>
+          <h3>Cook <span id="pro">(+150💵)</span></h3>
           <p>Bake a cake for Jake and Drake<br /></p>
           <button id="cookB" onclick="workbal(cook)" disabled>
             Work (25s)
           </button>
-          <button id="cookP" onclick="workbuy(100,'cook')">
-            Unlock (100💵)
+          <button id="cookP" onclick="workbuy(350,'cook')">
+            Unlock (350💵)
           </button>
 
           <div
@@ -127,13 +130,13 @@
           </div>
         </li>
         <li>
-          <h3>Editor <span id="pro">(+60💵)</span></h3>
+          <h3>Editor <span id="pro">(+600💵)</span></h3>
           <p>Write and edit Wikipedia articles<br /></p>
           <button id="editorB" onclick="workbal(editor)" disabled>
             Work (45s)
           </button>
-          <button id="editorP" onclick="workbuy(350,'editor')">
-            Unlock (350💵)
+          <button id="editorP" onclick="workbuy(2000,'editor')">
+            Unlock (2.0K💵)
           </button>
           <div
             id="editorE"
@@ -155,13 +158,15 @@
           </div>
         </li>
         <li>
-          <h3>Teacher <span id="pro">(+180💵)</span></h3>
-          <p>Teach students to differentiate between Java and JavaScript<br /></p>
+          <h3>Teacher <span id="pro">(+2.5K💵)</span></h3>
+          <p>
+            Teach students to differentiate between Java and JavaScript<br />
+          </p>
           <button id="teacherB" onclick="workbal(teacher)" disabled>
             Work (2m)
           </button>
-          <button id="teacherP" onclick="workbuy(1000,'teacher')">
-            Unlock (1.0K💵)
+          <button id="teacherP" onclick="workbuy(15000,'teacher')">
+            Unlock (15.0K💵)
           </button>
 
           <div
@@ -274,7 +279,11 @@
       <ul>
         <li class="lbli">
           <h3>Amateur Chest</h3>
-          <p>A buffed chest for <span style="text-decoration: line-through;">noobs</span> amateurs like you</p>
+          <p>
+            A buffed chest for
+            <span style="text-decoration: line-through">noobs</span> amateurs
+            like you
+          </p>
           <button id="amateurB" onclick="lootboxbuy(amateurchest)">
             Buy (1.0K💵)
           </button>
@@ -287,13 +296,31 @@
         </li>
         <li class="lbli">
           <h3>Common Chest</h3>
-          <p>A cheap chest to waste your money on, but maybe you can get a gem</p>
+          <p>
+            A cheap chest to waste your money on, but maybe you can get a gem
+          </p>
           <button id="commonB" onclick="lootboxbuy(commonchest)">
-            Buy (10K💵)
+            Buy (10.0K💵)
           </button>
           <div id="perk">
             <a>❌=75%</a>
-            <a>1💎=25%</a>
+            <a>5.0K💵=12.5%</a>
+            <a>1💎=12.5%</a>
+          </div>
+          <br />
+        </li>
+        <li class="lbli">
+          <h3>Uncommon Chest</h3>
+          <p>A slightly enchanted chest, maybe you will get lucky</p>
+          <button id="uncommonB" onclick="lootboxbuy(uncommonchest)">
+            Buy (75.0K💵)
+          </button>
+          <div id="perk">
+            <a>❌=40%</a>
+            <a>35.0K💵=20%</a>
+            <a>75.0K💵=10%</a>
+            <a>1💎=20%</a>
+            <a>5💎=10%</a>
           </div>
           <br />
         </li>
@@ -311,7 +338,7 @@
           />
           <h2>Peanut</h2>
           <p>An overrated nut</p>
-          <p>Multiplier: 0.05</p>
+          <p>Multiplier: 0.005</p>
           <button onclick="invbuy(peanut)">Buy (50💎)</button>
           <p>
             <i>Owned: <span id="peanutQ">0</span></i>
@@ -324,10 +351,23 @@
           />
           <h2>Candy</h2>
           <p>An Alpenliebe candy</p>
-          <p>Multiplier: 0.2</p>
+          <p>Multiplier: 0.02</p>
           <button onclick="invbuy(candy)">Buy (175💎)</button>
           <p>
             <i>Owned: <span id="candyQ">0</span></i>
+          </p>
+        </a>
+        <a>
+          <img
+            src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/cupcake_1f9c1.png"
+            alt=""
+          />
+          <h2>Cupcake</h2>
+          <p>A budget cake</p>
+          <p>Multiplier: 0.06</p>
+          <button onclick="invbuy(candy)">Buy (500💎)</button>
+          <p>
+            <i>Owned: <span id="cupcakeQ">0</span></i>
           </p>
         </a>
         <a>

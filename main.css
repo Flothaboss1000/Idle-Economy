@@ -161,13 +161,15 @@ body {
   border: solid 2px lightgrey;
   transition: 0.2s;
 }
-.goto p {
+.goto img {
   margin-top: 0px;
-  font-size: 35px;
+  height: 50px;
+  width: 50px;
   transition: 0.4s;
 }
-.goto:hover p {
-  font-size: 0px;
+.goto:hover img {
+  height: 0px;
+  width: 0px;
   transition: 0.2s;
   width: 90%;
 }
@@ -201,8 +203,10 @@ body {
   border: solid 2px lightgrey;
 }
 .section #perk {
-  width: 90%;
-  height: 50px;
+  width: 100%;
+  height: fit-content;
+  margin-right: 0px;
+  overflow-x: auto;
 }
 .section #perk a {
   width: fit-content;
@@ -222,6 +226,11 @@ body {
   padding-bottom: 60px;
   height: 100px;
   width: 100px;
+  transition: 0.8s;
+}
+.section .invA img:hover {
+  filter: drop-shadow(rgba(0, 0, 0, 0.247));
+  transition: 0.2s;
 }
 .section a:hover {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
@@ -271,9 +280,23 @@ button {
 
 @media screen and (max-width: 800px) {
   body {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 100pxs;
+    margin-left: 0%;
+    margin-top: 150px;
+  }
+  .section h1 {
+    font-size: 25px;
+  } 
+  .section h2 {
+    font-size: 20px;
+  } 
+  .section h3 {
+    font-size: 12.5px;
+  } 
+  .section p {
+    font-size: 10px;
+  }
+  .section button {
+    font-size: 10px;
   }
   .titlebar {
     width: auto;
@@ -298,18 +321,43 @@ button {
     width: 45%;
   }
   .goto {
-    bottom: 100px;
+    bottom: 75px;
   }
   .section {
-    width: 90.5%;
-    margin-right: 1%;
-    margin-left: 1%;
+    width: 95%;
+    margin: 1%;
+    padding: 1.5%;
+  }
+  .section a {
+    margin: 1%;
+    padding: 2%;
+    border: solid 0.2% lightgrey;
+    width: 93.8%;
+  }
+  .section ul {
+    padding-left: 20px;
   }
   .section .invA a {
-    width: 95%;
+    margin: 1%;
+    border: solid 0.2% lightgrey;
+    padding: 2%;
+    height: 175px;
+    width: 93.8%;
   }
+  .section .invA img {
+    padding-top: 40px;
+    padding-bottom: 45px;
+    padding-left: 20px;
+  } 
   .section .statA a {
-    width: 95%;
+    margin: 1%;
+    border: solid 0.2% lightgrey;
+    padding: 2%;
+    height: 60px;
+    width: 93.8%;
+  }
+  .section #perk a {
+font-size: 10px;
   }
   .info {
     width: 90%;
@@ -322,6 +370,7 @@ button {
   #notif {
     width: auto;
     right: 5px;
+    font-size: 12.5px;
   }
 }
 

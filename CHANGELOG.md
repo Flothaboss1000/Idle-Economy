@@ -7,6 +7,13 @@
 - Completion of README.md
 - Complete mobile support
 
+## 0.3
+
+ - Added additional support for mobile devices
+ - Fixed the GoTo icon
+ - Added 'cupcake' in Inventory
+ - Added 'Uncommon Chest' in Lootboxes
+
 ## 0.2
 
 - Added lootboxes

@@ -5,10 +5,10 @@ let gem = 0;
 
 //Work
 var beg = { name: "beg", multi: 1, dur: 1000 };
-var shoepol = { name: "shoepol", multi: 10, dur: 9000 };
-var cook = { name: "cook", multi: 30, dur: 25000 };
-var editor = { name: "editor", multi: 60, dur: 45000 };
-var teacher = { name: "teacher", multi: 180, dur: 120000 };
+var shoepol = { name: "shoepol", multi: 10, dur: 7500 };
+var cook = { name: "cook", multi: 150, dur: 25000 };
+var editor = { name: "editor", multi: 600, dur: 45000 };
+var teacher = { name: "teacher", multi: 2500, dur: 120000 };
 
 var workitems = [beg, shoepol, cook, editor, teacher];
 
@@ -42,6 +42,28 @@ var commonchest = {
   cost: 10000,
   reward: [
     { type: "gems", quan: 1 },
+    { type: "cash", quan: 5000 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+    { type: "none", quan: 0 },
+  ],
+};
+var uncommonchest = {
+  id: "uncommon",
+  name: 'Uncommon Chest',
+  type: "cash",
+  cost: 75000,
+  reward: [
+    { type: "gems", quan: 5 },
+    { type: "gems", quan: 1 },
+    { type: "gems", quan: 1 },
+    { type: "cash", quan: 75000 },
+    { type: "cash", quan: 35000 },
+    { type: "cash", quan: 35000 },
+    { type: "none", quan: 0 },
     { type: "none", quan: 0 },
     { type: "none", quan: 0 },
     { type: "none", quan: 0 },
@@ -49,8 +71,9 @@ var commonchest = {
 };
 
 //Inv
-var peanut = { name: "peanut", quan: 0, multi: 0.05, cost: 50 };
-var candy = { name: "candy", quan: 0, multi: 0.2, cost: 175 };
+var peanut = { name: "peanut", quan: 0, multi: 0.005, cost: 50 };
+var candy = { name: "candy", quan: 0, multi: 0.02, cost: 175 };
+var cupcake = { name: "cupcake", quan: 0, multi: 0.06, cost: 500 };
 var egg = { name: "egg", quan: 0, multi: 100, cost: 1000000 };
 
 var invitems = [peanut, candy, egg];
@@ -141,6 +164,7 @@ function boostbal(num, item, dur, cost) {
   if (cost <= gem) {
     var elem = document.getElementById(item + "F");
     balmulti = balmulti + num;
+    document.getElementById(item + "B").disabled = true;
     gem = gem - cost;
     document.getElementById("gemhtml").innerHTML = gem;
     var width = 100;
