@@ -1,4 +1,4 @@
-let v = "0.2.2";
+let v = "0.3.1";
 let bal = 0;
 let balmulti = 1;
 let gem = 0;
@@ -260,6 +260,10 @@ function invbuy(item) {
     document.getElementById(item.name + "Q").innerHTML = item.quan;
     balmulti = balmulti + item.multi;
     document.getElementById("multihtml").innerHTML = balmulti;
+    var costpart = (10 + item.quan)/10
+    item.cost = (item.cost / (1 + ((item.quan - 1)/10))).toFixed(0);
+    item.cost = (item.cost * costpart).toFixed(0);
+    document.getElementById(item.name + 'C').innerHTML = balformat(item.cost);
   } else {
     notify(
       "red",

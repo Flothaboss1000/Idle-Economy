@@ -15,6 +15,11 @@
  - Added 'Uncommon Chest' in Lootboxes
  - Increased the cost and reward for many items in Work
 
+### 0.3.1
+ - Changed Inventory to increase prices for each item purchased
+ - Resized some elements in site for mobile devices
+ - Added responsiveness property to balance counter in mobile devices
+
 ## 0.2
 
 - Added lootboxes

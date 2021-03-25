@@ -305,19 +305,20 @@ button {
     height: fit-content;
   }
   .titlebar h1 {
-    margin: 10px 0px;
-    font-size: 30px;
+    margin: 5px 0px;
+    font-size: 25px;
   }
   #balcounter {
-    top: 80px;
+    top: 70px;
     right: 10px;
     left: 10px;
     overflow: visible;
     width: auto;
-    font-size: 10px;
+    font-size: 9px;
+    padding: 5px;
   }
   #balcounter a {
-    font-size: 20px;
+    font-size: 3.75vw;
     width: 45%;
   }
   .goto {
@@ -365,7 +366,7 @@ font-size: 10px;
     top: 175px;
   }
   .titlebar:hover + .info {
-    left: 10px;
+    left: 1%;
   }
   #notif {
     width: auto;
