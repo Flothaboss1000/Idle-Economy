@@ -6,6 +6,22 @@
 
 - Completion of README.md
 - Complete mobile support
+- Rebalancing of the entire system
+- Obtaining items through lootboxes
+
+## 0.4
+ - Major UI improvements (Titlebar, Sections, Buttons, Headers. Fonts)
+ - Improved GoTo
+ - Added Experimental Dark mode
+ - Improved the Titlebar and integrated Infobar into it
+ - Fixed inconsistencies
+ - Added considerable amount of support for mobile devices
+ - Added 'Reset' command in Admin Console
+
+### 0.3.1
+ - Changed Inventory to increase prices for each item purchased
+ - Resized some elements in site for mobile devices
+ - Added responsiveness property to Balance Counter in mobile devices
 
 ## 0.3
 
@@ -15,20 +31,13 @@
  - Added 'Uncommon Chest' in Lootboxes
  - Increased the cost and reward for many items in Work
 
-### 0.3.1
- - Changed Inventory to increase prices for each item purchased
- - Resized some elements in site for mobile devices
- - Added responsiveness property to balance counter in mobile devices
+### 0.2.4
 
-## 0.2
+ - Added a loading screen if code is yet to be loaded
 
-- Added lootboxes
-- Changed site font to Montserrat
-- Fixed the info bar intersecting with the titlebar and balance counter
+### 0.2.3
 
-### 0.2.1
-
-- Added support for admin console in mobile devices
+- Added confirmation page before reloading site
 
 ### 0.2.2
 
@@ -37,13 +46,15 @@
 - Added 'tourist guide' in Hire
 - Added 'Amateur Chest' in Lootboxes
 
-### 0.2.3
+### 0.2.1
 
-- Added confirmation page before reloading site
+- Added support for admin console in mobile devices
 
-### 0.2.4
+## 0.2
 
- - Added a loading screen if code is yet to be loaded
+- Added lootboxes
+- Changed site font to Montserrat
+- Fixed the info bar intersecting with the titlebar and balance counter
 
 ## 0.1
 

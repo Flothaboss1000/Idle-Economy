@@ -1,7 +1,9 @@
-let v = "0.3.1";
 let bal = 0;
 let balmulti = 1;
 let gem = 0;
+let adminpower = false;
+
+var subsection = ["work", "hire", "store", "lootbox", "inv", "stats", "config"];
 
 //Work
 var beg = { name: "beg", multi: 1, dur: 1000 };
@@ -22,8 +24,10 @@ var hireitems = [dog, lemonstand, hawker, guide];
 
 //Lootbox
 
+var lootboxlist = ["amateur","common","uncommon"]
+
 var amateurchest = {
-  id: 'amateur',
+  id: "amateur",
   name: "Amateur Chest",
   type: "cash",
   cost: 1000,
@@ -37,7 +41,7 @@ var amateurchest = {
 };
 var commonchest = {
   id: "common",
-  name: 'Common Chest',
+  name: "Common Chest",
   type: "cash",
   cost: 10000,
   reward: [
@@ -53,7 +57,7 @@ var commonchest = {
 };
 var uncommonchest = {
   id: "uncommon",
-  name: 'Uncommon Chest',
+  name: "Uncommon Chest",
   type: "cash",
   cost: 75000,
   reward: [
@@ -206,6 +210,56 @@ function hirebal(item) {
   }
 }
 
+// function lootboxbuy(chest) {
+//   var costmode, costemoji;
+//   if (chest.type == "cash") {
+//     costmode = bal;
+//     costemoji = "💵";
+//   } else if (chest.type == "gems") {
+//     costmode = gem;
+//     costemoji = "💎";
+//   }
+//   if (chest.cost < costmode) {
+//     if (chest.type == "cash") {
+//       subbal(chest.cost);
+//     } else if (chest.type == "gems") {
+//       subgem(chest.cost);
+//     }
+//     notify("blue", `Opening ${chest.name}! Wait for it...`);
+//     for (let i = 0; i < lootboxlist.length; i++) {
+//       document.getElementById(lootboxlist[i] + "B").disabled = true;
+//     }
+//     setTimeout(() => {
+//       var chosen =
+//         chest.reward[Math.floor(Math.random() * chest.reward.length)];
+//       if (chosen.type == "none") {
+//         notify("red", `Aw, you earned nothing...`);
+//       } else if (chosen.type == "cash") {
+//         notify("green", `Congrats, you earned ${balformat(chosen.quan)}💵!`);
+//         bal = bal + chosen.quan;
+//         document.getElementById("balhtml").innerHTML = balformat(bal);
+//       } else if (chosen.type == "gems") {
+//         notify("green", `Congrats, you earned ${balformat(chosen.quan)}💎!`);
+//         gem = gem + chosen.quan;
+//         document.getElementById("gemhtml").innerHTML = balformat(gem);
+//       }
+//     }, 3000);
+//     setTimeout(() => {
+//       for (let i = 0; i < lootboxlist.length; i++) {
+//         document.getElementById(lootboxlist[i] + "B").disabled = false;
+//       }
+//     }, 4000);
+//   } else {
+//     notify(
+//       "red",
+//       `You don't have enough ${chest.type}! You need ${balformat(
+//         chest.cost - costmode
+//       )}${costemoji} more.`
+//     );
+//   }
+//   costmode, costemoji, (costloc = undefined);
+// }
+
 function lootboxbuy(chest) {
   var costmode, costemoji;
   if (chest.type == "cash") {
@@ -215,32 +269,53 @@ function lootboxbuy(chest) {
     costmode = gem;
     costemoji = "💎";
   }
-  if (chest.cost < costmode) {
+  if (chest.cost <= costmode) {
     if (chest.type == "cash") {
       subbal(chest.cost);
     } else if (chest.type == "gems") {
       subgem(chest.cost);
     }
-    notify("blue", `Opening ${chest.name}! Wait for it...`);
-    document.getElementById(chest.id + "B").disabled = true;
+    document.getElementById("lootboxnotif").style.left = "50%";
+    document.getElementById("lootnotifmain").innerHTML = `Opening ${chest.name}! Wait for it...`;
+    for (let i = 0; i < lootboxlist.length; i++) {
+      document.getElementById(lootboxlist[i] + "B").disabled = true;
+    }
     setTimeout(() => {
       var chosen =
         chest.reward[Math.floor(Math.random() * chest.reward.length)];
       if (chosen.type == "none") {
-        notify("red", `Aw, you earned nothing...`);
-        document.getElementById(chest.id + "B").disabled = false;
+        document.getElementById("lootnotifmain").innerHTML = "Aw, you earned nothing...";
+        document.getElementById("lootboxnotif").style.backgroundColor = "rgb(216, 108, 108)";
       } else if (chosen.type == "cash") {
-        notify("green", `Congrats, you earned ${balformat(chosen.quan)}💵!`);
+        document.getElementById("lootnotifmain").innerHTML = "Congrats, you earned";
+        document.getElementById("lootnotifprize").innerHTML = `${balformat(chosen.quan)}💵!`;
+        document.getElementById("lootnotifprize").style.fontSize = "60px";
+        document.getElementById("lootboxnotif").style.backgroundColor = "rgb(139, 216, 108)";
         bal = bal + chosen.quan;
         document.getElementById("balhtml").innerHTML = balformat(bal);
-        document.getElementById(chest.id + "B").disabled = false;
       } else if (chosen.type == "gems") {
-        notify("green", `Congrats, you earned ${balformat(chosen.quan)}💎!`);
+        document.getElementById("lootnotifmain").innerHTML = "Congrats, you earned";
+        document.getElementById("lootnotifprize").innerHTML = `${balformat(chosen.quan)}💎!`;
+        document.getElementById("lootnotifprize").style.fontSize = "60px";
+        document.getElementById("lootboxnotif").style.backgroundColor = "rgb(139, 216, 108)";
         gem = gem + chosen.quan;
         document.getElementById("gemhtml").innerHTML = balformat(gem);
-        document.getElementById(chest.id + "B").disabled = false;
       }
+      // document.addEventListener("click", function () {
+      //   document.getElementById("lootboxnotif").style.left = "150%";
+      //   for (let i = 0; i < lootboxlist.length; i++) {
+      //     document.getElementById(lootboxlist[i] + "B").disabled = false;
+      //   }
+      // })
     }, 3000);
+    setTimeout(() => {
+      for (let i = 0; i < lootboxlist.length; i++) {
+        document.getElementById(lootboxlist[i] + "B").disabled = false;
+      }
+      document.getElementById("lootboxnotif").style.left = "200%";
+      document.getElementById("lootboxnotif").style.backgroundColor = "rgb(175, 175, 175)";
+      document.getElementById("lootnotifprize").style.fontSize = "0px";
+    }, 6000);
   } else {
     notify(
       "red",
@@ -260,10 +335,10 @@ function invbuy(item) {
     document.getElementById(item.name + "Q").innerHTML = item.quan;
     balmulti = balmulti + item.multi;
     document.getElementById("multihtml").innerHTML = balmulti;
-    var costpart = (10 + item.quan)/10
-    item.cost = (item.cost / (1 + ((item.quan - 1)/10))).toFixed(0);
+    var costpart = (10 + item.quan) / 10;
+    item.cost = (item.cost / (1 + (item.quan - 1) / 10)).toFixed(0);
     item.cost = (item.cost * costpart).toFixed(0);
-    document.getElementById(item.name + 'C').innerHTML = balformat(item.cost);
+    document.getElementById(item.name + "C").innerHTML = balformat(item.cost);
   } else {
     notify(
       "red",
@@ -304,6 +379,33 @@ function hireaddbal() {
   document.getElementById("balhtml").innerHTML = balformat(bal);
 }
 
+function toggledarklight(mode) {
+  if (mode == "dark") {
+    document.body.style.backgroundColor = "rgb(66, 66, 66)";
+    document.body.style.color = "white";
+    document.getElementById("balcounter").style.backgroundColor =
+      "rgb(66, 66, 66)";
+    for (let i = 0; i < subsection.length; i++) {
+      document.getElementById(subsection[i]).className = "sectiondm";
+    }
+
+    document.getElementById("dlon").style.visibility = "hidden";
+    document.getElementById("dloff").style.visibility = "visible";
+  } else if (mode == "light") {
+    document.body.style.backgroundColor = "rgb(241, 241, 241)";
+    document.body.style.color = "black";
+    document.getElementById("balcounter").style.backgroundColor =
+      "rgb(241, 241, 241)";
+    for (let i = 0; i < subsection.length; i++) {
+      document.getElementById(subsection[i]).className = "section";
+    }
+
+    document.getElementById("dlon").style.visibility = "visible";
+    document.getElementById("dloff").style.visibility = "hidden";
+  }
+}
+
+//Notification
 function notify(type, text) {
   var notif = document.getElementById("notif");
   if (type == "white") {
@@ -344,12 +446,12 @@ function notify(type, text) {
   return;
 }
 
+//Window Startup
 window.onload = function () {
-  document.getElementById("se-pre-con").style.animation = 'loadingfade 0.5s';
+  document.getElementById("se-pre-con").style.animation = "loadingfade 0.5s";
   setTimeout(() => {
-    document.getElementById("se-pre-con").style.visibility = 'hidden'
+    document.getElementById("se-pre-con").style.visibility = "hidden";
   }, 500);
-  document.getElementById("version").innerHTML = v;
   document.getElementById("balhtml").innerHTML = balformat(bal);
   document.getElementById("gemhtml").innerHTML = balformat(gem);
   loadnum(hireitems);
@@ -357,6 +459,8 @@ window.onload = function () {
   var elaptime = new Date();
 };
 
+
+// Clock
 window.setInterval(async function () {
   hireaddbal();
   document.getElementById("multihtml").innerHTML = balformat(balmulti);
@@ -371,74 +475,92 @@ document.addEventListener("keydown", (e) => {
 });
 
 function adminconsole() {
-  let adminvalue = prompt(
-    "Welcome to the Admin Panel!\n\nEnter your command below.",
-    ""
-  );
-  if (adminvalue == "setbal") {
-    adminvalue = prompt(
-      "Please provide the value to be set for the cash balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      bal = parseInt(adminvalue);
-      document.getElementById("balhtml").innerHTML = balformat(bal);
+  if (adminpower == false) {
+    if (confirm("Do you want to enable Experimental Mode for this session?")) {
+      adminpower = true;
+      document.getElementById("devmode").innerHTML = " (Experimental Mode)"
+      return;
     }
-  }
-  if (adminvalue == "addbal") {
-    adminvalue = prompt(
-      "Please provide the value to be added to the cash balance.",
+  } else {
+    let adminvalue = prompt(
+      "Welcome to the Admin Console!\n\nEnter your command below.",
       ""
     );
-    if (!isNaN(parseInt(adminvalue))) {
-      bal = bal + parseInt(adminvalue);
-      document.getElementById("balhtml").innerHTML = balformat(bal);
-    }
-  }
-  if (adminvalue == "subbal") {
-    adminvalue = prompt(
-      "Please provide the value to be subtracted from the cash balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      if (parseInt(adminvalue) > bal) {
-        window.alert("You cannot subtract more than the cash balance itself!");
-      } else {
-        bal = bal - parseInt(adminvalue);
+    if (adminvalue == "setbal") {
+      adminvalue = prompt(
+        "Please provide the value to be set for the cash balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        bal = parseInt(adminvalue);
         document.getElementById("balhtml").innerHTML = balformat(bal);
       }
     }
-  }
-  if (adminvalue == "setgem") {
-    adminvalue = prompt(
-      "Please provide the value to be set for the gem balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      gem = parseInt(adminvalue);
-      document.getElementById("gemhtml").innerHTML = balformat(gem);
+    if (adminvalue == "addbal") {
+      adminvalue = prompt(
+        "Please provide the value to be added to the cash balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        bal = bal + parseInt(adminvalue);
+        document.getElementById("balhtml").innerHTML = balformat(bal);
+      }
     }
-  }
-  if (adminvalue == "addgem") {
-    adminvalue = prompt(
-      "Please provide the value to be added to the gem balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      gem = gem + parseInt(adminvalue);
-      document.getElementById("gemhtml").innerHTML = balformat(gem);
+    if (adminvalue == "subbal") {
+      adminvalue = prompt(
+        "Please provide the value to be subtracted from the cash balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        if (parseInt(adminvalue) > bal) {
+          window.alert(
+            "You cannot subtract more than the cash balance itself!"
+          );
+        } else {
+          bal = bal - parseInt(adminvalue);
+          document.getElementById("balhtml").innerHTML = balformat(bal);
+        }
+      }
     }
-  }
-  if (adminvalue == "subgem") {
-    adminvalue = prompt(
-      "Please provide the value to be subtracted from the gem balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      if (parseInt(adminvalue) > bal) {
-        window.alert("You cannot subtract more than the gem balance itself!");
-      } else {
-        gem = gem - parseInt(adminvalue);
+    if (adminvalue == "setgem") {
+      adminvalue = prompt(
+        "Please provide the value to be set for the gem balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        gem = parseInt(adminvalue);
+        document.getElementById("gemhtml").innerHTML = balformat(gem);
+      }
+    }
+    if (adminvalue == "addgem") {
+      adminvalue = prompt(
+        "Please provide the value to be added to the gem balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        gem = gem + parseInt(adminvalue);
+        document.getElementById("gemhtml").innerHTML = balformat(gem);
+      }
+    }
+    if (adminvalue == "subgem") {
+      adminvalue = prompt(
+        "Please provide the value to be subtracted from the gem balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        if (parseInt(adminvalue) > bal) {
+          window.alert("You cannot subtract more than the gem balance itself!");
+        } else {
+          gem = gem - parseInt(adminvalue);
+          document.getElementById("gemhtml").innerHTML = balformat(gem);
+        }
+      }
+    }
+    if (adminvalue == "reset") {
+      if (confirm("Are you sure you want to reset the game?")) {
+        bal = 0;
+        gem = 0;
+        document.getElementById("balhtml").innerHTML = balformat(bal);
         document.getElementById("gemhtml").innerHTML = balformat(gem);
       }
     }

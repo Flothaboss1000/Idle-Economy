@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@500&family=Montserrat&family=Palanquin+Dark&family=Secular+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=DM+Sans&family=Jost:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&display=swap');
 
 #se-pre-con {
   position: fixed;
@@ -8,28 +11,35 @@
   height: 100%;
   z-index: 9999;
   background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b24edbc6-54ff-4983-a4d6-22a81a6ce05a/de9aold-5683e869-c6ae-4d6f-816a-d38878a0a71e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYjI0ZWRiYzYtNTRmZi00OTgzLWE0ZDYtMjJhODFhNmNlMDVhXC9kZTlhb2xkLTU2ODNlODY5LWM2YWUtNGQ2Zi04MTZhLWQzODg3OGEwYTcxZS5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.l86av24hqvln7fZUOGDgNJ_ZWz00W98957bXneo-pRU)
-    center no-repeat rgb(38,38,38);
+    center no-repeat rgb(38, 38, 38);
 }
 @keyframes loadingfade {
-  0% {opacity: 100%;}
-  100% {opacity: 0%;}
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
 }
 
 body {
   margin-top: 100px;
   margin-left: 0px;
   margin-right: 0px;
+  margin-bottom: 500px;
   z-index: 0;
+  background-color: rgb(221, 221, 221);
   font-family: "Montserrat", sans-serif;
 }
 .titlebar {
   text-align: center;
-  background-color: rgb(179, 179, 179);
-  color: white;
+  background-color: white;
+  color: rgb(121, 175, 177);
   margin-top: 0px;
   padding: 5px 15px;
   width: fit-content;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
+  font-family: "Encode Sans SC";
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.247);
   transition: 0.5s;
   z-index: 6;
   position: fixed;
@@ -37,7 +47,7 @@ body {
   left: 10px;
   border-radius: 10px;
 }
-.info {
+/* .info {
   position: fixed;
   transition: 0.5s;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.247);
@@ -53,8 +63,8 @@ body {
 }
 .info ul a {
   text-decoration: none;
-  color: black;
-}
+  color: rgb(255, 255, 255);
+} */
 .windowtint {
   position: fixed;
   top: -20px;
@@ -68,30 +78,43 @@ body {
   z-index: 3;
 }
 .titlebar:hover {
-  transition: 3s;
-  background-color: rgb(0, 0, 0);
+  transition: 2s;
+  font-size: 30px;
+  background-color: rgb(0, 69, 87);
+  color: rgb(185, 255, 255);
 }
-.info:hover {
-  left: 10px;
+.info {
+  color: rgb(185, 255, 255);
+  transition: 0.5s;
+  font-size: 0px;
+  text-indent: -40px;
+  font-family: "DM Sans";
 }
-.info:hover ~ .windowtint {
-  opacity: 0.8;
-  transition: 3s;
+.info hr {
+  border: transparent;
+  background-color: white;
+  height: 2px;
+  width: 100%;
 }
-.info:hover ~ .titlebar {
-  transition: 3s;
-  background-color: rgb(0, 0, 0);
+.titlebar:hover .info hr {
+  border: 0.5px white solid;
+  background-color: white;
 }
-.titlebar:hover + .info {
-  left: 10px;
+.titlebar:hover .info {
+  transition: 2s;
+  font-size: 16px;
+  transition-delay: 0.5s;
 }
 .titlebar:hover ~ .windowtint {
   opacity: 0.8;
   transition: 3s;
 }
+#devmode {
+  color: yellow;
+}
 #balcounter {
   text-align: center;
-  background-color: white;
+  background-color: rgb(241, 241, 241);
   margin-top: 0px;
   top: 10px;
   right: 10px;
@@ -111,7 +134,8 @@ body {
   transition: 0.4s;
 }
 #balcounter a:hover {
-  box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.247);
+  box-shadow: inset 3px 3px 2px rgba(0, 0, 0, 0.247),
+    inset -3px -3px 2px rgb(255, 255, 255);
   transition: 0.2s;
 }
 .goto {
@@ -123,15 +147,15 @@ body {
   position: fixed;
   bottom: 20px;
   right: 10px;
-  transition: 0.4s;
+  transition: 0.2s;
   z-index: 2;
   border-radius: 25px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.247);
 }
 .goto:hover {
   width: 210px;
-  height: 250px;
-  border-radius: 15px;
+  height: fit-content;
+  border-radius: 10px;
   transition: 0.2s;
   padding: 0px 5px;
   line-height: 10px;
@@ -144,28 +168,33 @@ body {
   font-size: 0px;
   color: white;
   text-decoration: none;
-  transition: 0.2s;
+  transition: 0s;
+  visibility: hidden;
+  font-family: "Encode Sans SC";
 }
 .goto:hover a {
   padding: 15px 10px;
-  width: 90%;
+  width: 89%;
   margin: 2px 0px;
   font-size: 20px;
   border-radius: 10px;
   text-decoration: none;
-  transition: 0.2s;
+  transition: 0.8s;
+  visibility: visible;
   border: solid 2px white;
 }
 .goto:hover a:hover {
-  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.507);
-  border: solid 2px lightgrey;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.507);
+  border: solid 2px rgb(0, 69, 87);
   transition: 0.2s;
+  font-size: 200%;
+  line-height: 40px;
 }
 .goto img {
   margin-top: 0px;
   height: 50px;
   width: 50px;
-  transition: 0.4s;
+  transition: 1s;
 }
 .goto:hover img {
   height: 0px;
@@ -174,20 +203,29 @@ body {
   width: 90%;
 }
 .section {
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.247);
+  box-shadow: -5px -5px 15px rgb(255, 255, 255),
+    5px 5px 15px rgba(0, 0, 0, 0.247);
   float: left;
-  margin: 10px 0px;
+  margin: 15px 0px;
   margin-left: 20px;
   margin-right: 10%;
   padding: 15px;
   border-radius: 25px;
   width: 90%;
+  background-color: rgb(238, 238, 238);
 }
 .section h1 {
   font-size: 40px;
+  font-family: "Krona One";
   text-align: center;
   color: white;
-  border-radius: 25px;
+  padding: 5px initial;
+  border-radius: 50px;
+  box-shadow: 0px 10px 15px rgba(92, 92, 92, 0.349);
+}
+.section h2, h3 {
+  font-family: "ABeeZee";
+  font-weight: 100;
 }
 .section a {
   color: rgb(119, 119, 119);
@@ -229,19 +267,94 @@ body {
   transition: 0.8s;
 }
 .section .invA img:hover {
-  filter: drop-shadow(rgba(0, 0, 0, 0.247));
+  filter: drop-shadow(15px 15px 5px rgba(0, 0, 0, 0.521));
   transition: 0.2s;
 }
 .section a:hover {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
-  border: solid 2px white;
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.247), -3px -3px 2px rgb(255, 255, 255);
+  border: solid 2px rgba(255, 255, 255, 0);
   transition: 0.2s;
   z-index: 1;
   color: black;
   text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
 }
+.sectiondm {
+  box-shadow: -5px -5px 15px rgb(117, 117, 117),
+    5px 5px 15px rgba(0, 0, 0, 0.452);
+  float: left;
+  margin: 15px 0px;
+  margin-left: 20px;
+  margin-right: 10%;
+  padding: 15px;
+  border-radius: 25px;
+  width: 90%;
+  background-color: rgb(78, 78, 78);
+}
+.sectiondm h1 {
+  font-size: 40px;
+  font-family: "Krona One";
+  text-align: center;
+  color: white;
+  border-radius: 25px;
+  box-shadow: 0px 10px 15px rgba(49, 49, 49, 0.63);
+}
+.sectiondm h2, h3 {
+  font-family: "ABeeZee";
+  font-weight: 100;
+}
+.sectiondm a {
+  text-align: center;
+  text-decoration: none;
+  float: left;
+  margin: 6px 5px;
+  padding: 10px;
+  width: 21.5%;
+  border-radius: 20px;
+  transition: 0.8s;
+  z-index: 0;
+  border: solid 2px rgb(138, 138, 138);
+}
+.sectiondm #perk {
+  width: 100%;
+  height: fit-content;
+  color: rgb(179, 179, 179);
+  margin-right: 0px;
+  overflow-x: auto;
+}
+.sectiondm #perk a {
+  width: fit-content;
+  font-size: 15px;
+}
+.sectiondm .invA a {
+  height: 220px;
+  width: 30%;
+}
+.sectiondm .statA a {
+  height: 110px;
+}
+.sectiondm .invA img {
+  float: left;
+  padding-left: 10px;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  height: 100px;
+  width: 100px;
+  transition: 0.8s;
+}
+.sectiondm .invA img:hover {
+  filter: drop-shadow(15px 15px 5px rgba(0, 0, 0, 0.685));
+  transition: 0.2s;
+}
+.sectiondm a:hover {
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.397), -3px -3px 2px rgb(114, 114, 114);
+  border: solid 2px rgba(255, 255, 255, 0);
+  transition: 0.2s;
+  z-index: 1;
+  color: white;
+  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
+}
 #pro {
-  color: greenyellow;
+  color: rgb(138, 218, 19);
 }
 #notif {
   position: fixed;
@@ -260,20 +373,86 @@ body {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
   transition: 0.5s;
 }
-button {
+.button {
+  display: inline-block;
+  outline: none;
+  border: none;
   padding: 10px;
+  border-radius: 50px;
+  margin-bottom: 5px;
+  font-family: "Jost";
+  background-color: rgb(177, 216, 253);
+  transition: 0.5s;
+  color: rgb(2, 67, 151);
+}
+.button:hover {
+  display: inline-block;
+  outline: none;
+  border: none;
+  color: rgb(205, 231, 255);
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Jost";
+  background-color: rgb(30, 123, 209);
+  box-shadow: 5px 5px 15px rgba(7, 62, 146, 0.438);
+  transition: 0.2s;
+  cursor: pointer;
+}
+.button:active{
+  transition: 0.2s;
+  background-color: white;
+  color: darkgrey;
+  box-shadow: 5px 5px 15px rgba(138, 138, 138, 0.438);
+}
+.button:disabled {
+  background-color: rgb(255, 204, 204);
+  color: rgb(255, 96, 96);
+}
+.button:disabled:hover {
+  background-color: rgb(255, 42, 42);
+  color: rgb(255, 204, 204);
+  box-shadow: 5px 5px 15px rgba(160, 25, 25, 0.438);
+  cursor: not-allowed;
+}
+#lootboxnotif {
+  position: fixed;
+  left: 200%;
+  right: 50%;
+  margin-left: -10%;
+  font-family: "Della Respira";
+  background-color: rgb(175, 175, 175);
+  width: 50%;
+  height: 300px;
   border-radius: 20px;
-  font-family: "Montserrat";
+  text-align: center;
+  box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.404);
+  overflow: hidden;
+  transition: 1s;
+  border: 5px white dashed;
+}
+#lootboxnotif h2 {
+  margin-top: 100px;
+}
+#lootboxnotif #lootnotifprize {
+  font-size: 0px;
+  transition: 1s;
 }
 
 @media screen and (max-width: 1134px) {
   .section .invA a {
     width: 45%;
   }
-}
 
-@media screen and (max-width: 1079px) {
-  .section a {
+  .sectiondm .invA a {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 1079px) {
+    .section a {
+      width: 28.5%;
+    }
+  }
+  .sectiondm a {
     width: 28.5%;
   }
 }
@@ -283,33 +462,60 @@ button {
     margin-left: 0%;
     margin-top: 150px;
   }
+  .titlebar:hover h1 {
+    font-size: 40px;
+    transition: 2s;
+  }
   .section h1 {
     font-size: 25px;
-  } 
+  }
   .section h2 {
     font-size: 20px;
-  } 
+  }
   .section h3 {
     font-size: 12.5px;
-  } 
+  }
   .section p {
     font-size: 10px;
   }
   .section button {
     font-size: 10px;
   }
+  .sectiondm h1 {
+    font-size: 25px;
+  }
+  .sectiondm h2 {
+    font-size: 20px;
+  }
+  .sectiondm h3 {
+    font-size: 12.5px;
+  }
+  .sectiondm p {
+    font-size: 10px;
+  }
+  .sectiondm button {
+    font-size: 10px;
+  }
   .titlebar {
     width: auto;
     left: 2.5%;
     right: 2.5%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.178);
     height: fit-content;
   }
   .titlebar h1 {
     margin: 5px 0px;
     font-size: 25px;
+    transition: 2s;
+  }
+  .info {
+    text-indent: 1%;
+  }
+  .info hr {
+    width: 110%;
   }
   #balcounter {
-    top: 70px;
+    top: 80px;
     right: 10px;
     left: 10px;
     overflow: visible;
@@ -318,15 +524,18 @@ button {
     padding: 5px;
   }
   #balcounter a {
-    font-size: 3.75vw;
+    font-size: 15px;
     width: 45%;
   }
   .goto {
     bottom: 75px;
   }
+  .goto:hover {
+    height: 240px;
+  }
   .section {
     width: 95%;
-    margin: 1%;
+    margin: 5% 1%;
     padding: 1.5%;
   }
   .section a {
@@ -349,7 +558,7 @@ button {
     padding-top: 40px;
     padding-bottom: 45px;
     padding-left: 20px;
-  } 
+  }
   .section .statA a {
     margin: 1%;
     border: solid 0.2% lightgrey;
@@ -358,7 +567,43 @@ button {
     width: 93.8%;
   }
   .section #perk a {
-font-size: 10px;
+    font-size: 10px;
+  }
+  .sectiondm {
+    width: 95%;
+    margin: 5% 1%;
+    padding: 1.5%;
+  }
+  .sectiondm a {
+    margin: 1%;
+    padding: 2%;
+    border: solid 0.2% lightgrey;
+    width: 93.8%;
+  }
+  .sectiondm ul {
+    padding-left: 20px;
+  }
+  .sectiondm .invA a {
+    margin: 1%;
+    border: solid 0.2% lightgrey;
+    padding: 2%;
+    height: 175px;
+    width: 93.8%;
+  }
+  .sectiondm .invA img {
+    padding-top: 40px;
+    padding-bottom: 45px;
+    padding-left: 20px;
+  }
+  .sectiondm .statA a {
+    margin: 1%;
+    border: solid 0.2% lightgrey;
+    padding: 2%;
+    height: 60px;
+    width: 93.8%;
+  }
+  .sectiondm #perk a {
+    font-size: 10px;
   }
   .info {
     width: 90%;
@@ -373,10 +618,26 @@ font-size: 10px;
     right: 5px;
     font-size: 12.5px;
   }
+  #lootboxnotif {
+    width: 80%;
+    margin-left: -40%;
+  }
 }
 
 ::selection {
   color: pink;
   background-color: rgb(2, 67, 151);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 50px;
 }

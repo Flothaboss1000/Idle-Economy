@@ -9,21 +9,29 @@
     />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
   </head>
   <body>
     <div id="se-pre-con"></div>
     <div class="titlebar">
       <h1>Idle Economy</h1>
-    </div>
-    <div class="info">
-      <ul>
-        <li>Author: Flothaboss1000</li>
-        <br />
-        <li>
-          <a ondblclick="adminconsole()">Version: <span id="version"></span></a>
-        </li>
-      </ul>
+      <div class="info">
+        <center>
+          <hr / align="center">
+          <ul type="none">
+            <li>Version: <span ondblclick="adminconsole()">0.4.0</span></li>
+            <li>Author: Flothaboss1000</li>
+            <li>
+              <a
+                href="https://github.com/Flothaboss1000/Idle-Economy"
+                style="color: rgb(121, 235, 255)"
+                >GitHub Repo</a
+              >
+            </li>
+            <li><span id="devmode"></span></li>
+          </ul>
+          <hr / align="center">
+        </center>
+      </div>
     </div>
 
     <h2 id="balcounter">
@@ -34,30 +42,109 @@
         src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/compass_1f9ed.png"
         alt=""
       />
-      <a href="#work" style="background-color: rgb(255, 107, 107)">Work</a>
-      <a href="#hire" style="background-color: rgb(230, 231, 135)">Hire</a>
-      <a href="#store" style="background-color: rgb(203, 124, 255)">Store</a>
-      <a href="#lootbox" style="background-color: rgb(73, 29, 29)">Lootboxes</a>
-      <a href="#inv" style="background-color: rgb(255, 142, 37)">Inventory</a>
-      <a href="#stats" style="background-color: rgb(121, 235, 255)"
+      <a
+        href="#work"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(196, 0, 114),
+            rgb(255, 0, 55)
+          );
+        "
+        >Work</a
+      >
+      <a
+        href="#hire"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(179, 255, 0),
+            rgb(238, 255, 0)
+          );
+        "
+        >Hire</a
+      >
+      <a
+        href="#store"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(99, 0, 212),
+            rgb(214, 0, 196)
+          );
+        "
+        >Store</a
+      >
+      <a
+        href="#lootbox"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(94, 0, 39),
+            rgb(161, 0, 0)
+          );
+        "
+        >Lootboxes</a
+      >
+      <a
+        href="#inv"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(255, 81, 0),
+            rgb(255, 174, 0)
+          );
+        "
+        >Inventory</a
+      >
+      <a
+        href="#stats"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(0, 98, 245),
+            rgb(121, 235, 255)
+          );
+        "
         >Statistics</a
+      >
+      <a
+        href="#config"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(85, 85, 85),
+            rgb(150, 150, 150)
+          );
+        "
+        >Config</a
       >
       <br />
     </div>
     <div class="section" id="work">
-      <h1 style="background-color: rgb(255, 107, 107); font-weight: bolder">
+      <h1
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(196, 0, 114),
+            rgb(255, 0, 55)
+          );
+        "
+      >
         Work
       </h1>
       <ul>
         <li>
           <h3>Beg <span id="pro">(+1💵)</span></h3>
           <p>Beg from the streets<br /></p>
-          <button id="begB" onclick="workbal(beg)">Work (1s)</button>
+          <button class="button" id="begB" onclick="workbal(beg)">
+            Work (1s)
+          </button>
           <div
             id="begE"
             style="
               width: 100%;
-              background-color: rgb(206, 206, 206);
+              background-color: rgb(131, 131, 131);
               border-radius: 10px;
             "
           >
@@ -67,6 +154,7 @@
                 width: 0%;
                 height: 20px;
                 background-color: rgb(255, 107, 107);
+                box-shadow: 0px 5px 10px rgba(255, 107, 107, 0.363);
                 border-radius: 10px;
               "
             ></div>
@@ -75,17 +163,22 @@
         <li>
           <h3>Shoe Polish <span id="pro">(+10💵)</span></h3>
           <p>Polish people's shoes for pennies<br /></p>
-          <button id="shoepolB" onclick="workbal(shoepol)" disabled>
+          <button
+            class="button"
+            id="shoepolB"
+            onclick="workbal(shoepol)"
+            disabled
+          >
             Work (7.5s)
           </button>
-          <button id="shoepolP" onclick="workbuy(20,'shoepol')">
+          <button class="button" id="shoepolP" onclick="workbuy(20,'shoepol')">
             Unlock (20💵)
           </button>
           <div
             id="shoepolE"
             style="
               width: 100%;
-              background-color: rgb(206, 206, 206);
+              background-color: rgb(131, 131, 131);
               border-radius: 10px;
             "
           >
@@ -95,6 +188,7 @@
                 width: 0%;
                 height: 20px;
                 background-color: rgb(255, 107, 107);
+                box-shadow: 0px 5px 10px rgba(255, 107, 107, 0.363);
                 border-radius: 10px;
               "
             ></div>
@@ -103,10 +197,10 @@
         <li>
           <h3>Cook <span id="pro">(+150💵)</span></h3>
           <p>Bake a cake for Jake and Drake<br /></p>
-          <button id="cookB" onclick="workbal(cook)" disabled>
+          <button class="button" id="cookB" onclick="workbal(cook)" disabled>
             Work (25s)
           </button>
-          <button id="cookP" onclick="workbuy(350,'cook')">
+          <button class="button" id="cookP" onclick="workbuy(350,'cook')">
             Unlock (350💵)
           </button>
 
@@ -114,7 +208,7 @@
             id="cookE"
             style="
               width: 100%;
-              background-color: rgb(206, 206, 206);
+              background-color: rgb(131, 131, 131);
               border-radius: 10px;
             "
           >
@@ -124,6 +218,7 @@
                 width: 0%;
                 height: 20px;
                 background-color: rgb(255, 107, 107);
+                box-shadow: 0px 5px 10px rgba(255, 107, 107, 0.363);
                 border-radius: 10px;
               "
             ></div>
@@ -132,17 +227,22 @@
         <li>
           <h3>Editor <span id="pro">(+600💵)</span></h3>
           <p>Write and edit Wikipedia articles<br /></p>
-          <button id="editorB" onclick="workbal(editor)" disabled>
+          <button
+            class="button"
+            id="editorB"
+            onclick="workbal(editor)"
+            disabled
+          >
             Work (45s)
           </button>
-          <button id="editorP" onclick="workbuy(2000,'editor')">
+          <button class="button" id="editorP" onclick="workbuy(2000,'editor')">
             Unlock (2.0K💵)
           </button>
           <div
             id="editorE"
             style="
               width: 100%;
-              background-color: rgb(206, 206, 206);
+              background-color: rgb(131, 131, 131);
               border-radius: 10px;
             "
           >
@@ -152,6 +252,7 @@
                 width: 0%;
                 height: 20px;
                 background-color: rgb(255, 107, 107);
+                box-shadow: 0px 5px 10px rgba(255, 107, 107, 0.363);
                 border-radius: 10px;
               "
             ></div>
@@ -162,10 +263,19 @@
           <p>
             Teach students to differentiate between Java and JavaScript<br />
           </p>
-          <button id="teacherB" onclick="workbal(teacher)" disabled>
+          <button
+            class="button"
+            id="teacherB"
+            onclick="workbal(teacher)"
+            disabled
+          >
             Work (2m)
           </button>
-          <button id="teacherP" onclick="workbuy(15000,'teacher')">
+          <button
+            class="button"
+            id="teacherP"
+            onclick="workbuy(15000,'teacher')"
+          >
             Unlock (15.0K💵)
           </button>
 
@@ -173,7 +283,7 @@
             id="teacherE"
             style="
               width: 100%;
-              background-color: rgb(206, 206, 206);
+              background-color: rgb(131, 131, 131);
               border-radius: 10px;
             "
           >
@@ -183,6 +293,7 @@
                 width: 0%;
                 height: 20px;
                 background-color: rgb(255, 107, 107);
+                box-shadow: 0px 5px 10px rgba(255, 107, 107, 0.363);
                 border-radius: 10px;
               "
             ></div>
@@ -191,14 +302,22 @@
       </ul>
     </div>
     <div class="section" id="hire">
-      <h1 style="background-color: rgb(230, 231, 135); font-weight: bolder">
+      <h1
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(179, 255, 0),
+            rgb(238, 255, 0)
+          );
+        "
+      >
         Hire
       </h1>
       <ul>
         <li>
           <h3>Dog <span id="pro">(+1💵/s)</span></h3>
           <p>Hire a dog to find coins from ground<br /></p>
-          <button onclick="hirebal(dog) ">
+          <button class="button" onclick="hirebal(dog) ">
             Hire (<span id="dogC"></span>💵)
           </button>
           <p>
@@ -208,7 +327,7 @@
         <li>
           <h3>Lemonade Stand <span id="pro">(+5💵/s)</span></h3>
           <p>Create a self-serving lemonade stand<br /></p>
-          <button onclick="hirebal(lemonstand) ">
+          <button class="button" onclick="hirebal(lemonstand) ">
             Hire (<span id="lemonstandC"></span>💵)
           </button>
           <p>
@@ -218,7 +337,7 @@
         <li>
           <h3>Hawker <span id="pro">(+20💵/s)</span></h3>
           <p>Make a hawker sell your old items in your local market</p>
-          <button onclick="hirebal(hawker)">
+          <button class="button" onclick="hirebal(hawker)">
             Hire (<span id="hawkerC"></span>💵)
           </button>
           <p>
@@ -228,7 +347,7 @@
         <li>
           <h3>Tourist Guide <span id="pro">(+100💵/s)</span></h3>
           <p>Hire a guide to show people the Seven Wonders of the World</p>
-          <button onclick="hirebal(guide)">
+          <button class="button" onclick="hirebal(guide)">
             Hire (<span id="guideC"></span>💵)
           </button>
           <p>
@@ -238,14 +357,23 @@
       </ul>
     </div>
     <div class="section" id="store">
-      <h1 style="background-color: rgb(203, 124, 255); font-weight: bolder">
+      <h1
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(99, 0, 212),
+            rgb(214, 0, 196)
+          );
+        "
+      >
         Store
       </h1>
       <ul>
         <li>
           <h3>Energy Flavoured Bar <span id="pro">(2×hire)</span></h3>
-          <p>Give a boost to everyone you have hired<br /></p>
+          <p>Give a boost to everyone you have hired (1 min)<br /></p>
           <button
+            class="button"
             id="boost2xhireB"
             onclick="boostbal(1,'boost2xhire',60000,10)"
           >
@@ -265,6 +393,7 @@
                 width: 0%;
                 height: 20px;
                 background-color: rgb(203, 124, 255);
+                box-shadow: 0px 5px 10px rgba(255, 107, 255, 0.363);
                 border-radius: 10px;
               "
             ></div>
@@ -273,7 +402,15 @@
       </ul>
     </div>
     <div class="section" id="lootbox">
-      <h1 style="background-color: rgb(73, 29, 29); font-weight: bolder">
+      <h1
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(94, 0, 39),
+            rgb(161, 0, 0)
+          );
+        "
+      >
         Lootboxes
       </h1>
       <ul>
@@ -284,7 +421,11 @@
             <span style="text-decoration: line-through">noobs</span> amateurs
             like you
           </p>
-          <button id="amateurB" onclick="lootboxbuy(amateurchest)">
+          <button
+            class="button"
+            id="amateurB"
+            onclick="lootboxbuy(amateurchest)"
+          >
             Buy (1.0K💵)
           </button>
           <div id="perk">
@@ -299,7 +440,7 @@
           <p>
             A cheap chest to waste your money on, but maybe you can get a gem
           </p>
-          <button id="commonB" onclick="lootboxbuy(commonchest)">
+          <button class="button" id="commonB" onclick="lootboxbuy(commonchest)">
             Buy (10.0K💵)
           </button>
           <div id="perk">
@@ -312,7 +453,11 @@
         <li class="lbli">
           <h3>Uncommon Chest</h3>
           <p>A slightly enchanted chest, maybe you will get lucky</p>
-          <button id="uncommonB" onclick="lootboxbuy(uncommonchest)">
+          <button
+            class="button"
+            id="uncommonB"
+            onclick="lootboxbuy(uncommonchest)"
+          >
             Buy (75.0K💵)
           </button>
           <div id="perk">
@@ -327,7 +472,15 @@
       </ul>
     </div>
     <div class="section" id="inv">
-      <h1 style="background-color: rgb(255, 142, 37); font-weight: bolder">
+      <h1
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(255, 81, 0),
+            rgb(255, 174, 0)
+          );
+        "
+      >
         Inventory
       </h1>
       <div class="invA">
@@ -339,7 +492,9 @@
           <h2>Peanut</h2>
           <p>An overrated nut</p>
           <p>Multiplier: 0.005</p>
-          <button onclick="invbuy(peanut)">Buy (<span id="peanutC">50</span>💎)</button>
+          <button class="button" onclick="invbuy(peanut)">
+            Buy (<span id="peanutC">50</span>💎)
+          </button>
           <p>
             <i>Owned: <span id="peanutQ">0</span></i>
           </p>
@@ -352,7 +507,9 @@
           <h2>Candy</h2>
           <p>An Alpenliebe candy</p>
           <p>Multiplier: 0.02</p>
-          <button onclick="invbuy(candy)">Buy (<span id="candyC">175</span>💎)</button>
+          <button class="button" onclick="invbuy(candy)">
+            Buy (<span id="candyC">175</span>💎)
+          </button>
           <p>
             <i>Owned: <span id="candyQ">0</span></i>
           </p>
@@ -365,7 +522,9 @@
           <h2>Cupcake</h2>
           <p>A budget cake</p>
           <p>Multiplier: 0.06</p>
-          <button onclick="invbuy(cupcake)">Buy (<span id="cupcakeC">500</span>💎)</button>
+          <button class="button" onclick="invbuy(cupcake)">
+            Buy (<span id="cupcakeC">500</span>💎)
+          </button>
           <p>
             <i>Owned: <span id="cupcakeQ">0</span></i>
           </p>
@@ -378,7 +537,9 @@
           <h2>Egg</h2>
           <p>The Supreme Egg</p>
           <p>Multiplier: 100</p>
-          <button onclick="invbuy(egg)">Buy (<span id="eggC">1.0M</span>💎)</button>
+          <button class="button" onclick="invbuy(egg)">
+            Buy (<span id="eggC">1.0M</span>💎)
+          </button>
           <p>
             <i>Owned: <span id="eggQ">0</span></i>
           </p></a
@@ -386,7 +547,15 @@
       </div>
     </div>
     <div class="section" id="stats">
-      <h1 style="background-color: rgb(121, 235, 255); font-weight: bolder">
+      <h1
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(0, 98, 245),
+            rgb(121, 235, 255)
+          );
+        "
+      >
         Statistics
       </h1>
       <div class="statA">
@@ -406,7 +575,7 @@
           ><h3>stat 4</h3>
           <p><span id="multihtml"></span>stat value 4</p></a
         >
-        <a
+        <!-- <a
           ><h3>stat 5</h3>
           <p><span id="stat3html"></span>stat value 5</p></a
         >
@@ -421,16 +590,45 @@
         <a
           ><h3>stat 8</h3>
           <p><span id="stat3html"></span>stat value 8</p></a
-        >
+        > -->
       </div>
-
-      <!-- <a
-        ><h3>stat 8</h3>
-        <p><span id="multihtml"></span>stat value 8</p></a
-      > -->
     </div>
+    <div class="section" id="config">
+      <h1
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(85, 85, 85),
+            rgb(150, 150, 150)
+          );
+        "
+      >
+        Configuration
+      </h1>
+      <ul>
+        <li>
+          <h3>Dark Mode</h3>
+          <p>Toggle dark and light mode in this site</p>
+          <button class="button" id="dlon" onclick="toggledarklight('dark')">
+            Toggle On
+          </button>
+          <button
+            class="button"
+            id="dloff"
+            onclick="toggledarklight('light')"
+            style="visibility: hidden"
+          >
+            Toggle Off
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div style="margin: 30px"><br /></div>
     <div class="windowtint"></div>
     <h1 id="notif">Test</h1>
+    <div id="lootboxnotif">
+      <h2><span id="lootnotifmain">Main Message</span><br><span id="lootnotifprize">Prize Message</span></h2>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
