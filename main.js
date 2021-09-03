@@ -6,21 +6,21 @@ let adminpower = false;
 var subsection = ["work", "hire", "store", "lootbox", "inv", "stats", "config"];
 
 //Work
-var beg = { name: "beg", multi: 1, dur: 1000 };
-var shoepol = { name: "shoepol", multi: 10, dur: 7500 };
-var cook = { name: "cook", multi: 150, dur: 25000 };
-var editor = { name: "editor", multi: 600, dur: 45000 };
-var teacher = { name: "teacher", multi: 2500, dur: 120000 };
+var work1 = { name: "work1", multi: 1, dur: 1000 };
+var work2 = { name: "work2", multi: 10, dur: 7500 };
+var work3 = { name: "work3", multi: 150, dur: 25000 };
+var work4 = { name: "work4", multi: 600, dur: 45000 };
+var work5 = { name: "work5", multi: 2500, dur: 120000 };
 
-var workitems = [beg, shoepol, cook, editor, teacher];
+var workitems = [work1, work2, work3, work4, work5];
 
 //Hire
-var dog = { name: "dog", quan: 0, multi: 1, cost: 50 };
-var lemonstand = { name: "lemonstand", quan: 0, multi: 5, cost: 200 };
-var hawker = { name: "hawker", quan: 0, multi: 20, cost: 1000 };
-var guide = { name: "guide", quan: 0, multi: 100, cost: 7500 };
+var hire1 = { name: "hire1", quan: 0, multi: 1, cost: 50 };
+var hire2 = { name: "hire2", quan: 0, multi: 5, cost: 200 };
+var hire3 = { name: "hire3", quan: 0, multi: 20, cost: 1000 };
+var hire4 = { name: "hire4", quan: 0, multi: 100, cost: 7500 };
 
-var hireitems = [dog, lemonstand, hawker, guide];
+var hireitems = [hire1, hire2, hire3, hire4];
 
 //Lootbox
 

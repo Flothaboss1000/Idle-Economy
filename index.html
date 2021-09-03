@@ -138,11 +138,11 @@
         <li>
           <h3>Beg <span id="pro">(+1💵)</span></h3>
           <p>Beg from the streets<br /></p>
-          <button class="button" id="begB" onclick="workbal(beg)">
+          <button class="button" id="work1B" onclick="workbal(work1)">
             Work (1s)
           </button>
           <div
-            id="begE"
+            id="work1E"
             style="
               width: 100%;
               background-color: rgb(131, 131, 131);
@@ -150,7 +150,7 @@
             "
           >
             <div
-              id="begF"
+              id="work1F"
               style="
                 width: 0%;
                 height: 20px;
@@ -166,17 +166,17 @@
           <p>Polish people's shoes for pennies<br /></p>
           <button
             class="button"
-            id="shoepolB"
-            onclick="workbal(shoepol)"
+            id="work2B"
+            onclick="workbal(work2)"
             disabled
           >
             Work (7.5s)
           </button>
-          <button class="button" id="shoepolP" onclick="workbuy(20,'shoepol')">
+          <button class="button" id="work2P" onclick="workbuy(20,'work2')">
             Unlock (20💵)
           </button>
           <div
-            id="shoepolE"
+            id="work2E"
             style="
               width: 100%;
               background-color: rgb(131, 131, 131);
@@ -184,7 +184,7 @@
             "
           >
             <div
-              id="shoepolF"
+              id="work2F"
               style="
                 width: 0%;
                 height: 20px;
@@ -198,15 +198,15 @@
         <li>
           <h3>Cook <span id="pro">(+150💵)</span></h3>
           <p>Bake a cake for Jake and Drake<br /></p>
-          <button class="button" id="cookB" onclick="workbal(cook)" disabled>
+          <button class="button" id="work3B" onclick="workbal(work3)" disabled>
             Work (25s)
           </button>
-          <button class="button" id="cookP" onclick="workbuy(350,'cook')">
+          <button class="button" id="work3P" onclick="workbuy(350,'work3')">
             Unlock (350💵)
           </button>
 
           <div
-            id="cookE"
+            id="work3E"
             style="
               width: 100%;
               background-color: rgb(131, 131, 131);
@@ -214,7 +214,7 @@
             "
           >
             <div
-              id="cookF"
+              id="work3F"
               style="
                 width: 0%;
                 height: 20px;
@@ -230,17 +230,17 @@
           <p>Write and edit Wikipedia articles<br /></p>
           <button
             class="button"
-            id="editorB"
-            onclick="workbal(editor)"
+            id="work4B"
+            onclick="workbal(work4)"
             disabled
           >
             Work (45s)
           </button>
-          <button class="button" id="editorP" onclick="workbuy(2000,'editor')">
+          <button class="button" id="work4P" onclick="workbuy(2000,'work4')">
             Unlock (2.0K💵)
           </button>
           <div
-            id="editorE"
+            id="work4E"
             style="
               width: 100%;
               background-color: rgb(131, 131, 131);
@@ -248,7 +248,7 @@
             "
           >
             <div
-              id="editorF"
+              id="work4F"
               style="
                 width: 0%;
                 height: 20px;
@@ -266,22 +266,22 @@
           </p>
           <button
             class="button"
-            id="teacherB"
-            onclick="workbal(teacher)"
+            id="work5B"
+            onclick="workbal(work5)"
             disabled
           >
             Work (2m)
           </button>
           <button
             class="button"
-            id="teacherP"
-            onclick="workbuy(15000,'teacher')"
+            id="work5P"
+            onclick="workbuy(15000,'work5')"
           >
             Unlock (15.0K💵)
           </button>
 
           <div
-            id="teacherE"
+            id="work5E"
             style="
               width: 100%;
               background-color: rgb(131, 131, 131);
@@ -289,7 +289,7 @@
             "
           >
             <div
-              id="teacherF"
+              id="work5F"
               style="
                 width: 0%;
                 height: 20px;
@@ -317,42 +317,42 @@
       <ul>
         <li>
           <h3>Dog <span id="pro">(+1💵/s)</span></h3>
-          <p>Hire a dog to find coins from ground<br /></p>
-          <button class="button" onclick="hirebal(dog) ">
-            Hire (<span id="dogC"></span>💵)
+          <p>Hire a canine to find coins from ground<br /></p>
+          <button class="button" onclick="hirebal(hire1) ">
+            Hire (<span id="hire1C"></span>💵)
           </button>
           <p>
-            <i>Owned: <span id="dogQ"></span></i>
+            <i>Owned: <span id="hire1Q"></span></i>
           </p>
         </li>
         <li>
           <h3>Lemonade Stand <span id="pro">(+5💵/s)</span></h3>
           <p>Create a self-serving lemonade stand<br /></p>
-          <button class="button" onclick="hirebal(lemonstand) ">
-            Hire (<span id="lemonstandC"></span>💵)
+          <button class="button" onclick="hirebal(hire2) ">
+            Hire (<span id="hire2C"></span>💵)
           </button>
           <p>
-            <i>Owned: <span id="lemonstandQ"></span></i>
+            <i>Owned: <span id="hire2Q"></span></i>
           </p>
         </li>
         <li>
           <h3>Hawker <span id="pro">(+20💵/s)</span></h3>
           <p>Make a hawker sell your old items in your local market</p>
-          <button class="button" onclick="hirebal(hawker)">
-            Hire (<span id="hawkerC"></span>💵)
+          <button class="button" onclick="hirebal(hire3)">
+            Hire (<span id="hire3C"></span>💵)
           </button>
           <p>
-            <i>Owned: <span id="hawkerQ"></span></i>
+            <i>Owned: <span id="hire3Q"></span></i>
           </p>
         </li>
         <li>
           <h3>Tourist Guide <span id="pro">(+100💵/s)</span></h3>
           <p>Hire a guide to show people the Seven Wonders of the World</p>
-          <button class="button" onclick="hirebal(guide)">
-            Hire (<span id="guideC"></span>💵)
+          <button class="button" onclick="hirebal(hire4)">
+            Hire (<span id="hire4C"></span>💵)
           </button>
           <p>
-            <i>Owned: <span id="guideQ"></span></i>
+            <i>Owned: <span id="hire4Q"></span></i>
           </p>
         </li>
       </ul>
