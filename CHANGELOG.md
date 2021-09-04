@@ -9,32 +9,38 @@
 - Rebalancing of the entire system
 - Obtaining items through lootboxes
 
+### 0.4.1
+
+- Modified the site on the back-end
+
 ## 0.4
- - Added a favicon
- - Major UI improvements (Titlebar, Sections, Buttons, Headers. Fonts)
- - Improved GoTo
- - Added Experimental Dark mode
- - Improved the Titlebar and integrated Infobar into it
- - Fixed inconsistencies
- - Added considerable amount of support for mobile devices
- - Added 'Reset' command in Admin Console
+
+- Added a favicon
+- Major UI improvements (Titlebar, Sections, Buttons, Headers. Fonts)
+- Improved GoTo
+- Added Experimental Dark mode
+- Improved the Titlebar and integrated Infobar into it
+- Fixed inconsistencies
+- Added considerable amount of support for mobile devices
+- Added 'Reset' command in Admin Console
 
 ### 0.3.1
- - Changed Inventory to increase prices for each item purchased
- - Resized some elements in site for mobile devices
- - Added responsiveness property to Balance Counter in mobile devices
+
+- Changed Inventory to increase prices for each item purchased
+- Resized some elements in site for mobile devices
+- Added responsiveness property to Balance Counter in mobile devices
 
 ## 0.3
 
- - Added additional support for mobile devices
- - Fixed the GoTo icon
- - Added 'cupcake' in Inventory
- - Added 'Uncommon Chest' in Lootboxes
- - Increased the cost and reward for many items in Work
+- Added additional support for mobile devices
+- Fixed the GoTo icon
+- Added 'cupcake' in Inventory
+- Added 'Uncommon Chest' in Lootboxes
+- Increased the cost and reward for many items in Work
 
 ### 0.2.4
 
- - Added a loading screen if code is yet to be loaded
+- Added a loading screen if code is yet to be loaded
 
 ### 0.2.3
 

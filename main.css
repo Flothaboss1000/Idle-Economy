@@ -161,6 +161,7 @@ body {
   padding: 0px 5px;
   line-height: 10px;
   overflow: auto;
+  overflow-x:hidden ;
 }
 .goto a {
   float: left;
@@ -180,7 +181,7 @@ body {
   font-size: 20px;
   border-radius: 10px;
   text-decoration: none;
-  transition: 0.8s;
+  transition: 0.3s;
   visibility: visible;
   border: solid 2px white;
 }
