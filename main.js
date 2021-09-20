@@ -3,7 +3,7 @@ let balmulti = 1;
 let gem = 0;
 let adminpower = false;
 
-var subsection = ["work", "hire", "store", "lootbox", "inv", "stats", "config"];
+var subsection = ["work", "hire", "lootbox", "inv", "stats", "config"];
 
 //GoTo
 var goto = [
@@ -18,14 +18,9 @@ var goto = [
     color: "rgb(179, 255, 0), rgb(238, 255, 0)",
   },
   {
-    name: "Store",
-    id: "#store",
-    color: "rgb(99, 0, 212), rgb(214, 0, 196)",
-  },
-  {
     name: "Lootboxes",
     id: "#lootbox",
-    color: "rgb(94, 0, 39), rgb(161, 0, 0)",
+    color: "rgb(99, 0, 212), rgb(214, 0, 196)",
   },
   {
     name: "Inventory",
@@ -87,12 +82,6 @@ var workitems = [
     desc: "Teach students to differentiate between Java and JavaScript",
   },
 ];
-
-//Hire
-// var hire1 = { id: "hire1", quan: 0, multi: 1, cost: 50 };
-// var hire2 = { id: "hire2", quan: 0, multi: 5, cost: 200 };
-// var hire3 = { id: "hire3", quan: 0, multi: 20, cost: 1000 };
-// var hire4 = { id: "hire4", quan: 0, multi: 100, cost: 7500 };
 
 var hireitems = [
   {
@@ -187,7 +176,7 @@ var invitems = [
     id: "peanut",
     quan: 0,
     multi: 0.005,
-    cost: 50,
+    cost: 5,
     name: "Peanut",
     desc: "An overrated nut",
     img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/peanuts_1f95c.png",
@@ -196,24 +185,87 @@ var invitems = [
     id: "candy",
     quan: 0,
     multi: 0.02,
-    cost: 175,
+    cost: 15,
     name: "Candy",
     desc: "An Alpenliebe candy",
     img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/candy_1f36c.png",
   },
   {
-    id: "cupcake",
+    id: "popcorn",
     quan: 0,
     multi: 0.06,
-    cost: 500,
+    cost: 50,
+    name: "Popcorn",
+    desc: "Butter popped corn",
+    img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/popcorn_1f37f.png",
+  },
+  {
+    id: "cupcake",
+    quan: 0,
+    multi: 0.15,
+    cost: 100,
     name: "Cupcake",
     desc: "A budget cake",
     img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/cupcake_1f9c1.png",
   },
   {
+    id: "noodles",
+    quan: 0,
+    multi: 0.4,
+    cost: 250,
+    name: "Noodles",
+    desc: "Instant Cup Noodles",
+    img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/takeout-box_1f961.png",
+  },
+  {
+    id: "hotdog",
+    quan: 0,
+    multi: 1.8,
+    cost: 1000,
+    name: "Hot Dog",
+    desc: "Heated Canines",
+    img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/hot-dog_1f32d.png",
+  },
+  {
+    id: "cheeseburger",
+    quan: 0,
+    multi: 7.5,
+    cost: 5000,
+    name: "Cheeseburger",
+    desc: "Donald McRonald's favourite",
+    img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/hamburger_1f354.png",
+  },
+  {
+    id: "icecream",
+    quan: 0,
+    multi: 32,
+    cost: 20000,
+    name: "Ice Cream",
+    desc: "Decently expensive dessert",
+    img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/ice-cream_1f368.png",
+  },
+  {
+    id: "pizza",
+    quan: 0,
+    multi: 900,
+    cost: 80000,
+    name: "Pizza",
+    desc: "Pizza Time.",
+    img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/slice-of-pizza_1f355.png",
+  },
+  {
+    id: "beer",
+    quan: 0,
+    multi: 5000,
+    cost: 400000,
+    name: "Beer",
+    desc: "I like it. ANOTHER!",
+    img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/beer-mug_1f37a.png",
+  },
+  {
     id: "egg",
     quan: 0,
-    multi: 100,
+    multi: 10000,
     cost: 1000000,
     name: "Egg",
     desc: "The Supreme Egg",
@@ -302,33 +354,6 @@ function workbal(item) {
         document.getElementById(item.id + "B").disabled = true;
       }
     }
-  }
-}
-
-function boostbal(num, item, dur, cost) {
-  if (cost <= gem) {
-    var elem = document.getElementById(item + "F");
-    balmulti = balmulti + num;
-    document.getElementById(item + "B").disabled = true;
-    gem = gem - cost;
-    document.getElementById("gemhtml").innerHTML = gem;
-    var width = 100;
-    dur = dur / 100;
-    var id = setInterval(frame, dur);
-    function frame() {
-      if (width <= 0) {
-        clearInterval(id);
-        balmulti = balmulti - num;
-        elem.style.width = "0%";
-        document.getElementById(item + "B").disabled = false;
-      } else {
-        width--;
-        elem.style.width = width + "%";
-        document.getElementById(item + "B").disabled = true;
-      }
-    }
-  } else {
-    notify("red", `You don't have enough gems! You need ${cost - gem}💎 more.`);
   }
 }
 
@@ -483,67 +508,31 @@ function hireaddbal() {
   document.getElementById("balhtml").innerHTML = balformat(bal);
 }
 
-function toggledarklight(mode) {
-  if (mode == "dark") {
-    document.body.style.backgroundColor = "rgb(66, 66, 66)";
-    document.body.style.color = "white";
-    document.getElementById("balcounter").style.backgroundColor =
-      "rgb(66, 66, 66)";
-    for (let i = 0; i < subsection.length; i++) {
-      document.getElementById(subsection[i]).className = "sectiondm";
-    }
+const themeSwitch = document.querySelector("input");
+let isDark = false;
 
-    document.getElementById("dlon").style.visibility = "hidden";
-    document.getElementById("dloff").style.visibility = "visible";
-  } else if (mode == "light") {
-    document.body.style.backgroundColor = "rgb(241, 241, 241)";
-    document.body.style.color = "black";
-    document.getElementById("balcounter").style.backgroundColor =
-      "rgb(241, 241, 241)";
-    for (let i = 0; i < subsection.length; i++) {
-      document.getElementById(subsection[i]).className = "section";
-    }
-
-    document.getElementById("dlon").style.visibility = "visible";
-    document.getElementById("dloff").style.visibility = "hidden";
+themeSwitch.addEventListener("change", () => {
+  if (!isDark) {
+    document.body.className = "dark";
+    isDark = true;
+  } else {
+    document.body.className = "light";
+    isDark = false;
   }
-}
+});
 
 //Notification
 function notify(type, text) {
-  var notif = document.getElementById("notif");
-  if (type == "white") {
-    notif.style.backgroundColor = "white";
-    notif.style.color = "black";
-    notif.style.border = "3px solid lightgrey";
-  }
-  if (type == "red") {
-    notif.style.backgroundColor = "rgb(245, 160, 160)";
-    notif.style.color = "brown";
-    notif.style.border = "3px solid rgb(214, 68, 68)";
-  }
-  if (type == "red") {
-    notif.style.backgroundColor = "rgb(245, 160, 160)";
-    notif.style.color = "brown";
-    notif.style.border = "3px solid rgb(214, 68, 68)";
-  }
-  if (type == "yellow") {
-    notif.style.backgroundColor = "rgb(245, 244, 160)";
-    notif.style.color = "rgb(163, 165, 42)";
-    notif.style.border = "3px solid rgb(214, 212, 68)";
-  }
-  if (type == "green") {
-    notif.style.backgroundColor = "rgb(187, 245, 160)";
-    notif.style.color = "rgb(91, 165, 42)";
-    notif.style.border = "3px solid rgb(134, 214, 68)";
-  }
-  if (type == "blue") {
-    notif.style.backgroundColor = "rgb(160, 235, 245)";
-    notif.style.color = "rgb(42, 157, 165)";
-    notif.style.border = "3px solid rgb(68, 185, 214)";
-  }
+  var notifchecker = document.getElementsByClassName("notif");
+  var notif = notifchecker[0];
+  if (type == "white") notif.id = "notif-white";
+  if (type == "red") notif.id = "notif-red";
+  if (type == "yellow") notif.id = "notif-yellow";
+  if (type == "green") notif.id = "notif-green";
+  if (type == "blue") notif.id = "notif-blue";
   notif.innerHTML = text;
-  notif.style.bottom = "0px";
+  notif.style.bottom = "10px";
+  notiftime = 4;
   notif.addEventListener("click", function () {
     notif.style.bottom = "-100px";
   });
@@ -551,6 +540,17 @@ function notify(type, text) {
 }
 
 //Window Startup
+let notiftime = null;
+
+window.addEventListener("load", function () {
+  if (navigator.userAgent.indexOf("Firefox") != -1) {
+    notify(
+      "yellow",
+      "The site isn't optimized with Firefox. Some things may lag or break."
+    );
+  }
+});
+
 window.onload = function () {
   document.getElementById("se-pre-con").style.animation = "loadingfade 0.5s";
   setTimeout(() => {
@@ -559,9 +559,7 @@ window.onload = function () {
   document.getElementById("balhtml").innerHTML = balformat(bal);
   document.getElementById("gemhtml").innerHTML = balformat(gem);
   document.getElementById("multihtml").innerHTML = balmulti.toPrecision(3);
-  var elaptime = new Date();
-
-  //Loading elements
+  var elaptime = new Date(); //Loading elements
 
   //Work
   workitems.forEach((a, i) => {
@@ -636,15 +634,15 @@ window.onload = function () {
     </button>
     <p>
       <i>Owned: <span id="${a.id}Q">0</span></i>
-    </p>;`;
+    </p>`;
     target.appendChild(item);
   });
 
   //GoTo
   goto.forEach((a) => {
     var item = document.createElement("a");
-    item.href = a.id
-    item.style = `background-image: linear-gradient(to right, ${a.color});`
+    item.href = a.id;
+    item.style = `background-image: linear-gradient(to right, ${a.color});`;
     var target = document.querySelector(".goto");
     item.innerHTML = a.name;
     target.appendChild(item);
@@ -660,104 +658,113 @@ window.setInterval(async function () {
     balmulti.toPrecision(3)
   );
   document.getElementById("autocashhtml").innerHTML = calcbalgensec(hireitems);
+
+  if (typeof notiftime == "number") {
+    if (notiftime > 0) {
+      notiftime--;
+    } else if (notiftime == 0) {
+      var notif = document.getElementsByClassName("notif")[0];
+      notif.style.bottom = "-100px";
+      notiftime = null;
+    }
+  } else return;
 }, 1000);
 
 //Admin Console
 document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey && e.altKey && e.key === "q") {
-    adminconsole();
-  }
-});
-
-function adminconsole() {
-  if (adminpower == false) {
-    if (confirm("Do you want to enable Experimental Mode for this session?")) {
-      adminpower = true;
-      document.getElementById("devmode").innerHTML = " (Experimental Mode)";
-      return;
-    }
-  } else {
-    let adminvalue = prompt(
-      "Welcome to the Admin Console!\n\nEnter your command below.",
-      ""
-    );
-    if (adminvalue == "setbal") {
-      adminvalue = prompt(
-        "Please provide the value to be set for the cash balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        bal = parseInt(adminvalue);
-        document.getElementById("balhtml").innerHTML = balformat(bal);
+  if (e.ctrlKey && e.altKey && e.key === "q")
+    if (adminpower == false) {
+      if (
+        confirm("Do you want to enable Experimental Mode for this session?")
+      ) {
+        adminpower = true;
+        document.getElementById("devmode").innerHTML = " (Experimental Mode)";
+        return;
       }
-    }
-    if (adminvalue == "addbal") {
-      adminvalue = prompt(
-        "Please provide the value to be added to the cash balance.",
+    } else {
+      let adminvalue = prompt(
+        "Welcome to the Admin Console!\n\nEnter your command below.",
         ""
       );
-      if (!isNaN(parseInt(adminvalue))) {
-        bal = bal + parseInt(adminvalue);
-        document.getElementById("balhtml").innerHTML = balformat(bal);
-      }
-    }
-    if (adminvalue == "subbal") {
-      adminvalue = prompt(
-        "Please provide the value to be subtracted from the cash balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        if (parseInt(adminvalue) > bal) {
-          window.alert(
-            "You cannot subtract more than the cash balance itself!"
-          );
-        } else {
-          bal = bal - parseInt(adminvalue);
+      if (adminvalue == "setbal") {
+        adminvalue = prompt(
+          "Please provide the value to be set for the cash balance.",
+          ""
+        );
+        if (!isNaN(parseInt(adminvalue))) {
+          bal = parseInt(adminvalue);
           document.getElementById("balhtml").innerHTML = balformat(bal);
         }
       }
-    }
-    if (adminvalue == "setgem") {
-      adminvalue = prompt(
-        "Please provide the value to be set for the gem balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        gem = parseInt(adminvalue);
-        document.getElementById("gemhtml").innerHTML = balformat(gem);
+      if (adminvalue == "addbal") {
+        adminvalue = prompt(
+          "Please provide the value to be added to the cash balance.",
+          ""
+        );
+        if (!isNaN(parseInt(adminvalue))) {
+          bal = bal + parseInt(adminvalue);
+          document.getElementById("balhtml").innerHTML = balformat(bal);
+        }
       }
-    }
-    if (adminvalue == "addgem") {
-      adminvalue = prompt(
-        "Please provide the value to be added to the gem balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        gem = gem + parseInt(adminvalue);
-        document.getElementById("gemhtml").innerHTML = balformat(gem);
+      if (adminvalue == "subbal") {
+        adminvalue = prompt(
+          "Please provide the value to be subtracted from the cash balance.",
+          ""
+        );
+        if (!isNaN(parseInt(adminvalue))) {
+          if (parseInt(adminvalue) > bal) {
+            window.alert(
+              "You cannot subtract more than the cash balance itself!"
+            );
+          } else {
+            bal = bal - parseInt(adminvalue);
+            document.getElementById("balhtml").innerHTML = balformat(bal);
+          }
+        }
       }
-    }
-    if (adminvalue == "subgem") {
-      adminvalue = prompt(
-        "Please provide the value to be subtracted from the gem balance.",
-        ""
-      );
-      if (!isNaN(parseInt(adminvalue))) {
-        if (parseInt(adminvalue) > bal) {
-          window.alert("You cannot subtract more than the gem balance itself!");
-        } else {
-          gem = gem - parseInt(adminvalue);
+      if (adminvalue == "setgem") {
+        adminvalue = prompt(
+          "Please provide the value to be set for the gem balance.",
+          ""
+        );
+        if (!isNaN(parseInt(adminvalue))) {
+          gem = parseInt(adminvalue);
+          document.getElementById("gemhtml").innerHTML = balformat(gem);
+        }
+      }
+      if (adminvalue == "addgem") {
+        adminvalue = prompt(
+          "Please provide the value to be added to the gem balance.",
+          ""
+        );
+        if (!isNaN(parseInt(adminvalue))) {
+          gem = gem + parseInt(adminvalue);
+          document.getElementById("gemhtml").innerHTML = balformat(gem);
+        }
+      }
+      if (adminvalue == "subgem") {
+        adminvalue = prompt(
+          "Please provide the value to be subtracted from the gem balance.",
+          ""
+        );
+        if (!isNaN(parseInt(adminvalue))) {
+          if (parseInt(adminvalue) > bal) {
+            window.alert(
+              "You cannot subtract more than the gem balance itself!"
+            );
+          } else {
+            gem = gem - parseInt(adminvalue);
+            document.getElementById("gemhtml").innerHTML = balformat(gem);
+          }
+        }
+      }
+      if (adminvalue == "reset") {
+        if (confirm("Are you sure you want to reset the game?")) {
+          bal = 0;
+          gem = 0;
+          document.getElementById("balhtml").innerHTML = balformat(bal);
           document.getElementById("gemhtml").innerHTML = balformat(gem);
         }
       }
     }
-    if (adminvalue == "reset") {
-      if (confirm("Are you sure you want to reset the game?")) {
-        bal = 0;
-        gem = 0;
-        document.getElementById("balhtml").innerHTML = balformat(bal);
-        document.getElementById("gemhtml").innerHTML = balformat(gem);
-      }
-    }
-  }
-}
+});

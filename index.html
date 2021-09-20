@@ -11,29 +11,29 @@
       rel="icon"
       href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/google/298/coin_1fa99.png"
     />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
   </head>
-  <body>
+  <body class="light">
     <div id="se-pre-con"></div>
     <div class="titlebar">
       <h1>Idle Economy</h1>
       <div class="info">
         <center>
-          <hr / align="center">
           <ul type="none">
-            <li>Version: <span ondblclick="adminconsole()">0.4.0</span></li>
+            <li>Version: <span ondblclick="adminconsole()">0.5.0</span></li>
             <li>Author: Flothaboss1000</li>
             <li>
-              <a
-                href="https://github.com/Flothaboss1000/Idle-Economy"
-                style="color: rgb(121, 235, 255)"
+              <a href="https://github.com/Flothaboss1000/Idle-Economy"
                 >GitHub Repo</a
               >
             </li>
             <li><span id="devmode"></span></li>
           </ul>
-          <hr / align="center">
         </center>
       </div>
     </div>
@@ -41,88 +41,11 @@
     <h2 id="balcounter">
       <a><span id="balhtml"></span>💵</a><a><span id="gemhtml"></span>💎</a>
     </h2>
-    <div class="goto">
+    <div class="goto" id="gt">
       <img
         src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/compass_1f9ed.png"
         alt=""
       />
-      <!-- <a
-        href="#work"
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(196, 0, 114),
-            rgb(255, 0, 55)
-          );
-        "
-        >Work</a
-      >
-      <a
-        href="#hire"
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(179, 255, 0),
-            rgb(238, 255, 0)
-          );
-        "
-        >Hire</a
-      >
-      <a
-        href="#store"
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(99, 0, 212),
-            rgb(214, 0, 196)
-          );
-        "
-        >Store</a
-      >
-      <a
-        href="#lootbox"
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(94, 0, 39),
-            rgb(161, 0, 0)
-          );
-        "
-        >Lootboxes</a
-      >
-      <a
-        href="#inv"
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(255, 81, 0),
-            rgb(255, 174, 0)
-          );
-        "
-        >Inventory</a
-      >
-      <a
-        href="#stats"
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(0, 98, 245),
-            rgb(121, 235, 255)
-          );
-        "
-        >Statistics</a
-      >
-      <a
-        href="#config"
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(85, 85, 85),
-            rgb(150, 150, 150)
-          );
-        "
-        >Config</a
-      > -->
       <br />
     </div>
     <div class="section" id="work">
@@ -153,58 +76,13 @@
       </h1>
       <ul></ul>
     </div>
-    <div class="section" id="store">
+    <div class="section" id="lootbox">
       <h1
         style="
           background-image: linear-gradient(
             to right,
             rgb(99, 0, 212),
             rgb(214, 0, 196)
-          );
-        "
-      >
-        Store
-      </h1>
-      <ul>
-        <li>
-          <h3>Energy Flavoured Bar <span id="pro">(2×hire)</span></h3>
-          <p>Give a boost to everyone you have hired (1 min)<br /></p>
-          <button
-            class="button"
-            id="boost2xhireB"
-            onclick="boostbal(1,'boost2xhire',60000,10)"
-          >
-            Buy (10💎)
-          </button>
-          <div
-            id="boost2xhireE"
-            style="
-              width: 100%;
-              background-color: rgb(206, 206, 206);
-              border-radius: 10px;
-            "
-          >
-            <div
-              id="boost2xhireF"
-              style="
-                width: 0%;
-                height: 20px;
-                background-color: rgb(203, 124, 255);
-                box-shadow: 0px 5px 10px rgba(255, 107, 255, 0.363);
-                border-radius: 10px;
-              "
-            ></div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="section" id="lootbox">
-      <h1
-        style="
-          background-image: linear-gradient(
-            to right,
-            rgb(94, 0, 39),
-            rgb(161, 0, 0)
           );
         "
       >
@@ -345,23 +223,17 @@
         <li>
           <h3>Dark Mode</h3>
           <p>Toggle dark and light mode in this site</p>
-          <button class="button" id="dlon" onclick="toggledarklight('dark')">
-            Toggle On
-          </button>
-          <button
-            class="button"
-            id="dloff"
-            onclick="toggledarklight('light')"
-            style="visibility: hidden"
-          >
-            Toggle Off
-          </button>
+          <label class="switch">
+            <div>
+              <input type="checkbox" />
+              <span class="slider round"></span>
+            </div>
+          </label>
         </li>
       </ul>
     </div>
-    <div style="margin: 30px"><br /></div>
     <div class="windowtint"></div>
-    <h1 id="notif">Test</h1>
+    <h1 class="notif" id="notif">Test</h1>
     <div id="lootboxnotif">
       <h2>
         <span id="lootnotifmain">Main Message</span><br /><span

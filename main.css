@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@500&family=Montserrat&family=Palanquin+Dark&family=Secular+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=DM+Sans&family=Jost:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Della+Respira&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&family=DM+Sans&family=Jost:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Della+Respira&display=swap");
 
 #se-pre-con {
   position: fixed;
@@ -22,23 +22,100 @@
   }
 }
 
+:root {
+  --ThemeColor: rgb(8, 141, 141);
+}
+.light {
+  --theme: white;
+  --fontColor: black;
+  --titleBg: rgb(255, 255, 255);
+  --titleFont: rgb(121, 175, 177);
+  --bgColor: rgb(221, 221, 221);
+  --balcounterC: rgb(241, 241, 241);
+  --sectionBg: rgb(238, 238, 238);
+  --sectionShadowUp: rgb(255, 255, 255);
+  --sectionShadowDown: rgba(0, 0, 0, 0.247);
+  --sectionh1: rgba(92, 92, 92, 0.349);
+  --sectionAfont: rgb(119, 119, 119);
+  --sectionAborder: lightgrey;
+  --switchBg: rgb(109, 109, 109);
+  --buttonBg: rgb(177, 216, 253);
+  --buttonFont: rgb(2, 67, 151);
+  --buttonHoverBg: rgb(30, 123, 209);
+  --buttonHoverFont: rgb(205, 231, 255);
+  --buttonHoverShadow: rgba(7, 62, 146, 0.438);
+  --buttondisabledBg: rgb(255, 204, 204);
+  --buttondisabledFont: rgb(255, 96, 96);
+  --buttondisabledHoverBg: rgb(255, 42, 42);
+  --buttondisabledHoverFont: rgb(255, 204, 204);
+  --buttondisabledHoverShadow: rgba(160, 25, 25, 0.438);
+  --notifyWhiteBg: rgb(255, 255, 255);
+  --notifyWhiteFont: rgb(167, 145, 145);
+  --notifyRedBg: rgb(245, 160, 160);
+  --notifyRedFont: rgb(214, 68, 68);
+  --notifyYellowBg: rgb(245, 244, 160);
+  --notifyYellowFont: rgb(163, 165, 42);
+  --notifyGreenBg: rgb(187, 245, 160);
+  --notifyGreenFont: rgb(91, 165, 42);
+  --notifyBlueBg: rgb(160, 235, 245);
+  --notifyBlueFont: rgb(42, 157, 165);
+}
+.dark {
+  --theme: black;
+  --fontColor: white;
+  --titleBg: rgb(110, 110, 110);
+  --titleFont: rgb(138, 213, 216);
+  --bgColor: rgb(48, 48, 48);
+  --balcounterC: rgb(66, 66, 66);
+  --sectionBg: rgb(66, 66, 66);
+  --sectionShadowUp: rgb(109, 109, 109);
+  --sectionShadowDown: rgba(0, 0, 0, 0.452);
+  --sectionh1: rgba(49, 49, 49, 0.63);
+  --sectionAfont: rgb(155, 155, 155);
+  --sectionAborder: rgb(138, 138, 138);
+  --switchBg: rgb(39, 39, 39);
+  --buttonBg: rgb(42, 69, 94);
+  --buttonFont: rgb(148, 191, 248);
+  --buttonHoverBg: rgb(151, 202, 250);
+  --buttonHoverFont: rgb(10, 80, 128);
+  --buttonHoverShadow: rgba(55, 109, 172, 0.479);
+  --buttondisabledBg: rgb(94, 42, 42);
+  --buttondisabledFont: rgb(248, 148, 148);
+  --buttondisabledHoverBg: rgb(250, 151, 151);
+  --buttondisabledHoverFont: rgb(128, 10, 10);
+  --buttondisabledHoverShadow: rgba(167, 54, 54, 0.411);
+  --notifyWhiteBg: rgb(63, 63, 63);
+  --notifyWhiteFont: rgb(228, 228, 228);
+  --notifyRedBg: rgb(153, 55, 55);
+  --notifyRedFont: rgb(224, 152, 152);
+  --notifyYellowBg: rgb(129, 128, 34);
+  --notifyYellowFont: rgb(232, 235, 107);
+  --notifyGreenBg: rgb(36, 87, 13);
+  --notifyGreenFont: rgb(120, 206, 63);
+  --notifyBlueBg: rgb(26, 101, 110);
+  --notifyBlueFont: rgb(100, 218, 226);
+}
+
 body {
   /*Hi*/
-  margin-top: 100px;
+  transition: 0.2s;
+  margin-top: 0px;
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 500px;
   z-index: 0;
-  background-color: rgb(221, 221, 221);
+  background-color: var(--bgColor);
   font-family: "Montserrat", sans-serif;
+  color: var(--fontColor);
 }
+
 .titlebar {
   text-align: center;
-  background-color: white;
-  color: rgb(121, 175, 177);
+  background-color: var(--titleBg);
+  color: var(--titleFont);
   margin-top: 0px;
   padding: 5px 15px;
-  width: fit-content;
+  width: 17.5%;
   font-family: "Encode Sans SC";
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.247);
   transition: 0.5s;
@@ -47,25 +124,15 @@ body {
   top: 10px;
   left: 10px;
   border-radius: 10px;
+  border-bottom: 5px solid #088d8d;
 }
-/* .info {
-  position: fixed;
-  transition: 0.5s;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.247);
-  left: -250px;
-  background-color: white;
-  top: 120px;
-  z-index: 5;
-  padding: 10px;
-  border-radius: 10px;
+.titlebar:hover {
+  color: rgb(241, 241, 241);
+  background-color: rgb(130, 228, 228);
+  text-shadow: 0 1px 0 #088d8d, 0 2px 0 #088d8d, 0 3px 0 #088d8d,
+    0 4px 0 #088d8d, 0 5px 0 #088d8d, 0 6px 0 #088d8d, 0 7px 0 #088d8d,
+    0 8px 0 #088d8d, 0 9px 0 #088d8d, 0 30px 20px rgba(6, 47, 59, 0.384);
 }
-.info ul {
-  padding-left: 15px;
-}
-.info ul a {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-} */
 .windowtint {
   position: fixed;
   top: -20px;
@@ -73,55 +140,66 @@ body {
   width: 200%;
   height: 200%;
   pointer-events: none;
-  background: black;
+  background: rgb(0, 12, 19);
   opacity: 0;
   transition: 0.5s;
   z-index: 3;
 }
-.titlebar:hover {
-  transition: 2s;
-  font-size: 30px;
-  background-color: rgb(0, 69, 87);
-  color: rgb(185, 255, 255);
-}
+
 .info {
-  color: rgb(185, 255, 255);
+  color: rgb(24, 116, 116);
   transition: 0.5s;
   font-size: 0px;
-  text-indent: -40px;
+  padding-left: 0px;
+  text-shadow: none;
   font-family: "DM Sans";
 }
-.info hr {
-  border: transparent;
-  background-color: white;
-  height: 2px;
-  width: 100%;
-}
-.titlebar:hover .info hr {
-  border: 0.5px white solid;
-  background-color: white;
+.info ul {
+  padding-left: 0px;
 }
 .titlebar:hover .info {
-  transition: 2s;
   font-size: 16px;
-  transition-delay: 0.5s;
+  padding-left: 0px;
+  animation-name: tracking-in-expand-fwd;
+  animation-duration: 1s;
+  text-shadow: none;
 }
-.titlebar:hover ~ .windowtint {
-  opacity: 0.8;
-  transition: 3s;
+.titlebar .info a {
+  color: rgb(24, 116, 116);
 }
+.titlebar:hover .info a {
+  color: rgb(24, 116, 116);
+}
+@keyframes tracking-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px);
+    transform: translateZ(-700px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
 #devmode {
   color: yellow;
 }
 #balcounter {
+  transition: 0.2s;
   text-align: center;
-  background-color: rgb(241, 241, 241);
+  background-color: var(--balcounterC);
   margin-top: 0px;
-  top: 10px;
-  right: 10px;
+  left: 10px;
+  bottom: 10px;
   z-index: 4;
-  width: fit-content;
-  font-size: 30px;
+  width: 17.5%;
+  font-size: 20px;
   border: solid 3px lightgray;
   border-radius: 40px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
@@ -134,41 +212,36 @@ body {
   margin: 0px 5px;
   transition: 0.4s;
 }
-#balcounter a:hover {
-  box-shadow: inset 3px 3px 2px rgba(0, 0, 0, 0.247),
-    inset -3px -3px 2px rgb(255, 255, 255);
-  transition: 0.2s;
-}
 .goto {
   float: right;
-  background-color: white;
+  background-color: var(--theme);
   padding: 0px;
   width: 50px;
   height: 50px;
   position: fixed;
-  bottom: 20px;
-  right: 10px;
+  bottom: 100px;
+  left: 10px;
   transition: 0.2s;
   z-index: 2;
   border-radius: 25px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.247);
 }
 .goto:hover {
-  width: 210px;
+  width: 200px;
   height: fit-content;
   border-radius: 10px;
   transition: 0.2s;
-  padding: 0px 5px;
+  padding: 0px 5px 5px 5px;
   line-height: 10px;
   overflow: auto;
-  overflow-x:hidden ;
+  overflow-x: hidden;
 }
 .goto a {
   float: left;
   text-align: center;
   padding: 0px;
   font-size: 0px;
-  color: white;
+  color: rgba(255, 255, 255, 0.61);
   text-decoration: none;
   transition: 0s;
   visibility: hidden;
@@ -176,6 +249,7 @@ body {
 }
 .goto:hover a {
   padding: 15px 10px;
+  width: auto;
   width: 89%;
   margin: 2px 0px;
   font-size: 20px;
@@ -183,12 +257,11 @@ body {
   text-decoration: none;
   transition: 0.3s;
   visibility: visible;
-  border: solid 2px white;
 }
 .goto:hover a:hover {
   text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.507);
-  border: solid 2px rgb(0, 69, 87);
   transition: 0.2s;
+  color: white;
   font-size: 200%;
   line-height: 40px;
 }
@@ -205,16 +278,15 @@ body {
   width: 90%;
 }
 .section {
-  box-shadow: -5px -5px 15px rgb(255, 255, 255),
-    5px 5px 15px rgba(0, 0, 0, 0.247);
-  float: left;
-  margin: 15px 0px;
-  margin-left: 20px;
-  margin-right: 10%;
+  transition: 0.2s;
+  background-color: var(--sectionBg);
+  box-shadow: -5px -5px 15px var(--sectionShadowUp),
+    5px 5px 15px var(--sectionShadowDown);
+  float: right;
+  margin: 20px 20px;
+  width: 75%;
   padding: 15px;
   border-radius: 25px;
-  width: 90%;
-  background-color: rgb(238, 238, 238);
 }
 .section h1 {
   font-size: 40px;
@@ -223,14 +295,16 @@ body {
   color: white;
   padding: 5px initial;
   border-radius: 50px;
-  box-shadow: 0px 10px 15px rgba(92, 92, 92, 0.349);
+  box-shadow: 0px 10px 15px var(--sectionh1);
+  transition: 0.2s;
 }
-.section h2, h3 {
+.section h2,
+h3 {
   font-family: "ABeeZee";
   font-weight: 100;
 }
 .section a {
-  color: rgb(119, 119, 119);
+  color: var(--sectionAfont);
   text-align: center;
   text-decoration: none;
   float: left;
@@ -240,7 +314,24 @@ body {
   border-radius: 20px;
   transition: 0.8s;
   z-index: 0;
-  border: solid 2px lightgrey;
+  border: solid 2px var(--sectionAborder);
+}
+.section ul {
+  list-style: none;
+}
+.section li {
+  width: 29.5%;
+  padding: 20px;
+  margin: 10px;
+  float: left;
+  border-radius: 20px;
+  transition: 0.4s;
+  /* border: 2px solid var(--fontColor); */
+}
+.section li:hover {
+  transition: 0.2s;
+  box-shadow: 0px 5px 10px var(--sectionShadowDown);
+
 }
 .section #perk {
   width: 100%;
@@ -254,7 +345,7 @@ body {
 }
 .section .invA a {
   height: 220px;
-  width: 30%;
+  width: 23%;
 }
 .section .statA a {
   height: 110px;
@@ -269,111 +360,60 @@ body {
   transition: 0.8s;
 }
 .section .invA img:hover {
-  filter: drop-shadow(15px 15px 5px rgba(0, 0, 0, 0.521));
+  filter: drop-shadow(15px 15px 10px rgba(0, 0, 0, 0.356));
   transition: 0.2s;
 }
 .section a:hover {
-  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.247), -3px -3px 2px rgb(255, 255, 255);
-  border: solid 2px rgba(255, 255, 255, 0);
+  box-shadow: 3px 3px 2px var(--sectionShadowDown),
+    -3px -3px 2px var(--sectionShadowUp);
+  border: solid 2px transparent;
   transition: 0.2s;
   z-index: 1;
-  color: black;
-  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
-}
-.sectiondm {
-  box-shadow: -5px -5px 15px rgb(117, 117, 117),
-    5px 5px 15px rgba(0, 0, 0, 0.452);
-  float: left;
-  margin: 15px 0px;
-  margin-left: 20px;
-  margin-right: 10%;
-  padding: 15px;
-  border-radius: 25px;
-  width: 90%;
-  background-color: rgb(78, 78, 78);
-}
-.sectiondm h1 {
-  font-size: 40px;
-  font-family: "Krona One";
-  text-align: center;
-  color: white;
-  border-radius: 25px;
-  box-shadow: 0px 10px 15px rgba(49, 49, 49, 0.63);
-}
-.sectiondm h2, h3 {
-  font-family: "ABeeZee";
-  font-weight: 100;
-}
-.sectiondm a {
-  text-align: center;
-  text-decoration: none;
-  float: left;
-  margin: 6px 5px;
-  padding: 10px;
-  width: 21.5%;
-  border-radius: 20px;
-  transition: 0.8s;
-  z-index: 0;
-  border: solid 2px rgb(138, 138, 138);
-}
-.sectiondm #perk {
-  width: 100%;
-  height: fit-content;
-  color: rgb(179, 179, 179);
-  margin-right: 0px;
-  overflow-x: auto;
-}
-.sectiondm #perk a {
-  width: fit-content;
-  font-size: 15px;
-}
-.sectiondm .invA a {
-  height: 220px;
-  width: 30%;
-}
-.sectiondm .statA a {
-  height: 110px;
-}
-.sectiondm .invA img {
-  float: left;
-  padding-left: 10px;
-  padding-top: 50px;
-  padding-bottom: 60px;
-  height: 100px;
-  width: 100px;
-  transition: 0.8s;
-}
-.sectiondm .invA img:hover {
-  filter: drop-shadow(15px 15px 5px rgba(0, 0, 0, 0.685));
-  transition: 0.2s;
-}
-.sectiondm a:hover {
-  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.397), -3px -3px 2px rgb(114, 114, 114);
-  border: solid 2px rgba(255, 255, 255, 0);
-  transition: 0.2s;
-  z-index: 1;
-  color: white;
+  color: var(--fontColor);
   text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
 }
 #pro {
   color: rgb(138, 218, 19);
 }
-#notif {
+.notif {
   position: fixed;
-  background-color: white;
-  color: black;
-  border: 3px solid lightgrey;
   bottom: -100px;
   font-weight: 100;
-  left: 5px;
-  padding: 10px;
-  border-radius: 20px;
+  float: right;
+  right: 10px;
+  padding: 12px;
+  border-radius: 50px;
   z-index: 7;
   font-size: 20px;
   width: fit-content;
   opacity: 1;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.247);
   transition: 0.5s;
+}
+#notif-white {
+  background-color: var(--notifyWhiteBg);
+  color: var(--notifyWhiteFont);
+  border: 3px solid var(--notifyWhiteFont);
+}
+#notif-red {
+  background-color: var(--notifyRedBg);
+  color: var(--notifyRedFont);
+  border: 3px solid var(--notifyRedFont);
+}
+#notif-yellow {
+  background-color: var(--notifyYellowBg);
+  color: var(--notifyYellowFont);
+  border: 3px solid var(--notifyYellowFont);
+}
+#notif-green {
+  background-color: var(--notifyGreenBg);
+  color: var(--notifyGreenFont);
+  border: 3px solid var(--notifyGreenFont);
+}
+#notif-blue {
+  background-color: var(--notifyBlueBg);
+  color: var(--notifyBlueFont);
+  border: 3px solid var(--notifyBlueFont);
 }
 .button {
   display: inline-block;
@@ -383,38 +423,70 @@ body {
   border-radius: 50px;
   margin-bottom: 5px;
   font-family: "Jost";
-  background-color: rgb(177, 216, 253);
+  background-color: var(--buttonBg);
   transition: 0.5s;
-  color: rgb(2, 67, 151);
+  color: var(--buttonFont);
 }
 .button:hover {
   display: inline-block;
   outline: none;
   border: none;
-  color: rgb(205, 231, 255);
+  color: var(--buttonHoverFont);
   padding: 10px;
   border-radius: 5px;
   font-family: "Jost";
-  background-color: rgb(30, 123, 209);
-  box-shadow: 5px 5px 15px rgba(7, 62, 146, 0.438);
+  background-color: var(--buttonHoverBg);
+  box-shadow: 5px 5px 15px var(--buttonHoverShadow);
   transition: 0.2s;
   cursor: pointer;
 }
-.button:active{
+.button:active {
   transition: 0.2s;
   background-color: white;
   color: darkgrey;
   box-shadow: 5px 5px 15px rgba(138, 138, 138, 0.438);
+  animation-name: "jello-horizontal";
+  animation-duration: 10s;
 }
 .button:disabled {
-  background-color: rgb(255, 204, 204);
-  color: rgb(255, 96, 96);
+  background-color: var(--buttondisabledBg);
+  color: var(--buttondisabledFont);
 }
 .button:disabled:hover {
-  background-color: rgb(255, 42, 42);
-  color: rgb(255, 204, 204);
-  box-shadow: 5px 5px 15px rgba(160, 25, 25, 0.438);
+  background-color: var(--buttondisabledHoverBg);
+  color: var(--buttondisabledHoverFont);
+  box-shadow: 5px 5px 15px var(--buttondisabledHoverShadow);
   cursor: not-allowed;
+}
+@keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
 }
 #lootboxnotif {
   position: fixed;
@@ -440,6 +512,123 @@ body {
   transition: 1s;
 }
 
+.switch {
+  width: 105px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.switch div {
+  transition: 0.2s;
+  position: relative;
+  display: block;
+  height: 39px;
+  background: transparent;
+  width: 150px;
+  border-radius: 50px;
+  padding: 0px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid var(--sectionAfont);
+}
+.switch input {
+  display: none;
+}
+.slider {
+  background-color: var(--sectionAfont);
+  transition: 0.2s;
+  border-radius: 50px;
+  height: 25px;
+  width: 50px;
+  margin: 5px;
+  display: inline-block;
+  position: relative;
+}
+.switch:hover div {
+  transition: 0.2s;
+  background: var(--switchBg);
+  box-shadow: inset 0px 2px 15px rgba(0, 0, 0, 0.274);
+  border: 2px solid var(--switchBg);
+}
+.switch:hover .slider {
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.418);
+  background-color: rgb(216, 216, 216);
+}
+input:checked + .slider {
+  transform: translateX(41px);
+}
+
+
+@media (max-width: 2300px) {
+  .section .invA a {
+    width: 30%;
+  }
+  .section li {
+    width: 44.4%;
+    margin: 10px;
+    float: left;
+  }
+}
+
+@media (max-width: 1500px) {
+  body {
+    margin-top: 100px;
+  }
+  .titlebar {
+    width: fit-content;
+  }
+  .titlebar:hover {
+    transition: 0.5s;
+    font-size: 30px;
+    background-color: rgb(130, 228, 228);
+    color: rgb(241, 241, 241);
+    text-shadow: 0 1px 0 #088d8d, 0 2px 0 #088d8d, 0 3px 0 #088d8d,
+    0 4px 0 #088d8d, 0 5px 0 #088d8d, 0 6px 0 #088d8d, 0 7px 0 #088d8d,
+    0 8px 0 #088d8d, 0 9px 0 #088d8d, 0 30px 20px rgba(6, 47, 59, 0.384);
+    border-left: 0px solid #088d8d;
+  }
+  .titlebar:hover ~ .windowtint {
+    opacity: 0.8;
+    transition: 1.5s;
+  }
+  .titlebar:hover .info {
+    animation-delay: 0.5s;
+    transition-delay: 0.5s;
+  }
+  .section li {
+    width: 94%;
+    margin-right: unset;
+    margin-left: unset;
+    float: unset;
+    padding: 20px;
+  }
+  .goto {
+    right: 10px;
+    left: unset;
+    bottom: 20px;
+  }
+  #balcounter {
+    left: unset;
+    bottom: unset;
+    right: 10px;
+    top: 10px;
+    width: fit-content;
+    font-size: 30px;
+  }
+  .section {
+    float: left;
+    margin: 15px 0px;
+    margin-left: 20px;
+    margin-right: 10%;
+    width: 90%;
+  }
+  .notif {
+    left: 5px;
+    float: left;
+    right: unset;
+  }
+}
 @media screen and (max-width: 1134px) {
   .section .invA a {
     width: 45%;
@@ -462,11 +651,7 @@ body {
 @media screen and (max-width: 800px) {
   body {
     margin-left: 0%;
-    margin-top: 150px;
-  }
-  .titlebar:hover h1 {
-    font-size: 40px;
-    transition: 2s;
+    margin-top: 50px;
   }
   .section h1 {
     font-size: 25px;
@@ -483,43 +668,42 @@ body {
   .section button {
     font-size: 10px;
   }
-  .sectiondm h1 {
-    font-size: 25px;
-  }
-  .sectiondm h2 {
-    font-size: 20px;
-  }
-  .sectiondm h3 {
-    font-size: 12.5px;
-  }
-  .sectiondm p {
-    font-size: 10px;
-  }
-  .sectiondm button {
-    font-size: 10px;
-  }
   .titlebar {
     width: auto;
     left: 2.5%;
-    right: 2.5%;
+    right: 60%;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.178);
     height: fit-content;
+    border-radius: 20px;
   }
   .titlebar h1 {
     margin: 5px 0px;
-    font-size: 25px;
-    transition: 2s;
+    font-size: 15px;
+    transition: 0.5s;
+  }
+  .titlebar:hover {
+    right: 2.5%;
+  }
+  .titlebar:hover h1 {
+    transition: 0.5s;
+    font-size: 40px;
+    text-shadow: none;
+  }
+  .titlebar ul {
+    width: 100%;
+    text-indent: 10%;
   }
   .info {
-    text-indent: 1%;
+    width: 100%;
+    text-align: center;
   }
   .info hr {
     width: 110%;
   }
   #balcounter {
-    top: 80px;
-    right: 10px;
-    left: 10px;
+    top: 10px;
+    right: 2.5%;
+    left: 42.5%;
     overflow: visible;
     width: auto;
     font-size: 9px;
@@ -547,7 +731,10 @@ body {
     width: 93.8%;
   }
   .section ul {
-    padding-left: 20px;
+    padding-left: 0px;
+  }
+  .section li {
+    margin: auto;
   }
   .section .invA a {
     margin: 1%;
@@ -571,42 +758,6 @@ body {
   .section #perk a {
     font-size: 10px;
   }
-  .sectiondm {
-    width: 95%;
-    margin: 5% 1%;
-    padding: 1.5%;
-  }
-  .sectiondm a {
-    margin: 1%;
-    padding: 2%;
-    border: solid 0.2% lightgrey;
-    width: 93.8%;
-  }
-  .sectiondm ul {
-    padding-left: 20px;
-  }
-  .sectiondm .invA a {
-    margin: 1%;
-    border: solid 0.2% lightgrey;
-    padding: 2%;
-    height: 175px;
-    width: 93.8%;
-  }
-  .sectiondm .invA img {
-    padding-top: 40px;
-    padding-bottom: 45px;
-    padding-left: 20px;
-  }
-  .sectiondm .statA a {
-    margin: 1%;
-    border: solid 0.2% lightgrey;
-    padding: 2%;
-    height: 60px;
-    width: 93.8%;
-  }
-  .sectiondm #perk a {
-    font-size: 10px;
-  }
   .info {
     width: 90%;
     left: -200%;
@@ -615,7 +766,23 @@ body {
   .titlebar:hover + .info {
     left: 1%;
   }
-  #notif {
+  .button:hover {
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 50px;
+    margin-bottom: 5px;
+    font-family: "Jost";
+    background-color: rgb(177, 216, 253);
+    transition: 0.5s;
+    color: rgb(2, 67, 151);
+  }
+  .button:disabled:hover {
+    background-color: rgb(255, 204, 204);
+    color: rgb(255, 96, 96);
+  }
+  .notif {
     width: auto;
     right: 5px;
     font-size: 12.5px;
