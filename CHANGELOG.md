@@ -9,6 +9,27 @@
 - Rebalancing of the entire system
 - Obtaining items through lootboxes
 
+## 0.5
+
+- Modified the UI
+ - Options in Work, Hire, Lootboxes and Configuration now appear as tiles instead of points
+ - Improved the title bar and shortened the transition
+ - Dark mode compatibility extended to buttons and notifications
+ - Replaced buttons with slider for toggling Dark Mode
+- **Enabled the option to save progress (Experimental)**
+ - Sessions are now able to be saved in local storage
+ - Saved sessions will automatically load when opening the page
+ - Sessions can be set to auto-save every 5 minutes
+- Majorly improved responsiveness of the site
+ - Mobile versions will now display shorter Title bar and Balance Counter
+ - A new desktop version is now available for wider screens: it will put the Title bar, Balance counter and GoTo in a fixed parallel location
+ - Modified options in each section to accomodate more efficiently
+- Added 8 new options in Inventory
+- Removed the Store section
+- Added the third stat for measuring elapsed time
+- Included an alert for unsupported browsers
+
+
 ### 0.4.1
 
 - Modified the site on the back-end

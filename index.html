@@ -37,17 +37,46 @@
         </center>
       </div>
     </div>
-
     <h2 id="balcounter">
-      <a><span id="balhtml"></span>💵</a><a><span id="gemhtml"></span>💎</a>
+      <a><span id="balhtml" title="Cash Balance"></span>💵</a
+      ><a><span id="gemhtml" title="Gem Balance"></span>💎</a>
     </h2>
-    <div class="goto" id="gt">
+    <div class="expand" id="expand">
       <img
-        src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/compass_1f9ed.png"
+        src="./imgs/miniarrow.svg"
         alt=""
+        id="svg"
+        onclick="expandmobile()"
       />
       <br />
     </div>
+    <div class="goto" id="gt">
+      <img src="./imgs/compass.svg" alt="compass" id="svg" />
+      <br />
+    </div>
+    <div class="save" id="sv">
+      <img
+        src="./imgs/save.svg"
+        alt=""
+        title="Save"
+        id="svg"
+        onclick="savesession()"
+      />
+      <br />
+    </div>
+    <!-- <div class="profile">
+      <img
+        src="./imgs/account.svg"
+        alt=""
+        height="50px"
+        width="50px"
+        id="svg"
+      />
+      <div class="profilename">
+        <h2 id="username"></h2>
+        <h3 id="rank"></h3>
+      </div>
+    </div> -->
     <div class="section" id="work">
       <h1
         style="
@@ -183,7 +212,7 @@
         >
         <a
           ><h3>Time Elapsed</h3>
-          <p><span id="timeelapsehtml"></span>stat value 3</p></a
+          <p><span id="timeelapsehtml">00:00</span></p></a
         >
         <a
           ><h3>stat 4</h3>
@@ -223,9 +252,35 @@
         <li>
           <h3>Dark Mode</h3>
           <p>Toggle dark and light mode in this site</p>
-          <label class="switch">
-            <div>
-              <input type="checkbox" />
+          <label class="switch" id="switchTheme">
+            <div id="switchBack">
+              <input type="checkbox" id="inputTheme" />
+              <span class="slider round"></span>
+            </div>
+          </label>
+        </li>
+        <li>
+          <h3>Save</h3>
+          <p>Saves game progress in the site</p>
+          <button class="button" onclick="savesession()">Save Session</button>
+          <button class="button" onclick="loadsession()">
+            Restore Last Session
+          </button>
+        </li>
+        <li>
+          <h3>Reset</h3>
+          <p>Erases all current and saved progress</p>
+          <button class="button" onclick="deletesession()">Reset All</button>
+        </li>
+        <li>
+          <h3>Auto-Save</h3>
+          <p>
+            Automatically saves progress every 5 minutes (Toggling will also
+            save progress)
+          </p>
+          <label class="switch" id="switchAutosave">
+            <div id="switchBack">
+              <input type="checkbox" id="inputAutosave" />
               <span class="slider round"></span>
             </div>
           </label>
@@ -233,7 +288,7 @@
       </ul>
     </div>
     <div class="windowtint"></div>
-    <h1 class="notif" id="notif">Test</h1>
+    <h1 class="notif" id="notif" title="Click to dismiss"></h1>
     <div id="lootboxnotif">
       <h2>
         <span id="lootnotifmain">Main Message</span><br /><span

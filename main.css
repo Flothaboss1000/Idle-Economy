@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&family=DM+Sans&family=Jost:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Della+Respira&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@700&display=swap");
 
 #se-pre-con {
   position: fixed;
@@ -15,10 +16,12 @@
 }
 @keyframes loadingfade {
   0% {
-    opacity: 100%;
+    transform: translate(0,0);
+    opacity: 1;
   }
   100% {
-    opacity: 0%;
+    transform: translate(0,-100vh);
+    opacity: 0.5;
   }
 }
 
@@ -76,12 +79,12 @@
   --switchBg: rgb(39, 39, 39);
   --buttonBg: rgb(42, 69, 94);
   --buttonFont: rgb(148, 191, 248);
-  --buttonHoverBg: rgb(151, 202, 250);
+  --buttonHoverBg: rgb(111, 185, 255);
   --buttonHoverFont: rgb(10, 80, 128);
   --buttonHoverShadow: rgba(55, 109, 172, 0.479);
   --buttondisabledBg: rgb(94, 42, 42);
   --buttondisabledFont: rgb(248, 148, 148);
-  --buttondisabledHoverBg: rgb(250, 151, 151);
+  --buttondisabledHoverBg: rgb(255, 111, 111);
   --buttondisabledHoverFont: rgb(128, 10, 10);
   --buttondisabledHoverShadow: rgba(167, 54, 54, 0.411);
   --notifyWhiteBg: rgb(63, 63, 63);
@@ -188,7 +191,7 @@ body {
 }
 
 #devmode {
-  color: yellow;
+  color: #0072ff;
 }
 #balcounter {
   transition: 0.2s;
@@ -212,7 +215,9 @@ body {
   margin: 0px 5px;
   transition: 0.4s;
 }
-.goto {
+.goto,
+.save,
+.expand {
   float: right;
   background-color: var(--theme);
   padding: 0px;
@@ -235,6 +240,7 @@ body {
   line-height: 10px;
   overflow: auto;
   overflow-x: hidden;
+  border-bottom: 10px solid #088d8d;
 }
 .goto a {
   float: left;
@@ -245,7 +251,7 @@ body {
   text-decoration: none;
   transition: 0s;
   visibility: hidden;
-  font-family: "Encode Sans SC";
+  font-family: "Exo";
 }
 .goto:hover a {
   padding: 15px 10px;
@@ -265,17 +271,68 @@ body {
   font-size: 200%;
   line-height: 40px;
 }
-.goto img {
+.goto img,
+.save img,
+.expand img {
   margin-top: 0px;
   height: 50px;
   width: 50px;
-  transition: 1s;
+  transition: 0.2s;
 }
 .goto:hover img {
   height: 0px;
   width: 0px;
   transition: 0.2s;
   width: 90%;
+}
+.save {
+  left: 70px;
+  z-index: 1;
+}
+.save:hover {
+  cursor: pointer;
+}
+.save img {
+  transition: 0.5s;
+}
+
+.save #svg:hover {
+  transform: rotate(360deg);
+}
+.expand {
+  right: -60px;
+  z-index: 1;
+  left: unset;
+}
+.profile {
+  transition: 0.2s;
+  position: fixed;
+  left: 10px;
+  top: 150px;
+  float: unset;
+  background-color: var(--sectionBg);
+  width: 17%;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: -5px -5px 15px var(--sectionShadowUp),
+    5px 5px 15px var(--sectionShadowDown);
+}
+.profile img {
+  float: left;
+}
+.profilename {
+  margin-left: 80px;
+}
+.profilename h2,
+.profilename h3 {
+  margin: 2px 0px;
+  text-align: left;
+}
+.profilename h2 {
+  font-size: 20px;
+}
+.profilename h3 {
+  font-size: 17px;
 }
 .section {
   transition: 0.2s;
@@ -331,7 +388,6 @@ h3 {
 .section li:hover {
   transition: 0.2s;
   box-shadow: 0px 5px 10px var(--sectionShadowDown);
-
 }
 .section #perk {
   width: 100%;
@@ -347,9 +403,7 @@ h3 {
   height: 220px;
   width: 23%;
 }
-.section .statA a {
-  height: 110px;
-}
+
 .section .invA img {
   float: left;
   padding-left: 10px;
@@ -371,6 +425,9 @@ h3 {
   z-index: 1;
   color: var(--fontColor);
   text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
+}
+#config li {
+  height: 160px;
 }
 #pro {
   color: rgb(138, 218, 19);
@@ -553,13 +610,16 @@ h3 {
 }
 .switch:hover .slider {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.418);
-  background-color: rgb(216, 216, 216);
+  background-color: var(--titleFont);
 }
 input:checked + .slider {
   transform: translateX(41px);
 }
+input:checked ~ div {
+  background: red;
+}
 
-
+/*Desktop Mini Version*/
 @media (max-width: 2300px) {
   .section .invA a {
     width: 30%;
@@ -570,10 +630,10 @@ input:checked + .slider {
     float: left;
   }
 }
-
+/* Default Version */
 @media (max-width: 1500px) {
   body {
-    margin-top: 100px;
+    margin-top: 10px;
   }
   .titlebar {
     width: fit-content;
@@ -584,8 +644,8 @@ input:checked + .slider {
     background-color: rgb(130, 228, 228);
     color: rgb(241, 241, 241);
     text-shadow: 0 1px 0 #088d8d, 0 2px 0 #088d8d, 0 3px 0 #088d8d,
-    0 4px 0 #088d8d, 0 5px 0 #088d8d, 0 6px 0 #088d8d, 0 7px 0 #088d8d,
-    0 8px 0 #088d8d, 0 9px 0 #088d8d, 0 30px 20px rgba(6, 47, 59, 0.384);
+      0 4px 0 #088d8d, 0 5px 0 #088d8d, 0 6px 0 #088d8d, 0 7px 0 #088d8d,
+      0 8px 0 #088d8d, 0 9px 0 #088d8d, 0 30px 20px rgba(6, 47, 59, 0.384);
     border-left: 0px solid #088d8d;
   }
   .titlebar:hover ~ .windowtint {
@@ -607,6 +667,28 @@ input:checked + .slider {
     right: 10px;
     left: unset;
     bottom: 20px;
+  }
+  .expand {
+    left: unset;
+    right: -60px;
+    z-index: 1;
+  }
+  .profile {
+    position: unset;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 400px;
+    height: 65px;
+    float: unset;
+  }
+  .profilename h2 {
+    font-size: 30px;
+  }
+  .save {
+    left: unset;
+    right: 10px;
+    bottom: 80px;
   }
   #balcounter {
     left: unset;
@@ -637,21 +719,24 @@ input:checked + .slider {
   .sectiondm .invA a {
     width: 45%;
   }
-
-  @media screen and (max-width: 1079px) {
-    .section a {
-      width: 28.5%;
-    }
+}
+@media screen and (max-width: 980px) {
+  body {
+    margin-top: 120px;
   }
-  .sectiondm a {
-    width: 28.5%;
+  .profile {
+    width: 90%;
+    float: left;
+    margin-left: 10px;
+    margin-right: 20%;
   }
 }
 
+/* Mobile Version */
 @media screen and (max-width: 800px) {
   body {
     margin-left: 0%;
-    margin-top: 50px;
+    margin-top: 70px;
   }
   .section h1 {
     font-size: 25px;
@@ -714,10 +799,30 @@ input:checked + .slider {
     width: 45%;
   }
   .goto {
+    bottom: 140px;
+    right: -60px;
+  }
+  .save {
+    bottom: 205px;
+    right: -60px;
+  }
+  .expand {
     bottom: 75px;
   }
+
   .goto:hover {
     height: 240px;
+  }
+  .profile {
+    width: 90%;
+    float: unset;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .expand {
+    left: unset;
+    right: 10px;
+    z-index: 1;
   }
   .section {
     width: 95%;
@@ -735,6 +840,7 @@ input:checked + .slider {
   }
   .section li {
     margin: auto;
+    width: 89%;
   }
   .section .invA a {
     margin: 1%;
@@ -757,6 +863,9 @@ input:checked + .slider {
   }
   .section #perk a {
     font-size: 10px;
+  }
+  #config li {
+    height: 120px;
   }
   .info {
     width: 90%;
@@ -786,10 +895,38 @@ input:checked + .slider {
     width: auto;
     right: 5px;
     font-size: 12.5px;
+    text-align: center;
   }
   #lootboxnotif {
     width: 80%;
     margin-left: -40%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .goto,
+  .save,
+  .expand {
+    height: 30px;
+    width: 30px;
+  }
+  .goto:hover img #svg {
+    height: 0px;
+    width: 0px;
+  }
+  #svg {
+    height: 30px;
+    width: 30px;
+  }
+  .goto {
+    bottom: 110px;
+    right: -60px;
+  }
+  .save {
+    bottom: 145px;
+    right: -60px;
+  }
+  .expand {
+    bottom: 75px;
   }
 }
 
