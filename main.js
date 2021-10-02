@@ -1,4 +1,5 @@
 var master = {
+  //Important stats
   imp: {
     bal: 0,
     gem: 0,
@@ -7,26 +8,33 @@ var master = {
     isDark: false,
     autoSave: false,
     elaptime: 0,
+    lastSession: undefined,
   },
+  //User specific stats
   user: {
     name: "Anonymous",
     rank: "(Coming Soon!)",
+    cookieConsent: false,
+    ver: "0.5.0",
   },
+  //Work Items
   workitems: [
     {
       id: "work1",
       multi: 1,
       dur: 1000,
       cost: 0,
+      speed: 100,
       name: "Beg",
       desc: "Beg from the streets",
       unlocked: false,
     },
     {
       id: "work2",
-      multi: 10,
-      dur: 7500,
+      multi: 5,
+      dur: 3000,
       cost: 20,
+      speed: 100,
       name: "Shoe Polish",
       desc: "Polish people's shoes for pennies",
       unlocked: false,
@@ -34,37 +42,41 @@ var master = {
     {
       id: "work3",
       multi: 150,
-      dur: 25000,
-      cost: 350,
+      dur: 15000,
+      cost: 250,
+      speed: 100,
       name: "Cook",
       desc: "Bake a cake for Jake and Drake",
       unlocked: false,
     },
     {
       id: "work4",
-      multi: 600,
+      multi: 2500,
       dur: 45000,
-      cost: 2000,
+      cost: 8000,
+      speed: 100,
       name: "Editor",
       desc: "Write and edit Wikipedia articles",
       unlocked: false,
     },
     {
       id: "work5",
-      multi: 2500,
+      multi: 20000,
       dur: 120000,
-      cost: 15000,
+      cost: 40000,
+      speed: 100,
       name: "Teacher",
       desc: "Teach students to differentiate between Java and JavaScript",
       unlocked: false,
     },
   ],
+  //Hire Items
   hireitems: [
     {
       id: "hire1",
       quan: 0,
       multi: 1,
-      cost: 50,
+      cost: 200,
       name: "Dog",
       desc: "Hire a canine to find coins from ground",
     },
@@ -72,15 +84,15 @@ var master = {
       id: "hire2",
       quan: 0,
       multi: 5,
-      cost: 200,
+      cost: 1500,
       name: "Lemonade Stand",
       desc: "Create a self-serving lemonade stand",
     },
     {
       id: "hire3",
       quan: 0,
-      multi: 20,
-      cost: 1000,
+      multi: 30,
+      cost: 20000,
       name: "Hawker",
       desc: "Make a hawker sell your old items in your local market",
     },
@@ -88,11 +100,12 @@ var master = {
       id: "hire4",
       quan: 0,
       multi: 100,
-      cost: 7500,
+      cost: 125000,
       name: "Tourist Guide",
       desc: "Hire a guide to show people the Seven Wonders of the World",
     },
   ],
+  //Inventory items
   invitems: [
     {
       id: "peanut",
@@ -149,12 +162,12 @@ var master = {
       img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/hot-dog_1f32d.png",
     },
     {
-      id: "cheeseburger",
+      id: "burger",
       quan: 0,
       multi: 7.5,
       cost: 5000,
-      name: "Cheeseburger",
-      desc: "Donald McRonald's favourite",
+      name: "Burger",
+      desc: "McRonald's favourite",
       img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/hamburger_1f354.png",
     },
     {
@@ -163,7 +176,7 @@ var master = {
       multi: 32,
       cost: 20000,
       name: "Ice Cream",
-      desc: "Decently expensive dessert",
+      desc: "Ice with cream",
       img: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/microsoft/209/ice-cream_1f368.png",
     },
     {
@@ -204,93 +217,138 @@ var master = {
     },
   ],
 };
-
+//Default Version of Site to compare with saved session
+var currentVer = "0.5.0";
+document.getElementById("siteVer").innerHTML = currentVer;
+//List of Sections
 var subsection = ["work", "hire", "lootbox", "inv", "stats", "config"];
 
-//GoTo
+//GoTo Shortcut
 var goto = [
   {
     name: "Work",
     id: "#work",
-    color: "rgb(196, 0, 114), rgb(255, 0, 55)",
+    color: "#ec008c, #fc6767",
   },
   {
     name: "Hire",
     id: "#hire",
-    color: "rgb(179, 255, 0), rgb(238, 255, 0)",
+    color: "#24FE41, #FDFC47",
   },
   {
     name: "Lootboxes",
     id: "#lootbox",
-    color: "rgb(99, 0, 212), rgb(214, 0, 196)",
+    color: "#333399, #ff00cc",
   },
   {
     name: "Inventory",
     id: "#inv",
-    color: "rgb(255, 81, 0), rgb(255, 174, 0)",
+    color: "#f12711, #f5af19",
   },
   {
     name: "Statistics",
     id: "#stats",
-    color: "rgb(0, 98, 245), rgb(121, 235, 255)",
+    color: "#3a7bd5, #00d2ff",
   },
   {
     name: "Config",
     id: "#config",
-    color: "rgb(85, 85, 85), rgb(150, 150, 150)",
+    color: "#283048, #859398",
   },
 ];
 
-var lootboxlist = ["amateur", "common", "uncommon"];
+//Lootboxes
+var lootboxlist = [
+  {
+    id: "amateur",
+    name: "Amateur Chest",
+    type: "cash",
+    cost: 1000,
+    reward: [
+      { type: "cash", quan: 1500 },
+      { type: "cash", quan: 1000 },
+      { type: "cash", quan: 1000 },
+      { type: "cash", quan: 500 },
+    ],
+  },
+  {
+    id: "common",
+    name: "Common Chest",
+    type: "cash",
+    cost: 5000,
+    reward: [
+      { type: "gems", quan: 1 },
+      { type: "cash", quan: 10000 },
+      { type: "cash", quan: 5000 },
+      { type: "cash", quan: 1000 },
+      { type: "cash", quan: 1000 },
+    ],
+  },
+  {
+    id: "uncommon",
+    name: "Uncommon Chest",
+    type: "cash",
+    cost: 15000,
+    reward: [
+      { type: "gems", quan: 5 },
+      { type: "gems", quan: 5 },
+      { type: "gems", quan: 1 },
+      { type: "gems", quan: 1 },
+      { type: "gems", quan: 1 },
 
-var amateurchest = {
-  id: "amateur",
-  name: "Amateur Chest",
-  type: "cash",
-  cost: 1000,
-  reward: [
-    { type: "cash", quan: 2000 },
-    { type: "cash", quan: 1000 },
-    { type: "cash", quan: 500 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-  ],
-};
-var commonchest = {
-  id: "common",
-  name: "Common Chest",
-  type: "cash",
-  cost: 10000,
-  reward: [
-    { type: "gems", quan: 1 },
-    { type: "cash", quan: 5000 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-  ],
-};
-var uncommonchest = {
-  id: "uncommon",
-  name: "Uncommon Chest",
-  type: "cash",
-  cost: 75000,
-  reward: [
-    { type: "gems", quan: 5 },
-    { type: "gems", quan: 1 },
-    { type: "gems", quan: 1 },
-    { type: "cash", quan: 75000 },
-    { type: "cash", quan: 35000 },
-    { type: "cash", quan: 35000 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-    { type: "none", quan: 0 },
-  ],
-};
+      { type: "cash", quan: 45000 },
+      { type: "cash", quan: 45000 },
+      { type: "cash", quan: 45000 },
 
+      { type: "cash", quan: 15000 },
+      { type: "cash", quan: 15000 },
+      { type: "cash", quan: 15000 },
+      { type: "cash", quan: 15000 },
+      { type: "cash", quan: 15000 },
+      { type: "cash", quan: 15000 },
+
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+    ],
+  },
+  {
+    id: "rare",
+    name: "Rare Chest",
+    type: "cash",
+    cost: 50000,
+    reward: [
+      { type: "gems", quan: 25 },
+      { type: "gems", quan: 25 },
+      { type: "gems", quan: 5 },
+      { type: "gems", quan: 5 },
+      { type: "gems", quan: 5 },
+
+      { type: "cash", quan: 200000 },
+      { type: "cash", quan: 200000 },
+      { type: "cash", quan: 200000 },
+
+      { type: "cash", quan: 50000 },
+      { type: "cash", quan: 50000 },
+      { type: "cash", quan: 50000 },
+      { type: "cash", quan: 50000 },
+
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+      { type: "none", quan: 0 },
+    ],
+  },
+];
+
+//Converts numeric value to currency system
 const balformat = (num) => {
   if (num > 999 && num < 1000000) {
     return (num / 1000).toFixed(1) + "K";
@@ -308,6 +366,7 @@ const balformat = (num) => {
   // num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+//Collection of commands to modify balance values and update them in html
 function setbal(num) {
   master.imp.bal = num;
   document.getElementById("balhtml").innerHTML = balformat(num);
@@ -319,7 +378,7 @@ function addbal(num) {
 }
 
 function subbal(num) {
-  master.imp.bal + -num;
+  master.imp.bal -= num;
   document.getElementById("balhtml").innerHTML = balformat(master.imp.bal);
 }
 
@@ -334,14 +393,15 @@ function addgem(num) {
 }
 
 function subgem(num) {
-  master.imp.gem = -num;
+  master.imp.gem -= num;
   document.getElementById("gemhtml").innerHTML = balformat(master.imp.gem);
 }
 
+//Buy a Work Item
 function workbuy(item) {
   if (item.cost <= master.imp.bal) {
-    master.imp.bal -= item.cost;
-    document.getElementById("balhtml").innerHTML = balformat(master.imp.bal);
+    subbal(item.cost);
+    //Removes the unlock button and enables the work button for the given Work Item
     document.getElementById(item.id + "B").disabled = false;
     document.getElementById(item.id + "P").style.visibility = "hidden";
     item.unlocked = true;
@@ -355,6 +415,7 @@ function workbuy(item) {
   }
 }
 
+//Activate a Work Item
 function workbal(item) {
   {
     var elem = document.getElementById(item.id + "F");
@@ -362,27 +423,32 @@ function workbal(item) {
     workdur = item.dur / 100;
     var id = setInterval(frame, workdur);
     function frame() {
+      //If bar is fully filled
       if (width >= 100) {
+        //Add associated balance and enable the work button
         clearInterval(id);
         addbal(item.multi);
         elem.style.width = "0%";
         document.getElementById(item.id + "B").disabled = false;
       } else {
+        //Increment the working bar and disable the work button
         width++;
         elem.style.width = width + "%";
         document.getElementById(item.id + "B").disabled = true;
       }
-    }; return;
+    }
+    return;
   }
 }
 
+//Buy a Hire item
 function hirebal(item) {
   document.getElementById(item.id + "C").innerHTML = balformat(item.cost);
   if (master.imp.bal >= item.cost) {
     item.quan = item.quan + 1;
-    master.imp.bal = master.imp.bal - item.cost;
+    subbal(item.cost);
     document.getElementById(item.id + "Q").innerHTML = item.quan;
-    document.getElementById("balhtml").innerHTML = balformat(master.imp.bal);
+    //Increase the price of the current Hire item
     item.cost = Math.floor(item.cost * 1.1 + item.quan * 1.1);
     document.getElementById(item.id + "C").innerHTML = balformat(item.cost);
   } else {
@@ -395,8 +461,10 @@ function hirebal(item) {
   }
 }
 
+//Buy a Lootbox and get associated random reward
 function lootboxbuy(chest) {
   var costmode, costemoji;
+  //Decides which balance to add the rewarded amount to
   if (chest.type == "cash") {
     costmode = master.imp.bal;
     costemoji = "💵";
@@ -405,26 +473,34 @@ function lootboxbuy(chest) {
     costemoji = "💎";
   }
   if (chest.cost <= costmode) {
+    //Decides which balance to deduce the cost from
     if (chest.type == "cash") {
       subbal(chest.cost);
     } else if (chest.type == "gems") {
       subgem(chest.cost);
     }
+    //Bring up the Lootbox notification
     document.getElementById("lootboxnotif").style.left = "50%";
     document.getElementById(
       "lootnotifmain"
     ).innerHTML = `Opening ${chest.name}! Wait for it...`;
-    for (let i = 0; i < lootboxlist.length; i++) {
-      document.getElementById(lootboxlist[i] + "B").disabled = true;
-    }
+    lootboxlist.forEach( (e) => {
+      document.getElementById(`${e.id}B`).disabled = true
+    });
+    // for (let i = 0; i < lootboxlist.length; i++) {
+    //   document.getElementById(lootboxlist[i] + "B").disabled = true;
+    // }
+    //Declare the prize after 3 seconds
     setTimeout(() => {
       var chosen =
         chest.reward[Math.floor(Math.random() * chest.reward.length)];
+      //If the selected reward is nothing
       if (chosen.type == "none") {
         document.getElementById("lootnotifmain").innerHTML =
           "Aw, you earned nothing...";
         document.getElementById("lootboxnotif").style.backgroundColor =
           "rgb(216, 108, 108)";
+        //If the selected reward is cash
       } else if (chosen.type == "cash") {
         document.getElementById("lootnotifmain").innerHTML =
           "Congrats, you earned";
@@ -434,10 +510,8 @@ function lootboxbuy(chest) {
         document.getElementById("lootnotifprize").style.fontSize = "60px";
         document.getElementById("lootboxnotif").style.backgroundColor =
           "rgb(139, 216, 108)";
-        master.imp.bal += chosen.quan;
-        document.getElementById("balhtml").innerHTML = balformat(
-          master.imp.bal
-        );
+        addbal(chosen.quan);
+        //If the selected reward is gems
       } else if (chosen.type == "gems") {
         document.getElementById("lootnotifmain").innerHTML =
           "Congrats, you earned";
@@ -447,10 +521,7 @@ function lootboxbuy(chest) {
         document.getElementById("lootnotifprize").style.fontSize = "60px";
         document.getElementById("lootboxnotif").style.backgroundColor =
           "rgb(139, 216, 108)";
-        master.imp.gem += chosen.quan;
-        document.getElementById("gemhtml").innerHTML = balformat(
-          master.imp.gem
-        );
+        addgem(chosen.quan);
       }
       // document.addEventListener("click", function () {
       //   document.getElementById("lootboxnotif").style.left = "150%";
@@ -459,10 +530,11 @@ function lootboxbuy(chest) {
       //   }
       // })
     }, 3000);
+    //Hide the lootbox notification 3 seconds later
     setTimeout(() => {
-      for (let i = 0; i < lootboxlist.length; i++) {
-        document.getElementById(lootboxlist[i] + "B").disabled = false;
-      }
+      lootboxlist.forEach( (e) => {
+        document.getElementById(`${e.id}B`).disabled = false
+      });
       document.getElementById("lootboxnotif").style.left = "200%";
       document.getElementById("lootboxnotif").style.backgroundColor =
         "rgb(175, 175, 175)";
@@ -476,16 +548,18 @@ function lootboxbuy(chest) {
       )}${costemoji} more.`
     );
   }
+
   costmode, costemoji, (costloc = undefined);
 }
 
+//Buy an Inventory item
 function invbuy(item) {
   if (master.imp.gem >= item.cost) {
     item.quan += 1;
-    master.imp.gem -= item.cost;
-    document.getElementById("gemhtml").innerHTML = balformat(master.imp.gem);
+    subgem(item.cost);
     document.getElementById(item.id + "Q").innerHTML = item.quan;
     master.imp.balmulti += item.multi;
+    //Update the Cash Multiplier statistics
     document.getElementById("multihtml").innerHTML =
       master.imp.balmulti.toPrecision(3);
     var costpart = (10 + item.quan) / 10;
@@ -502,6 +576,7 @@ function invbuy(item) {
   }
 }
 
+//Display quantity and cost of Hire elements
 function loadnum(item) {
   item.forEach((element) => {
     document.getElementById(element.id + "Q").innerHTML = balformat(
@@ -512,7 +587,7 @@ function loadnum(item) {
     );
   });
 }
-
+//Calculate total cash multiplier from all purchased Inventory items
 function calcbalgensec(item) {
   let total = 0;
   item.forEach((elem) => {
@@ -523,13 +598,13 @@ function calcbalgensec(item) {
   return total;
 }
 
+//Add balance corresponding to quanity of associated Hire item
 function hireaddbal() {
   sum = 0;
   master.hireitems.forEach(function (item) {
     sum += Math.floor(item.multi * item.quan * master.imp.balmulti);
   });
-  master.imp.bal += sum;
-  document.getElementById("balhtml").innerHTML = balformat(master.imp.bal);
+  addbal(sum);
 }
 
 //Theme Switch Detection
@@ -557,38 +632,49 @@ document
     localStorage.setItem("session", JSON.stringify(master));
   });
 
+//Autosave game every 5 minutes
 window.setInterval(async function () {
-  localStorage.setItem("session", JSON.stringify(master));
-  notify("green", "Progress autosaved");
+  if (master.imp.autoSave) {
+    localStorage.setItem("session", JSON.stringify(master));
+    notify("green", "Progress autosaved");
+  }
 }, 300000);
-
 
 //Mobile Shortcuts Activator
 var isExpanded = false;
-var shortcuts = ["gt","sv"]
-function expandmobile(){
-  if (!isExpanded){
+var shortcuts = ["gt", "sv"];
+function expandmobile() {
+  //If shortcuts were previously not expanded (default)
+  if (!isExpanded) {
+    //Bring shortcuts to right edge of screen
     shortcuts.forEach((e) => {
-      document.getElementById(e).style.right = "10px"
-    })
-    document.getElementById("expand").style.transform = "rotate(180deg)"
-    document.getElementById("expand").style.boxShadow = " 0px -5px 15px rgba(0, 0, 0, 0.247)"
-    isExpanded = true
+      document.getElementById(e).style.right = "10px";
+    });
+    //Rotate the Expand shortcut
+    document.getElementById("expand").style.transform = "rotate(180deg)";
+    document.getElementById("expand").style.boxShadow =
+      " 0px -5px 15px rgba(0, 0, 0, 0.247)";
+    isExpanded = true;
+    //If shortcuts were previously expanded
   } else {
+    //Push shortcuts beyond right boundary
     shortcuts.forEach((e) => {
-      document.getElementById(e).style.right = "-60px"
-    })
-    document.getElementById("expand").style.transform = "rotate(0deg)"
-    document.getElementById("expand").style.boxShadow = " 0px 5px 15px rgba(0, 0, 0, 0.247)"
-    isExpanded = false
+      document.getElementById(e).style.right = "-60px";
+    });
+    //Rotate the Expand shortcut
+    document.getElementById("expand").style.transform = "rotate(0deg)";
+    document.getElementById("expand").style.boxShadow =
+      " 0px 5px 15px rgba(0, 0, 0, 0.247)";
+    isExpanded = false;
   }
-  return
+  return;
 }
 
 //Notification
 function notify(type, text) {
   var notifchecker = document.getElementsByClassName("notif");
   var notif = notifchecker[0];
+  //Take input for type of notification and color it accordingly
   if (type == "white") notif.id = "notif-white";
   if (type == "red") notif.id = "notif-red";
   if (type == "yellow") notif.id = "notif-yellow";
@@ -596,58 +682,111 @@ function notify(type, text) {
   if (type == "blue") notif.id = "notif-blue";
   notif.innerHTML = text;
   notif.style.bottom = "10px";
+  //Set the notification to be dismissed after 4 seconds (approx) automatically
   notiftime = 4;
+  //Dismiss the notification if user clicks on it
   notif.addEventListener("click", function () {
     notif.style.bottom = "-100px";
   });
   return;
 }
 
-//Window Startup
-let notiftime = null;
-
+//Show incompatibility for Firefox/Safari
 window.addEventListener("load", function () {
-  if (navigator.userAgent.indexOf("Firefox") != -1) {
+  if (navigator.userAgent.indexOf("Firefox") > -1) {
     notify(
       "yellow",
       "The site isn't optimized with Firefox. Some things may lag or break."
     );
+  } else if (navigator.userAgent.indexOf("SamsungBrowser") > -1) {
+    notify(
+      "yellow",
+      "The site isn't optimized with Samsung Browser. Some things may lag or break."
+    );
+  } else if (navigator.userAgent.indexOf("Opera") > -1 || navigator.userAgent.indexOf("OPR") > -1) {
+    notify(
+      "yellow",
+      "The site isn't optimized with Opera. Some things may lag or break."
+    );
+  } else if (navigator.userAgent.indexOf("Trident") > -1) {
+    notify(
+      "yellow",
+      "The site isn't optimized with Trident. Some things may lag or break."
+    );
+  } else if (navigator.userAgent.indexOf("Edge") > -1) {
+    notify(
+      "yellow",
+      "The site isn't optimized with Internet Explorer. Some things may lag or break."
+    );
+  } else if (navigator.userAgent.indexOf("Edg") > -1) {
+    return
+  } else if (navigator.userAgent.indexOf("Chrome") > -1) {
+   return
+  } else if (navigator.userAgent.indexOf("Safari") > -1) {
+    notify(
+      "yellow",
+      "The site isn't optimized with Safari. Some things may lag or break."
+    );
+  } else {
+return
   }
 });
 
+//Window Startup
+let notiftime = null;
 window.onload = function () {
-  var loadingScreen = document.getElementById("se-pre-con")
-  loadingScreen.style.animationName = "loadingfade"
-  loadingScreen.style.animationDuration = "0.5s"
-  loadingScreen.style.animationFillMode = "forwards"
+  //Hide the loading screen
+  var loadingScreen = document.getElementById("se-pre-con");
+  loadingScreen.style.animationName = "loadingfade";
+  loadingScreen.style.animationDuration = "0.5s";
+  loadingScreen.style.animationFillMode = "forwards";
   setTimeout(() => {
     document.getElementById("se-pre-con").style.visibility = "hidden";
   }, 500);
-  document.getElementById("balhtml").innerHTML = balformat(master.imp.bal);
-  document.getElementById("gemhtml").innerHTML = balformat(master.imp.gem);
-  document.getElementById("multihtml").innerHTML =
-  master.imp.balmulti.toPrecision(3);
-  
+
+  //Load previous session, if any
   if (JSON.parse(localStorage.getItem("session"))) {
     master = JSON.parse(localStorage.getItem("session"));
     notify("green", `Welcome back! Progress loaded.`);
   }
   //Enter code related to saved session below
-  
+
+  //Load and display important stats
+  document.getElementById("balhtml").innerHTML = balformat(master.imp.bal);
+  document.getElementById("gemhtml").innerHTML = balformat(master.imp.gem);
+  document.getElementById("multihtml").innerHTML =
+    master.imp.balmulti.toPrecision(3);
+
+  //If user did not accept cookies
+  if (!master.user.cookieConsent) {
+    document.getElementsByClassName("cookienotif")[0].style.display = "block";
+  } else {
+    //Load elements requiring cookies
+    var saveoption = document.getElementsByClassName("saveoption");
+    for (let i = 0; i < saveoption.length; i++) {
+      saveoption[i].style.display = "list-item";
+    }
+    document.getElementsByClassName("save")[0].style.display = "block";
+  }
+
+  //If user enabled cheats
   if (master.imp.adminpower) {
     document.getElementById("devmode").innerHTML = " (Experimental Mode)";
   }
-  
+
+  //If user enabled dark mode
   if (master.imp.isDark) {
     document.body.className = "dark";
-    document.getElementById("inputTheme").setAttribute("checked","true")
+    document.getElementById("inputTheme").setAttribute("checked", "true");
   } else {
     document.body.className = "light";
   }
-  
+
+  //Display the AutoSave switch as activated
   if (master.imp.autoSave) {
-    document.getElementById("inputAutosave").setAttribute("checked","true")
+    document.getElementById("inputAutosave").setAttribute("checked", "true");
   }
+
   //Work
   master.workitems.forEach((a, i) => {
     var item = document.createElement("li");
@@ -660,7 +799,7 @@ window.onload = function () {
     }
     item.innerHTML = `<h3>${a.name} <span id="pro">(+${balformat(
       a.multi
-      )}💵)</span></h3>
+    )}💵)</span></h3>
       <p>${a.desc}<br /></p>
       <button
       class="button"
@@ -690,36 +829,38 @@ window.onload = function () {
       style="
       width: 0%;
       height: 20px;
-      background-color: rgb(255, 107, 107);
+      background-image: linear-gradient(
+        to right,
+       #ec008c,
+       #fc6767);
       box-shadow: 0px 5px 10px rgba(255, 107, 107, 0.363);
       border-radius: 10px;
       "
       ></div>
       </div>`;
-      target.appendChild(item);
-    });
-    
-    //Hire
-    master.hireitems.forEach((a, i) => {
-      var item = document.createElement("li");
-      var target = document.querySelector("#hire ul");
-      item.innerHTML = ` <h3>${a.name} <span id="pro">(+${a.multi}💵/s)</span></h3>
+    target.appendChild(item);
+  });
+
+  //Hire
+  master.hireitems.forEach((a, i) => {
+    var item = document.createElement("li");
+    var target = document.querySelector("#hire ul");
+    item.innerHTML = `
+    <p class="owned">Owned: <span id="${a.id}Q"></span></p>
+      <h3>${a.name} <span id="pro">(+${a.multi}💵/s)</span></h3>
       <p>${a.desc}<br /></p>
       <button class="button" onclick="hirebal(master.hireitems[${i}]) ">
       Hire (<span id="${a.id}C"></span>💵)
       </button>
-      <p>
-      <i>Owned: <span id="${a.id}Q"></span></i>
-      </p>
       </li>`;
-      target.appendChild(item);
-    });
-    
-    //Inv
-    master.invitems.forEach((a, i) => {
-      var item = document.createElement("a");
-      var target = document.querySelector(".invA");
-      item.innerHTML = `<img
+    target.appendChild(item);
+  });
+
+  //Inv
+  master.invitems.forEach((a, i) => {
+    var item = document.createElement("a");
+    var target = document.querySelector(".invA");
+    item.innerHTML = `<img
       src=${a.img}
       alt="${a.name}"
       />
@@ -729,50 +870,52 @@ window.onload = function () {
       <button class="button" onclick="invbuy(master.invitems[${i}])">
       Buy (<span id="${a.id}C">${balformat(a.cost)}</span>💎)
       </button>
-      <p>
-      <i>Owned: <span id="${a.id}Q">0</span></i>
-      </p>`;
-      target.appendChild(item);
-    });
-    
-    //GoTo
-    goto.forEach((a) => {
-      var item = document.createElement("a");
-      item.href = a.id;
-      item.style = `background-image: linear-gradient(to right, ${a.color});`;
-      var target = document.querySelector(".goto");
-      item.innerHTML = a.name;
-      target.appendChild(item);
-    });
-    
-    loadnum(master.hireitems);
-  };
+      <p class="owned">Owned: <span id="${a.id}Q">0</span></p>
+      `;
+    target.appendChild(item);
+  });
 
+  //GoTo
+  goto.forEach((a) => {
+    var item = document.createElement("a");
+    item.href = a.id;
+    item.style = `background-image: linear-gradient(to right, ${a.color});`;
+    var target = document.querySelector(".goto");
+    item.innerHTML = a.name;
+    target.appendChild(item);
+  });
+
+  loadnum(master.hireitems);
+};
 
 //Window Shutdown
 window.onunload = function () {
-  if (master.imp.autoSave){
+  if (master.imp.autoSave) {
     savesession();
   }
-}
-
+};
 
 // Clock
 window.setInterval(async function () {
   hireaddbal();
+  // Increment seconds and disaply in Time Elapsed statistics
   master.imp.elaptime++;
-  var currenttime = `${String(Math.floor(master.imp.elaptime / 3600) % 24)
-    .padStart(2, "0")}:${String(Math.floor(master.imp.elaptime / 60) % 60)
-      .padStart(2, "0")}:${String(master.imp.elaptime % 60).padStart(2, "0")}`;
-      document.getElementById("timeelapsehtml").innerHTML = currenttime;
-      
-      document.getElementById("multihtml").innerHTML = balformat(
-        master.imp.balmulti.toPrecision(3)
-        );
-        document.getElementById("autocashhtml").innerHTML = calcbalgensec(
-  master.hireitems
+  var currenttime = `${String(
+    Math.floor(master.imp.elaptime / 3600) % 24
+  ).padStart(2, "0")}:${String(
+    Math.floor(master.imp.elaptime / 60) % 60
+  ).padStart(2, "0")}:${String(master.imp.elaptime % 60).padStart(2, "0")}`;
+  document.getElementById("timeelapsehtml").innerHTML = currenttime;
+
+  //Update other stat values
+  document.getElementById("multihtml").innerHTML = balformat(
+    master.imp.balmulti.toPrecision(3)
   );
-  
+  document.getElementById("autocashhtml").innerHTML = calcbalgensec(
+    master.hireitems
+  );
+
+  //Detect if a notification is displayed, decrement it to 0 then hide it
   if (typeof notiftime == "number") {
     if (notiftime > 0) {
       notiftime--;
@@ -782,7 +925,7 @@ window.setInterval(async function () {
       notiftime = null;
     }
   } else return;
-}, 1000);  
+}, 1000);
 
 //Admin Console
 document.addEventListener("keydown", (e) => {
@@ -799,108 +942,112 @@ function adminconsole() {
     let adminvalue = prompt(
       "Welcome to the Admin Console!\n\nEnter your command below.",
       ""
-      );
-      if (adminvalue == "setbal") {
-        adminvalue = prompt(
-          "Please provide the value to be set for the cash balance.",
-          ""
-          );
-          if (!isNaN(parseInt(adminvalue))) {
-            master.imp.bal = parseInt(adminvalue);
-            document.getElementById("balhtml").innerHTML = balformat(
-              master.imp.bal
-      );
-    }
-  }
-  if (adminvalue == "addbal") {
-    adminvalue = prompt(
-      "Please provide the value to be added to the cash balance.",
-      ""
-      );
-    if (!isNaN(parseInt(adminvalue))) {
-      master.imp.bal += parseInt(adminvalue);
-      document.getElementById("balhtml").innerHTML = balformat(
-        master.imp.bal
-      );
-    }
-  }
-  if (adminvalue == "subbal") {
-    adminvalue = prompt(
-      "Please provide the value to be subtracted from the cash balance.",
-      ""
     );
-    if (!isNaN(parseInt(adminvalue))) {
-      if (parseInt(adminvalue) > master.imp.bal) {
-        window.alert(
-          "You cannot subtract more than the cash balance itself!"
-        );
-      } else {
-        master.imp.bal -= parseInt(adminvalue);
+    if (adminvalue == "setbal") {
+      adminvalue = prompt(
+        "Please provide the value to be set for the cash balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        master.imp.bal = parseInt(adminvalue);
         document.getElementById("balhtml").innerHTML = balformat(
           master.imp.bal
         );
       }
     }
-  }
-  if (adminvalue == "setgem") {
-    adminvalue = prompt(
-      "Please provide the value to be set for the gem balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      master.imp.gem = parseInt(adminvalue);
-      document.getElementById("gemhtml").innerHTML = balformat(
-        master.imp.gem
+    if (adminvalue == "addbal") {
+      adminvalue = prompt(
+        "Please provide the value to be added to the cash balance.",
+        ""
       );
+      if (!isNaN(parseInt(adminvalue))) {
+        master.imp.bal += parseInt(adminvalue);
+        document.getElementById("balhtml").innerHTML = balformat(
+          master.imp.bal
+        );
+      }
     }
-  }
-  if (adminvalue == "addgem") {
-    adminvalue = prompt(
-      "Please provide the value to be added to the gem balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      master.imp.gem += parseInt(adminvalue);
-      document.getElementById("gemhtml").innerHTML = balformat(
-        master.imp.gem
+    if (adminvalue == "subbal") {
+      adminvalue = prompt(
+        "Please provide the value to be subtracted from the cash balance.",
+        ""
       );
+      if (!isNaN(parseInt(adminvalue))) {
+        if (parseInt(adminvalue) > master.imp.bal) {
+          window.alert(
+            "You cannot subtract more than the cash balance itself!"
+          );
+        } else {
+          master.imp.bal -= parseInt(adminvalue);
+          document.getElementById("balhtml").innerHTML = balformat(
+            master.imp.bal
+          );
+        }
+      }
     }
-  }
-  if (adminvalue == "subgem") {
-    adminvalue = prompt(
-      "Please provide the value to be subtracted from the gem balance.",
-      ""
-    );
-    if (!isNaN(parseInt(adminvalue))) {
-      if (parseInt(adminvalue) > master.imp.bal) {
-        window.alert("You cannot subtract more than the gem balance itself!");
-      } else {
-        master.imp.gem -= parseInt(adminvalue);
+    if (adminvalue == "setgem") {
+      adminvalue = prompt(
+        "Please provide the value to be set for the gem balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        master.imp.gem = parseInt(adminvalue);
         document.getElementById("gemhtml").innerHTML = balformat(
           master.imp.gem
         );
       }
     }
-  }
-  if (adminvalue == "reset") {
-    if (confirm("Are you sure you want to reset the game?")) {
-      localStorage.removeItem("session");
-      window.location.reload();
+    if (adminvalue == "addgem") {
+      adminvalue = prompt(
+        "Please provide the value to be added to the gem balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        master.imp.gem += parseInt(adminvalue);
+        document.getElementById("gemhtml").innerHTML = balformat(
+          master.imp.gem
+        );
+      }
+    }
+    if (adminvalue == "subgem") {
+      adminvalue = prompt(
+        "Please provide the value to be subtracted from the gem balance.",
+        ""
+      );
+      if (!isNaN(parseInt(adminvalue))) {
+        if (parseInt(adminvalue) > master.imp.bal) {
+          window.alert("You cannot subtract more than the gem balance itself!");
+        } else {
+          master.imp.gem -= parseInt(adminvalue);
+          document.getElementById("gemhtml").innerHTML = balformat(
+            master.imp.gem
+          );
+        }
+      }
+    }
+    if (adminvalue == "reset") {
+      if (confirm("Are you sure you want to reset the game?")) {
+        localStorage.removeItem("session");
+        window.location.reload();
+      }
     }
   }
-}}
+}
 
+//Saving/Loading/Deleting Cookies
 function savesession() {
   localStorage.setItem("session", JSON.stringify(master));
   notify("green", "Progress saved");
 }
 
 function loadsession() {
-  if (JSON.parse(localStorage.getItem("session"))) {
-    master = JSON.parse(localStorage.getItem("session"));
-    notify("green", "Progress loaded");
-  } else {
-    notify("red", "No previous session was detected.");
+  if (confirm("Are you sure you want to load the previous session?")) {
+    if (JSON.parse(localStorage.getItem("session"))) {
+      master = JSON.parse(localStorage.getItem("session"));
+      notify("green", "Progress loaded");
+    } else {
+      notify("red", "No previous session was detected.");
+    }
   }
 }
 
@@ -911,6 +1058,42 @@ function deletesession() {
     )
   ) {
     localStorage.removeItem("session");
+    master.imp.autoSave = false;
+    localStorage.removeItem("session");
     window.location.reload();
   }
 }
+
+//Accepting/declining cookies
+function acceptcookies() {
+  var saveoption = document.getElementsByClassName("saveoption");
+  for (let i = 0; i < saveoption.length; i++) {
+    saveoption[i].style.display = "list-item";
+  }
+  document.getElementsByClassName("save")[0].style.display = "block";
+  master.user.cookieConsent = true;
+  declinecookies();
+}
+
+function declinecookies() {
+  document.getElementsByClassName("cookienotif")[0].style.top = "-300px";
+  modal.style.display = "none";
+}
+
+//  Cookie consent modal
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("modal");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+span.onclick = function () {
+  modal.style.display = "none";
+};
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+//Temporary text to chnage commit name

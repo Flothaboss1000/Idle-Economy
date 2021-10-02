@@ -18,14 +18,20 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
   </head>
-  <body class="light">
+  <!-- Light mode by default -->
+  <body class="light" >
+
+    <!-- Loading Screen -->
     <div id="se-pre-con"></div>
+
+    <!-- Title Bar -->
     <div class="titlebar">
-      <h1>Idle Economy</h1>
+      <h1>IDLE <br id="iebr"/> ECONOMY</h1>
       <div class="info">
+        <!-- Content to display when Title bar hovered upon -->
         <center>
           <ul type="none">
-            <li>Version: <span ondblclick="adminconsole()">0.5.0</span></li>
+            <li>Version: <span id="siteVer" ondblclick="adminconsole()"></span></li>
             <li>Author: Flothaboss1000</li>
             <li>
               <a href="https://github.com/Flothaboss1000/Idle-Economy"
@@ -37,10 +43,14 @@
         </center>
       </div>
     </div>
+
+    <!-- Balance Counter -->
     <h2 id="balcounter">
       <a><span id="balhtml" title="Cash Balance"></span>💵</a
       ><a><span id="gemhtml" title="Gem Balance"></span>💎</a>
     </h2>
+
+    <!-- Show/Hide Shortcuts in Mobile Devices -->
     <div class="expand" id="expand">
       <img
         src="./imgs/miniarrow.svg"
@@ -50,10 +60,14 @@
       />
       <br />
     </div>
+
+    <!-- GoTo Shortcut (Site bookmarks) -->
     <div class="goto" id="gt">
       <img src="./imgs/compass.svg" alt="compass" id="svg" />
       <br />
     </div>
+
+    <!-- Save shortcut (Saving progress) -->
     <div class="save" id="sv">
       <img
         src="./imgs/save.svg"
@@ -64,7 +78,9 @@
       />
       <br />
     </div>
-    <!-- <div class="profile">
+
+    <!-- Profiles (Coming Soon!) 
+      <div class="profile">
       <img
         src="./imgs/account.svg"
         alt=""
@@ -77,14 +93,15 @@
         <h3 id="rank"></h3>
       </div>
     </div> -->
+
+    <!-- Work Section (Manual Earning) -->
     <div class="section" id="work">
       <h1
         style="
           background-image: linear-gradient(
             to right,
-            rgb(196, 0, 114),
-            rgb(255, 0, 55)
-          );
+           #ec008c,
+           #fc6767);
         "
       >
         Work
@@ -94,13 +111,15 @@
     <div class="section" id="hire">
       <h1
         style="
-          background-image: linear-gradient(
-            to right,
-            rgb(179, 255, 0),
-            rgb(238, 255, 0)
+        background-image: linear-gradient(
+          to right,
+          #24FE41,
+          #FDFC47
           );
         "
       >
+
+      <!-- Hire Section (Automatic earning) -->
         Hire
       </h1>
       <ul></ul>
@@ -110,66 +129,85 @@
         style="
           background-image: linear-gradient(
             to right,
-            rgb(99, 0, 212),
-            rgb(214, 0, 196)
+            #333399,
+            #ff00cc
           );
         "
       >
+
+      <!-- Lootboxes Section (Random rewards) -->
         Lootboxes
       </h1>
       <ul>
-        <li class="lbli">
+        <li>
           <h3>Amateur Chest</h3>
           <p>
-            A buffed chest for
-            <span style="text-decoration: line-through">noobs</span> amateurs
-            like you
+            The chest for the beginners of the beginners
           </p>
           <button
             class="button"
             id="amateurB"
-            onclick="lootboxbuy(amateurchest)"
+            onclick="lootboxbuy(lootboxlist[0])"
           >
             Buy (1.0K💵)
           </button>
           <div id="perk">
-            <a>❌=40%</a>
-            <a>500💵=20%</a>
-            <a>1.0K💵=20%</a>
-            <a>2.0K💵=20%</a>
+            <a>500💵=25%</a>
+            <a>1.0K💵=50%</a>
+            <a>1.5K💵=25%</a>
           </div>
         </li>
-        <li class="lbli">
+        <li>
           <h3>Common Chest</h3>
           <p>
-            A cheap chest to waste your money on, but maybe you can get a gem
+            For those who want to venture a bit
           </p>
-          <button class="button" id="commonB" onclick="lootboxbuy(commonchest)">
-            Buy (10.0K💵)
+          <button class="button" id="commonB" onclick="lootboxbuy(lootboxlist[1])">
+            Buy (5.0K💵)
           </button>
           <div id="perk">
-            <a>❌=75%</a>
-            <a>5.0K💵=12.5%</a>
+            <a>1.0K💵=50%</a>
+            <a>5.0K💵=25%</a>
+            <a>10.0K💵=12.5%</a>
             <a>1💎=12.5%</a>
           </div>
           <br />
         </li>
-        <li class="lbli">
+        <li>
           <h3>Uncommon Chest</h3>
-          <p>A slightly enchanted chest, maybe you will get lucky</p>
+          <p>Bit more stakes and better rewards</p>
           <button
             class="button"
             id="uncommonB"
-            onclick="lootboxbuy(uncommonchest)"
+            onclick="lootboxbuy(lootboxlist[2])"
           >
-            Buy (75.0K💵)
+            Buy (15.0K💵)
+          </button>
+          <div id="perk">
+            <a>❌=30%</a>
+            <a>15.0K💵=30%</a>
+            <a>45.0K💵=15%</a>
+            <a>1💎=15%</a>
+            <a>5💎=10%</a>
+          </div>
+          <br />
+        </li>
+        <li>
+          <h3>Rare Chest</h3>
+          <p>A risky endeavor</p>
+          <button
+            class="button"
+            id="rareB"
+            onclick="lootboxbuy(lootboxlist[3])"
+          >
+            Buy (50.0K💵)
           </button>
           <div id="perk">
             <a>❌=40%</a>
-            <a>35.0K💵=20%</a>
-            <a>75.0K💵=10%</a>
-            <a>1💎=20%</a>
-            <a>5💎=10%</a>
+            <a>50.0K💵=20%</a>
+            <a>200.0K💵=15%</a>
+            <a>5💎=15%</a>
+            <a>25💎=10%</a>
           </div>
           <br />
         </li>
@@ -180,11 +218,13 @@
         style="
           background-image: linear-gradient(
             to right,
-            rgb(255, 81, 0),
-            rgb(255, 174, 0)
+            #f12711,
+            #f5af19
           );
         "
       >
+
+      <!-- Inventory Sections (Items to boost manual earnings) -->
         Inventory
       </h1>
       <div class="invA"></div>
@@ -194,11 +234,13 @@
         style="
           background-image: linear-gradient(
             to right,
-            rgb(0, 98, 245),
-            rgb(121, 235, 255)
+            #3a7bd5,
+            #00d2ff
           );
         "
       >
+
+      <!-- Statistics Section -->
         Statistics
       </h1>
       <div class="statA">
@@ -236,13 +278,15 @@
         > -->
       </div>
     </div>
+
+    <!-- Configuration Section -->
     <div class="section" id="config">
       <h1
         style="
           background-image: linear-gradient(
             to right,
-            rgb(85, 85, 85),
-            rgb(150, 150, 150)
+            #283048,
+            #859398
           );
         "
       >
@@ -259,7 +303,7 @@
             </div>
           </label>
         </li>
-        <li>
+        <li class="saveoption">
           <h3>Save</h3>
           <p>Saves game progress in the site</p>
           <button class="button" onclick="savesession()">Save Session</button>
@@ -272,11 +316,10 @@
           <p>Erases all current and saved progress</p>
           <button class="button" onclick="deletesession()">Reset All</button>
         </li>
-        <li>
+        <li class="saveoption">
           <h3>Auto-Save</h3>
           <p>
-            Automatically saves progress every 5 minutes (Toggling will also
-            save progress)
+            Saves progress every 5 minutes and everytime you close the site
           </p>
           <label class="switch" id="switchAutosave">
             <div id="switchBack">
@@ -296,6 +339,35 @@
           >Prize Message</span
         >
       </h2>
+    </div>
+
+    <!-- Cookie consent notification -->
+    <div class="cookienotif">
+      <p>This site uses cookies to enhance your experience.</p>
+      <center>
+
+        <button class="button" onclick="acceptcookies()">Accept</button>
+        <button class="button" onclick="declinecookies()">Decline</button>
+        <button class="button" id="modal">Learn More</button>
+      </center>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">×</span>
+        <h2 style="text-align:center;">Cookie Policy</h2>
+        <p>This site uses cookies to provide you the option to save your progress.
+          This data is stored in your device and won't be shared with anyone.
+          You are opted out by default and can accept cookies to enable the save options or decline and continue.
+        </p>
+        <center>
+            <button class="button" onclick="acceptcookies()">Accept</button>
+            <button class="button" onclick="declinecookies()">Decline</button>
+          </div>
+        </center>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>

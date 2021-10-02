@@ -38,9 +38,6 @@ The green text in the title of the hire shows the amount of cash earned every se
 
 The cost of the different categories of hire will increase with from one to the next. You can hire an unlimited number of people from each category, but the cost of hiring them will increase as well.  
 
-### Store
-The store is a special marketplace that sells powerups in exchange for gems. These powerups will assist you in increasing your earnings for a specific duration of time.
-
 ### Lootboxes
 Lootboxes are items that give rewards when opened, depending on the loot available. The price and the stakes of the lootboxes increase with each tier.
 The rates for the prizes as well as failure is listed along every lootbox.
@@ -53,7 +50,6 @@ You can own collectibles and keep them with yourself permanently. You can buy th
 They also provide you with a permanent cash multiplier, which increases your passive earnings. The multiplier depends on the rarity and cost of the item.
 You can see the net multiplier in the statistics.
 You can own multiple items of the same kind, but their price will increase after each purchase.
-
 
 ### GoTo
 Since the entire webpage is too long, a bookmark feature is added at the bottom right corner of the screen called 'GoTo' which allows you to automatically move up and down to the desired section
@@ -71,11 +67,26 @@ If you feel lucky, you can open a **lootbox**. The first lootbox is an **Amateur
 You can click on the '**Buy**' button to purchase it and get a cash prize or nothing.
 You can buy more expensive lootboxes and get a chance to earn a gem from one of them.
 
-Buy temporary **powerups** from the store and boost your earnings.
-They have a certain duration that can be seen from their description.
-Click on the **'Buy'** button to purchase the powerup. A progree bar will appear depleting, indicating when the powerup will run out
-
 You can also purchase collectibles and permanent multiplier. Click on the **'buy '** button to own the item.
+
+# Save
+
+You have the ability to save your progress, which means you can come back where you left from, whether by reloading the page or closing the browser window altogether.
+
+>⚠Please note that this feature is experimental and may not be able to retain your progress when a new update arrives
+
+In order to enable the option to save your session at the first place, you will need to accept the site's cookies, since it uses your device's storage to store and retrive your progress locally.
+
+Once you accept the cookies, you will be immediately granted the options to save your session. 
+
+There are three ways to save your progress. 
+1. One way is to go to Configuration section and click on Save session. This will save all data in the session upto this point for future retrieval.
+2.  The second way is to click on the down arrow button at the corner of the site. This does the same thing but is more accessible
+3. The third way is to enable Auto-save in the Configuration section. This saves your progress automatically every 5 minutes as well as at the moment you close/reload the site.
+
+You can return to the last saved session with the Restore Last Session button in the Configuration section. Once you confirm your decision, all progress from the last saved session will be reverted.
+
+You can also do a hard reset, erasing the current session as well as any saved session. You will be prompted to confirm your decision, after which all user data will be erased and return to the absolute beginning of the site.
 
 ## Admin Console
 Along with a functioning system, this site also comes with an admin console that allows you to manually configure the site settings.
@@ -102,7 +113,6 @@ The following are the commands available in the admin console as well as more in
 ## General Issues
 There are some major bugs and issues in this game that are yet to be fixed in the upcoming updates.
 
- - [ ] Notifications won't disappear themselves after some time
  - [ ] The titlebar and the balance counter hide the title of the section in mobile version
  - [ ] Majority of the Statistics elements are empty
 
